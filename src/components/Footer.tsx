@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Locale } from "@/lib/types";
 import { getRoute } from "@/lib/i18n";
 import { buildMailtoLink } from "@/lib/mailto";
+import { ExternalLink } from "./ExternalLink";
 
 interface FooterProps {
   locale: Locale;
@@ -16,7 +17,7 @@ interface FooterProps {
 
 export function Footer({ locale, footer, contact, siteName }: FooterProps) {
   return (
-    <footer className="border-t border-border bg-surface">
+    <footer className="section-rule-t bg-surface">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-12 md:px-6">
         <div className="md:col-span-5">
           <p className="text-sm font-light tracking-[0.2em] text-foreground">
@@ -55,20 +56,18 @@ export function Footer({ locale, footer, contact, siteName }: FooterProps) {
             <a href={buildMailtoLink(contact.email, locale)} className="text-muted transition hover:text-foreground">
               {contact.email}
             </a>
-            <a
+            <ExternalLink
               href={contact.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-muted transition hover:text-foreground"
             >
               Instagram
-            </a>
+            </ExternalLink>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-border py-6 text-center text-[11px] uppercase tracking-widest text-muted/60">
-        © {new Date().getFullYear()} {siteName}. {footer.rights}
+      <div className="border-t border-accent/20 py-6 text-center text-[11px] uppercase tracking-widest text-muted/60">
+        © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {siteName}. {footer.rights}
       </div>
     </footer>
   );

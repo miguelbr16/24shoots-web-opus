@@ -11,7 +11,7 @@ export function Marquee({ text }: MarqueeProps) {
   );
 
   return (
-    <div className="overflow-hidden border-y border-border bg-panel py-5" aria-hidden>
+    <div className="section-rule-y overflow-hidden bg-panel py-5" aria-hidden>
       <div className="flex w-max animate-marquee">
         {item}
         {item}

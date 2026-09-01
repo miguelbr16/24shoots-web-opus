@@ -27,6 +27,7 @@ interface ScrollHeroProps {
   description: string;
   ctaPrimary: string;
   ctaSecondary: string;
+  logoSrc?: string;
   videoSrc?: string | null;
   posterSrc?: string | null;
 }
@@ -119,6 +120,55 @@ function LogoAssembly({ progress }: { progress: number }) {
   );
 }
 
+function HeroCenterBrand({
+  visible,
+  logoSrc,
+}: {
+  visible: number;
+  logoSrc: string;
+}) {
+  if (visible <= 0) return null;
+
+  return (
+    <div
+      className="pointer-events-none flex flex-col items-center justify-center px-2 sm:px-4 lg:px-6 xl:px-10"
+      style={{
+        opacity: visible,
+        transform: `translateY(${lerp(20, 0, visible)}px) scale(${lerp(0.94, 1, visible)})`,
+      }}
+    >
+      <div className="relative flex flex-col items-center">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 scale-[1.8] rounded-full bg-accent/10 blur-3xl"
+          style={{ opacity: visible * 0.9 }}
+        />
+        <Image
+          src={logoSrc}
+          alt=""
+          aria-hidden
+          width={360}
+          height={88}
+          priority
+          className="absolute h-28 w-auto opacity-[0.22] blur-lg sm:h-32 md:h-40 lg:h-48"
+        />
+        <Image
+          src={logoSrc}
+          alt="24Shoots"
+          width={360}
+          height={88}
+          priority
+          className="relative z-10 h-12 w-auto drop-shadow-[0_16px_48px_rgba(0,0,0,0.65)] sm:h-14 md:h-20 lg:h-24"
+        />
+        <div
+          className="relative z-10 mt-4 h-px w-24 bg-accent/90 sm:w-32 lg:w-36"
+          style={{ transform: `scaleX(${visible})` }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export function ScrollHero({
   locale,
   eyebrow,
@@ -127,6 +177,7 @@ export function ScrollHero({
   description,
   ctaPrimary,
   ctaSecondary,
+  logoSrc = "/logo.svg",
   videoSrc = null,
   posterSrc = null,
 }: ScrollHeroProps) {
@@ -269,7 +320,7 @@ export function ScrollHero({
         </div>
 
         <div className="absolute inset-0 z-40 flex items-end px-4 pb-24 pt-28 sm:items-center sm:pb-0 sm:pt-0 md:px-12 lg:px-20">
-          <div className="grid w-full gap-6 sm:gap-8 lg:grid-cols-2 lg:items-end">
+          <div className="grid w-full grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end lg:gap-8 xl:gap-12">
             <div
               className="pointer-events-none lg:pointer-events-auto"
               style={{
@@ -294,6 +345,8 @@ export function ScrollHero({
               </h1>
             </div>
 
+            <HeroCenterBrand visible={textIn} logoSrc={logoSrc} />
+
             <div
               className="pointer-events-none lg:pointer-events-auto lg:text-right"
               style={{
@@ -311,7 +364,12 @@ export function ScrollHero({
                 <Button href={getRoute(locale, "contact")} showArrow className="!px-5 !py-3 text-[10px] sm:!text-xs">
                   {ctaPrimary}
                 </Button>
-                <Button href={getRoute(locale, "portfolio")} variant="secondary" className="!px-5 !py-3 text-[10px] sm:!text-xs">
+                <Button
+                  href={getRoute(locale, "portfolio")}
+                  variant="secondary"
+                  showArrow
+                  className="!border-accent/80 !bg-accent/25 !text-foreground shadow-[0_0_28px_rgba(232,131,58,0.22)] backdrop-blur-sm hover:!border-accent hover:!bg-accent/40 sm:!text-xs"
+                >
                   {ctaSecondary}
                 </Button>
               </div>

@@ -1,3 +1,5 @@
+import { AccentRule } from "./AccentRule";
+
 interface SectorsBandProps {
   title: string;
   sectors: { id: string; label: string }[];
@@ -23,10 +25,13 @@ export function SectorsBand({ title, sectors }: SectorsBandProps) {
   );
 
   return (
-    <section className="overflow-hidden border-b border-border bg-surface py-6">
-      <p className="mb-4 text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-muted">
-        {title}
-      </p>
+    <section className="section-rule-y overflow-hidden bg-surface py-6">
+      <div className="mb-4 flex flex-col items-center gap-3">
+        <AccentRule align="center" wide />
+        <p className="text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-muted">
+          {title}
+        </p>
+      </div>
       <div className="flex w-max animate-marquee">
         {row}
         {row}

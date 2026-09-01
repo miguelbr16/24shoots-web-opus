@@ -5,18 +5,14 @@ import { Marquee } from "@/components/Marquee";
 import { DifferentiatorSection } from "@/components/DifferentiatorSection";
 import { SectorsBand } from "@/components/SectorsBand";
 import { ProcessSteps } from "@/components/ProcessSteps";
-import { PacksSection } from "@/components/PacksSection";
 import { StatsStrip } from "@/components/StatsStrip";
-import { ServiceCard } from "@/components/ServiceCard";
 import { SectionHeading, Button } from "@/components/ui";
-import { getPortfolioCaseLabels } from "@/lib/portfolio-labels";
+import { LightBand } from "@/components/LightBand";
 import {
   getFeaturedClients,
   getInstagramPosts,
   getPages,
-  getPortfolio,
   getServices,
-  getPacks,
   getSiteConfig,
 } from "@/lib/content";
 import { buildMetadata, buildOrganizationJsonLd } from "@/lib/seo";
@@ -28,20 +24,20 @@ const sectionFallback = (minHeight: string) =>
     return <div className={`${minHeight} bg-transparent`} aria-hidden />;
   };
 
-const PortfolioShowcase = dynamic(
+const HomeMobileHub = dynamic(
   () =>
-    import("@/components/PortfolioShowcase").then((m) => ({
-      default: m.PortfolioShowcase,
+    import("@/components/HomeMobileHub").then((m) => ({
+      default: m.HomeMobileHub,
     })),
-  { loading: sectionFallback("min-h-[540px]") }
+  { loading: sectionFallback("min-h-[280px]") }
 );
 
-const BeforeAfterSection = dynamic(
+const ServicesAccordion = dynamic(
   () =>
-    import("@/components/BeforeAfterSection").then((m) => ({
-      default: m.BeforeAfterSection,
+    import("@/components/ServicesAccordion").then((m) => ({
+      default: m.ServicesAccordion,
     })),
-  { loading: sectionFallback("min-h-[420px]") }
+  { loading: sectionFallback("min-h-[320px]") }
 );
 
 const InstagramGrid = dynamic(
@@ -92,8 +88,6 @@ export default async function HomePage({
   const site = getSiteConfig();
   const pages = getPages(locale);
   const services = getServices(locale);
-  const packs = getPacks(locale);
-  const portfolio = getPortfolio(locale).filter((p) => p.featured).slice(0, 3);
   const instagramPosts = getInstagramPosts(locale);
   const featuredClients = getFeaturedClients();
   const { home } = pages;
@@ -102,8 +96,6 @@ export default async function HomePage({
   const instagramHandle = site.contact.instagram
     .replace(/https?:\/\/(www\.)?instagram\.com\//, "")
     .replace(/\/$/, "");
-
-  const caseLabels = getPortfolioCaseLabels(pages.portfolio);
 
   return (
     <>
@@ -121,6 +113,7 @@ export default async function HomePage({
         description={home.hero.description}
         ctaPrimary={home.hero.ctaPrimary}
         ctaSecondary={home.hero.ctaSecondary}
+        logoSrc={site.logo}
         videoSrc={site.heroVideo}
         posterSrc={site.heroPoster}
       />
@@ -140,70 +133,64 @@ export default async function HomePage({
         sectors={pages.portfolioCategories}
       />
 
-      {/* 3. Prueba visual */}
-      <section className="border-b border-border py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <SectionHeading
-            title={home.portfolioSection.title}
-            subtitle={home.portfolioSection.subtitle}
-          />
-          <PortfolioShowcase
-            items={portfolio}
-            featuredLabel={home.portfolioSection.featuredLabel}
-            caseLabels={caseLabels}
-            locale={locale}
-          />
-          <div className="mt-12 text-center">
-            <Button href={getRoute(locale, "portfolio")} variant="secondary" showArrow>
-              {pages.nav.portfolio}
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* 3. Hub móvil: servicios + proceso + por qué en pestañas */}
+      <HomeMobileHub
+        locale={locale}
+        servicesTitle={home.servicesSection.title}
+        servicesSubtitle={home.servicesSection.subtitle}
+        services={services}
+        processTitle={home.processSection.title}
+        processSubtitle={home.processSection.subtitle}
+        steps={home.processSection.steps}
+        whyTitle={home.whySection.title}
+        whyItems={home.whySection.items}
+        viewLabel={pages.services.cta}
+        allServicesLabel={pages.nav.services}
+      />
 
-      {/* 4. Catálogo */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
-        <SectionHeading
+      <div className="hidden lg:block">
+        <ServicesAccordion
           title={home.servicesSection.title}
           subtitle={home.servicesSection.subtitle}
+          services={services}
+          locale={locale}
+          viewLabel={pages.services.cta}
+          highlightsLabel={pages.services.highlights}
+          allServicesLabel={pages.nav.services}
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => (
-            <ServiceCard key={service.id} service={service} locale={locale} index={i} />
-          ))}
-        </div>
-        <div className="mt-12 text-center">
-          <Button href={getRoute(locale, "services")} variant="secondary" showArrow>
-            {pages.nav.services}
-          </Button>
-        </div>
-      </section>
+      </div>
 
-      {/* 5. Cómo contratar */}
-      <PacksSection
-        locale={locale}
-        title={home.packsSection.title}
-        subtitle={home.packsSection.subtitle}
-        quoteNote={home.packsSection.quoteNote}
-        featuredBadge={home.packsSection.featuredBadge}
-        ctaLabel={home.packsSection.ctaLabel}
-        packs={packs}
-      />
       <ProcessSteps
+        className="hidden lg:block"
         title={home.processSection.title}
         subtitle={home.processSection.subtitle}
         steps={home.processSection.steps}
       />
 
-      {/* 6. Calidad */}
-      <BeforeAfterSection
-        title={home.beforeAfterSection.title}
-        subtitle={home.beforeAfterSection.subtitle}
-        rawLabel={home.beforeAfterSection.rawLabel}
-        editedLabel={home.beforeAfterSection.editedLabel}
-        dragHint={home.beforeAfterSection.dragHint}
-        image={home.beforeAfterSection.image}
-      />
+      <LightBand accent="top" className="hidden lg:block">
+        <SectionHeading title={home.whySection.title} tone="light" />
+        <div className="grid gap-8 md:grid-cols-3 md:gap-12">
+          {home.whySection.items.map((item, i) => (
+            <div
+              key={item.title}
+              className={`border-t border-light-band-border pt-6 md:border-t-0 md:pt-0 ${
+                i > 0 ? "md:border-l md:border-accent/40 md:pl-8" : ""
+              }`}
+            >
+              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-accent">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-4 text-lg font-medium tracking-tight text-light-band-text">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-light-band-muted">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </LightBand>
+
       <InstagramGrid
         title={home.instagramSection.title}
         subtitle={home.instagramSection.subtitle}
@@ -216,7 +203,7 @@ export default async function HomePage({
       />
       <StatsStrip stats={home.statsSection} />
 
-      {/* 7. Confianza social */}
+      {/* Confianza social */}
       <ClientSocialProofSection
         locale={locale}
         clients={featuredClients}
@@ -232,24 +219,6 @@ export default async function HomePage({
         reviews={home.reviewsSection.items}
       />
 
-      {/* 8. Argumentos */}
-      <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
-        <SectionHeading title={home.whySection.title} />
-        <div className="grid gap-12 md:grid-cols-3">
-          {home.whySection.items.map((item, i) => (
-            <div key={item.title} className="border-t border-border pt-8">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-accent">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-4 text-lg font-medium tracking-tight">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* 9. Fricción final */}
       <FaqSection
         title={home.faqSection.title}
@@ -258,7 +227,7 @@ export default async function HomePage({
       />
 
       {/* 10. Cierre */}
-      <section className="border-t border-border bg-panel py-16 md:py-20">
+      <section className="section-rule-strong-t bg-panel py-16 md:py-20">
         <div className="mx-auto max-w-2xl px-4 text-center md:px-6">
           <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-accent">
             24Shoots

@@ -90,10 +90,10 @@
         }
       ],
       "media": [
-        "/imagenes_insta/ig-photo-1.jpg",
-        "/imagenes_insta/ig-photo-2.jpg",
-        "/imagenes_insta/ig-photo-3.jpg",
-        "/imagenes_insta/ig-photo-4.jpg"
+        "/videos/web/posters/hutamaki.jpg",
+        "/videos/web/posters/imperia.jpg",
+        "/videos/web/posters/isabel-ferrer.jpg",
+        "/videos/web/posters/pivc.jpg"
       ]
     },
     "sectorsSection": {
@@ -105,7 +105,7 @@
       "rawLabel": "Ungraded",
       "editedLabel": "Final",
       "dragHint": "Drag · Swipe",
-      "image": "/imagenes_insta/ig-photo-2.jpg"
+      "image": "/videos/web/posters/pivc.jpg"
     },
     "ctaSection": {
       "title": "Ready to master the impact?",
@@ -119,22 +119,22 @@
         {
           "title": "Brief & strategy",
           "description": "We listen to your goals, audience and timeline. Creative direction is set before shooting.",
-          "image": "/imagenes_insta/ig-photo-5.jpg"
+          "image": "/videos/web/posters/hutamaki.jpg"
         },
         {
           "title": "Production",
           "description": "Professional filming and photography. Weddings, events, product or social content.",
-          "image": "/imagenes_insta/ig-photo-1.jpg"
+          "image": "/videos/web/posters/imperia.jpg"
         },
         {
           "title": "Post-production",
           "description": "Editing, colour, sound and platform-ready delivery with cinematic standards.",
-          "image": "/imagenes_insta/ig-photo-3.jpg"
+          "image": "/videos/web/posters/isabel-ferrer.jpg"
         },
         {
           "title": "Delivery & support",
           "description": "Optimised final files ready to publish. Support after delivery.",
-          "image": "/imagenes_insta/ig-photo-4.jpg"
+          "image": "/videos/web/posters/pivc.jpg"
         }
       ]
     },
@@ -187,16 +187,16 @@
       "title": "Every frame with purpose",
       "subtitle": "Video, photo and content for brands that refuse to blend in.",
       "cta": "View work",
-      "image": "/imagenes_insta/ig-photo-3.jpg",
-      "video": "/imagenes_insta/ig-reel-4.mp4"
+      "image": "/videos/web/posters/oficial.jpg",
+      "video": "/videos/web/aftermovie-oicial-version-final-web.mp4"
     },
     "marqueeText": "Video · Photography · Weddings · Events · Social media · Drone · Valencia · Spain",
     "marqueeMedia": [
-      "/imagenes_insta/ig-photo-1.jpg",
-      "/imagenes_insta/ig-photo-2.jpg",
-      "/imagenes_insta/ig-photo-3.jpg",
-      "/imagenes_insta/ig-photo-4.jpg",
-      "/imagenes_insta/ig-photo-5.jpg"
+      "/videos/web/posters/hutamaki.jpg",
+      "/videos/web/posters/imperia.jpg",
+      "/videos/web/posters/isabel-ferrer.jpg",
+      "/videos/web/posters/pivc.jpg",
+      "/videos/web/posters/oficial.jpg"
     ],
     "metadataTicker": [
       "24FPS",

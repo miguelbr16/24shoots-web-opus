@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useCookieConsent } from "@/hooks/useCookieConsent";
+import { ExternalLink } from "./ExternalLink";
 import { SectionHeading } from "./ui";
 import type { InstagramPost } from "@/lib/types";
 
@@ -44,10 +44,8 @@ function MediaTile({
   const hasImage = Boolean(post.image);
 
   return (
-    <Link
+    <ExternalLink
       href={post.url}
-      target="_blank"
-      rel="noopener noreferrer"
       className={`group relative block overflow-hidden bg-media ${
         large ? "col-span-2 row-span-2" : ""
       }`}
@@ -102,7 +100,7 @@ function MediaTile({
           </div>
         )}
       </div>
-    </Link>
+    </ExternalLink>
   );
 }
 
@@ -149,14 +147,12 @@ function EmbedTile({
         }`}
       >
         <p className="text-xs leading-relaxed text-muted">{embedFallback}</p>
-        <Link
+        <ExternalLink
           href={post.url}
-          target="_blank"
-          rel="noopener noreferrer"
           className="text-[10px] font-semibold uppercase tracking-widest text-accent hover:underline"
         >
           {embedCta}
-        </Link>
+        </ExternalLink>
       </div>
     );
   }
@@ -186,18 +182,16 @@ export function InstagramGrid({
   posts,
 }: InstagramGridProps) {
   return (
-    <section className="border-y border-border bg-panel py-16 md:py-20">
+    <section className="section-rule-y bg-panel py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <SectionHeading title={title} subtitle={subtitle} />
-          <Link
+          <ExternalLink
             href={profileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             className="shrink-0 border border-white/20 bg-elevated px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/90 transition hover:border-accent hover:text-accent"
           >
             {followLabel} @{handle}
-          </Link>
+          </ExternalLink>
         </div>
 
         <div className="grid grid-cols-2 auto-rows-fr gap-px bg-border md:grid-cols-4">

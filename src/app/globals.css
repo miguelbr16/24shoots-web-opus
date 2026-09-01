@@ -12,6 +12,12 @@
   --color-premium: #c4a574;
   --color-panel: #121210;
   --color-media: #181614;
+  --color-light-band: #f0ebe4;
+  --color-light-band-bright: #faf8f5;
+  --color-light-band-text: #141414;
+  --color-light-band-muted: #5c5650;
+  --color-light-band-border: #d4cdc4;
+  --color-light-band-surface: #e8e0d6;
   --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
 }
 
@@ -87,37 +93,79 @@ body {
   animation: glow-drift 8s ease-in-out infinite;
 }
 
-@keyframes client-wheel-spin {
+.client-orbit-stage {
+  --orbit-radius: clamp(13.5rem, 38vw, 18.5rem);
+}
+
+.client-orbit-ring {
+  width: calc(var(--orbit-radius) * 2);
+}
+
+.client-orbit-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6rem;
+  height: 6rem;
+  offset-path: circle(var(--orbit-radius) at 50% 50%);
+  offset-distance: 0%;
+  offset-rotate: 0deg;
+  offset-anchor: center;
+  animation: client-orbit-travel 58s linear infinite;
+}
+
+@keyframes client-orbit-travel {
   from {
-    transform: rotate(0deg);
+    offset-distance: 0%;
   }
   to {
-    transform: rotate(360deg);
+    offset-distance: 100%;
   }
 }
 
-.client-wheel-spin {
-  animation: client-wheel-spin 58s linear infinite;
-}
-
-.client-wheel-counter {
-  animation: client-wheel-spin 58s linear infinite reverse;
-}
-
-.client-wheel-group:hover .client-wheel-spin,
-.client-wheel-group:hover .client-wheel-counter {
+.client-wheel-group:hover .client-orbit-item {
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .client-wheel-spin,
-  .client-wheel-counter {
+  .client-orbit-item {
     animation: none;
+    offset-distance: var(--orbit-offset, 0%);
   }
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+.accent-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-accent) 55%, transparent) 18%,
+    color-mix(in srgb, var(--color-accent) 55%, transparent) 82%,
+    transparent 100%
+  );
+}
+
+.section-rule-y {
+  border-width: 1px 0;
+  border-style: solid;
+  border-top-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+  border-bottom-color: color-mix(in srgb, var(--color-accent) 24%, var(--color-border));
+}
+
+.section-rule-t {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+}
+
+.section-rule-strong-t {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: var(--color-accent);
 }
 
 /* Subtle film grain overlay utility */

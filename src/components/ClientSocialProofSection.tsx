@@ -5,6 +5,8 @@ import { getRoute } from "@/lib/i18n";
 import { Button } from "./ui";
 import { ReviewsCarousel } from "./ReviewsCarousel";
 import { ClientLogoArcWheel } from "./ClientLogoArcWheel";
+import { ClientLogoMarquee } from "./ClientLogoMarquee";
+import { AccentDivider } from "./AccentRule";
 
 interface Review {
   quote: string;
@@ -71,8 +73,17 @@ export function ClientSocialProofSection({
   );
 
   return (
-    <section className="relative border-y border-border bg-background">
-      <div className="relative overflow-hidden py-4 md:py-6">
+    <section className="section-rule-y relative bg-background">
+      {/* Móvil: titular + logos en horizontal */}
+      <div className="relative overflow-hidden py-8 lg:hidden">
+        <div className="mx-auto max-w-sm px-4 text-center">{center}</div>
+        <div className="mt-6">
+          <ClientLogoMarquee clients={clients} ariaLabel={dragHint} />
+        </div>
+      </div>
+
+      {/* Escritorio: rueda orbital fija */}
+      <div className="relative hidden overflow-hidden py-4 md:py-6 lg:block">
         <ClientLogoArcWheel clients={clients} ariaLabel={dragHint} center={center} />
 
         <p className="relative z-10 -mt-1 pb-2 text-center text-[10px] uppercase tracking-[0.22em] text-muted/70">
@@ -81,6 +92,7 @@ export function ClientSocialProofSection({
       </div>
 
       <div className="relative z-20 bg-surface pb-14 pt-4 md:pb-20 md:pt-6">
+        <AccentDivider className="mb-8 px-4 md:mb-10" />
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <ReviewsCarousel title={reviewsTitle} subtitle={reviewsSubtitle} items={reviews} />
           <p className="mx-auto mt-10 max-w-lg text-center text-xs leading-relaxed text-muted/75">

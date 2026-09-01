@@ -90,10 +90,10 @@
         }
       ],
       "media": [
-        "/imagenes_insta/ig-photo-1.jpg",
-        "/imagenes_insta/ig-photo-2.jpg",
-        "/imagenes_insta/ig-photo-3.jpg",
-        "/imagenes_insta/ig-photo-4.jpg"
+        "/videos/web/posters/hutamaki.jpg",
+        "/videos/web/posters/imperia.jpg",
+        "/videos/web/posters/isabel-ferrer.jpg",
+        "/videos/web/posters/pivc.jpg"
       ]
     },
     "sectorsSection": {
@@ -105,7 +105,7 @@
       "rawLabel": "Sin editar",
       "editedLabel": "Final",
       "dragHint": "Arrastra · Desliza",
-      "image": "/imagenes_insta/ig-photo-2.jpg"
+      "image": "/videos/web/posters/pivc.jpg"
     },
     "ctaSection": {
       "title": "¿Listo para dominar el impacto?",
@@ -119,22 +119,22 @@
         {
           "title": "Brief y estrategia",
           "description": "Escuchamos tu objetivo, público y plazos. Definimos el enfoque creativo antes de grabar.",
-          "image": "/imagenes_insta/ig-photo-5.jpg"
+          "image": "/videos/web/posters/hutamaki.jpg"
         },
         {
           "title": "Producción",
           "description": "Rodaje y sesión foto con equipo profesional. Bodas, eventos, producto o redes.",
-          "image": "/imagenes_insta/ig-photo-1.jpg"
+          "image": "/videos/web/posters/imperia.jpg"
         },
         {
           "title": "Postproducción",
           "description": "Edición, color, sonido y adaptación a cada plataforma con criterio cinematográfico.",
-          "image": "/imagenes_insta/ig-photo-3.jpg"
+          "image": "/videos/web/posters/isabel-ferrer.jpg"
         },
         {
           "title": "Entrega y seguimiento",
           "description": "Archivos finales optimizados y listos para publicar. Soporte tras la entrega.",
-          "image": "/imagenes_insta/ig-photo-4.jpg"
+          "image": "/videos/web/posters/pivc.jpg"
         }
       ]
     },
@@ -187,16 +187,16 @@
       "title": "Cada frame con intención",
       "subtitle": "Vídeo, foto y contenido para marcas que no quieren pasar desapercibidas.",
       "cta": "Ver trabajos",
-      "image": "/imagenes_insta/ig-photo-3.jpg",
-      "video": "/imagenes_insta/ig-reel-4.mp4"
+      "image": "/videos/web/posters/oficial.jpg",
+      "video": "/videos/web/aftermovie-oicial-version-final-web.mp4"
     },
     "marqueeText": "Vídeo · Fotografía · Bodas · Eventos · Redes sociales · Dron · Valencia · España",
     "marqueeMedia": [
-      "/imagenes_insta/ig-photo-1.jpg",
-      "/imagenes_insta/ig-photo-2.jpg",
-      "/imagenes_insta/ig-photo-3.jpg",
-      "/imagenes_insta/ig-photo-4.jpg",
-      "/imagenes_insta/ig-photo-5.jpg"
+      "/videos/web/posters/hutamaki.jpg",
+      "/videos/web/posters/imperia.jpg",
+      "/videos/web/posters/isabel-ferrer.jpg",
+      "/videos/web/posters/pivc.jpg",
+      "/videos/web/posters/oficial.jpg"
     ],
     "metadataTicker": [
       "24FPS",

@@ -12,7 +12,7 @@ interface ClientLogoArcWheelProps {
 }
 
 const TARGET_LOGO_COUNT = 22;
-const LOGO_RADIUS = "min(50vw, 20rem)";
+const ORBIT_DURATION_S = 58;
 
 function monogram(client: ClientLogo): string {
   return client.monogram ?? client.name.slice(0, 3).toUpperCase();
@@ -33,7 +33,6 @@ export function ClientLogoArcWheel({ clients, ariaLabel, center }: ClientLogoArc
   const n = wheelClients.length;
   if (n === 0) return null;
 
-  const step = 360 / n;
   const uniqueCount = clients.length;
 
   return (
@@ -42,60 +41,51 @@ export function ClientLogoArcWheel({ clients, ariaLabel, center }: ClientLogoArc
       aria-label={ariaLabel}
     >
       <div className="relative h-[clamp(20rem,60vw,28rem)] overflow-hidden md:h-[29rem]">
-        {/* Wheel — tighter diameter; clipped top/bottom */}
-        <div
-          className="pointer-events-auto absolute left-1/2 top-[48%] z-0 aspect-square w-[min(155vw,46rem)] -translate-x-1/2 -translate-y-[44%]"
-          aria-hidden
-        >
-          <div className="client-wheel-spin relative h-full w-full origin-center">
-            <div className="absolute inset-[2%] rounded-full border border-border/60 bg-transparent" />
-
-            {wheelClients.map((client, i) => {
-              const angle = i * step - 90;
-              const isDuplicate = i >= uniqueCount;
-              return (
-                <div
-                  key={`${client.id}-${i}`}
-                  className="absolute left-1/2 top-1/2 h-0 w-0"
-                  style={{
-                    transform: `rotate(${angle}deg) translateY(calc(-1 * ${LOGO_RADIUS}))`,
-                  }}
-                >
-                  <div
-                    className="absolute left-0 top-0"
-                    style={{ transform: `rotate(${-angle}deg) translate(-50%, -50%)` }}
-                  >
-                    <div className="client-wheel-counter">
-                      <div
-                        className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-border/80 bg-elevated shadow-[0_12px_32px_rgba(0,0,0,0.5)] ring-1 ring-accent/20 sm:h-[4.5rem] sm:w-[4.5rem] md:h-24 md:w-24"
-                        title={client.name}
-                        aria-hidden={isDuplicate}
-                      >
-                        {client.logo ? (
-                          <Image
-                            src={client.logo}
-                            alt={isDuplicate ? "" : client.name}
-                            width={80}
-                            height={80}
-                            unoptimized
-                            className="h-[76%] w-[76%] object-contain"
-                          />
-                        ) : (
-                          <span className="text-[9px] font-bold uppercase tracking-wide text-foreground/90">
-                            {monogram(client)}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+        <div className="client-orbit-stage absolute inset-0">
+          {/* Anillo fijo — nunca se anima */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <div className="client-orbit-ring aspect-square rounded-full border border-border/60" />
           </div>
+
+          {/* Logos recorren un círculo fijo (offset-path) */}
+          {wheelClients.map((client, i) => {
+            const isDuplicate = i >= uniqueCount;
+            return (
+              <div
+                key={`${client.id}-${i}`}
+                className="client-orbit-item pointer-events-auto"
+                style={{
+                  animationDelay: `${-(i / n) * ORBIT_DURATION_S}s`,
+                  ["--orbit-offset" as string]: `${(i / n) * 100}%`,
+                }}
+              >
+                <div
+                  className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-border/80 bg-elevated shadow-[0_12px_32px_rgba(0,0,0,0.5)] ring-1 ring-accent/20 sm:h-[4.5rem] sm:w-[4.5rem] md:h-24 md:w-24"
+                  title={client.name}
+                  aria-hidden={isDuplicate}
+                >
+                  {client.logo ? (
+                    <Image
+                      src={client.logo}
+                      alt={isDuplicate ? "" : client.name}
+                      width={80}
+                      height={80}
+                      unoptimized
+                      className="h-[76%] w-[76%] object-contain"
+                    />
+                  ) : (
+                    <span className="text-[9px] font-bold uppercase tracking-wide text-foreground/90">
+                      {monogram(client)}
+                    </span>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <div
-          className="pointer-events-none absolute inset-0 z-[15] bg-[radial-gradient(ellipse_50%_42%_at_50%_48%,var(--color-background)_0%,var(--color-background)_38%,transparent_72%)]"
+          className="pointer-events-none absolute inset-0 z-[15] bg-[radial-gradient(ellipse_50%_42%_at_50%_50%,var(--color-background)_0%,var(--color-background)_38%,transparent_72%)]"
           aria-hidden
         />
 
