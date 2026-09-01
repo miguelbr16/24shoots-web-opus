@@ -240,6 +240,9 @@ export function ScrollHero({
   const textIn = isMobile ? textInMobile : textInDesktop;
   const mobileCopyKill = isMobile ? 1 - segment(progress, 0.62, 0.72) : 1;
 
+  const desktopHandoff = segment(progress, 0.5, 0.66);
+  const desktopLogoExit = segment(progress, 0.7, 0.9);
+
   const mediaVisible = isMobile
     ? mediaIn * (1 - mediaOutMobile) * mobileCopyKill
     : mediaIn * (1 - mediaOutDesktop);
@@ -257,8 +260,14 @@ export function ScrollHero({
     syncVideoTime(progress, mediaVisible);
   }, [progress, mediaVisible, syncVideoTime]);
 
-  const showCenterLogoDesktop = !isMobile && logoBuilt > 0 && textIn < 0.98;
-  const showIntroLogo = logoIntro > 0 && (isMobile ? textInMobile < 0.12 : !showCenterLogoDesktop);
+  const showCenterLogoDesktop =
+    !isMobile && logoBuilt > 0 && desktopLogoExit < 0.98;
+  const showIntroLogo =
+    logoIntro > 0 &&
+    (isMobile ? textInMobile < 0.12 : desktopHandoff < 0.98);
+
+  const introLogoFade = isMobile ? 1 : 1 - desktopHandoff;
+  const centerLogoFade = desktopHandoff * (1 - desktopLogoExit);
 
   const leftTextY = lerp(24, 0, textIn);
   const rightTextY = lerp(24, 0, textIn);
@@ -329,11 +338,14 @@ export function ScrollHero({
         />
 
         {showIntroLogo && (
-          <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <div
+            className="absolute inset-0 z-20 flex items-center justify-center"
+            style={{ opacity: introLogoFade }}
+          >
             <LogoAssembly
               progress={progress}
-              fadeOutStart={isMobile ? 0.6 : 0.48}
-              fadeOutEnd={isMobile ? 0.72 : 0.56}
+              fadeOutStart={isMobile ? 0.6 : 1}
+              fadeOutEnd={isMobile ? 0.72 : 1.01}
             />
           </div>
         )}
@@ -368,15 +380,15 @@ export function ScrollHero({
               <div
                 className="pointer-events-none hidden justify-center lg:flex"
                 style={{
-                  opacity: clamp(textIn * 0.35 + logoBuilt * 0.65),
-                  transform: `translateY(${lerp(12, 0, textIn)}px)`,
+                  opacity: centerLogoFade,
+                  transform: `translateY(${lerp(12, 0, textIn)}px) scale(${lerp(0.94, 1, desktopHandoff)})`,
                 }}
               >
                 <LogoAssembly
                   progress={progress}
                   compact
-                  fadeOutStart={0.9}
-                  fadeOutEnd={0.98}
+                  fadeOutStart={1}
+                  fadeOutEnd={1.01}
                 />
               </div>
             )}
