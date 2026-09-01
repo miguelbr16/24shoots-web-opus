@@ -5,7 +5,7 @@ interface StatsStripProps {
 export function StatsStrip({ stats }: StatsStripProps) {
   return (
     <section className="section-rule-y bg-surface">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-accent/20 border-x border-border md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-accent/20 md:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label} className="px-6 py-10 text-center md:py-12">
             <p className="text-2xl font-light tracking-tight text-foreground md:text-3xl">
