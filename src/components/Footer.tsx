@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/types";
 import { getRoute } from "@/lib/i18n";
+import { buildMailtoLink } from "@/lib/mailto";
 
 interface FooterProps {
   locale: Locale;
@@ -51,7 +52,7 @@ export function Footer({ locale, footer, contact, siteName }: FooterProps) {
             Contacto
           </p>
           <div className="flex flex-col gap-3 text-sm">
-            <a href={`mailto:${contact.email}`} className="text-muted transition hover:text-foreground">
+            <a href={buildMailtoLink(contact.email, locale)} className="text-muted transition hover:text-foreground">
               {contact.email}
             </a>
             <a

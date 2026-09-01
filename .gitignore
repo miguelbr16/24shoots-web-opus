@@ -6,6 +6,10 @@ node_modules/
 # Copia duplicada de media (la web usa public/imagenes_insta)
 /imagenes_insta/
 
+# Originales pesados (no subir a Git)
+/media-source/
+*.zip
+
 # Archivos locales / temporales
 ENLACE-PUBLICO.txt
 *.log

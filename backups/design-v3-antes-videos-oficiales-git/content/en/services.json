@@ -1,0 +1,114 @@
+[
+  {
+    "id": "produccion-video",
+    "slug": "video-production",
+    "title": "Video production",
+    "shortDescription": "Spots, corporate films and narrative pieces with cinema-grade edit, colour and sound.",
+    "description": "From concept to final delivery, we create audiovisual pieces that communicate, engage and convert. Spots, corporate videos, promos and brand content.",
+    "icon": "video",
+    "image": "/imagenes_insta/ig-photo-3.jpg",
+    "featured": true,
+    "highlights": [
+      "Creative script and direction",
+      "Multi-camera filming",
+      "Cinematic colour grading",
+      "Masters + web and social cuts"
+    ]
+  },
+  {
+    "id": "fotografia",
+    "slug": "photography",
+    "title": "Photography",
+    "shortDescription": "Product, events, portraits and brand imagery ready for web, catalogues and campaigns.",
+    "description": "We capture your brand's essence with standout imagery. Product shoots, corporate portraits, event coverage and editorial photography.",
+    "icon": "camera",
+    "image": "/imagenes_insta/ig-photo-5.jpg",
+    "featured": true,
+    "highlights": [
+      "Studio or on location",
+      "Retouch and visual consistency",
+      "Delivery optimized per channel",
+      "On-set art direction"
+    ]
+  },
+  {
+    "id": "contenido-redes",
+    "slug": "social-content",
+    "title": "Social content",
+    "shortDescription": "Reels and monthly packs built to stop the scroll and drive enquiries.",
+    "description": "Content that stops the scroll and drives results. Reels, carousels, stories and monthly packs tailored to each platform and audience.",
+    "icon": "social",
+    "image": "/imagenes_insta/ig-photo-4.jpg",
+    "featured": true,
+    "highlights": [
+      "Vertical reels and short-form",
+      "Editorial calendar",
+      "Hooks and viral formats",
+      "Instagram / TikTok adaptation"
+    ]
+  },
+  {
+    "id": "community-management",
+    "slug": "community-management",
+    "title": "Community management",
+    "shortDescription": "Strategy, publishing and engagement with a coherent visual line month after month.",
+    "description": "We don't just post — we build community. Strategy, content creation, publishing, engagement and monthly reporting.",
+    "icon": "community",
+    "image": "/imagenes_insta/ig-photo-2.jpg",
+    "featured": true,
+    "highlights": [
+      "Monthly content plan",
+      "Publishing and community",
+      "Performance reports",
+      "Same team that produces"
+    ]
+  },
+  {
+    "id": "eventos",
+    "slug": "events",
+    "title": "Events",
+    "shortDescription": "Corporate, concerts, launches and celebrations — pro coverage with fast delivery.",
+    "description": "We professionalize your event's image: corporate, galas, concerts, trade shows and brand launches. Multi-camera video, photo, aftermovie and social clips from one team.",
+    "icon": "event",
+    "image": "/imagenes_insta/ig-photo-3.jpg",
+    "featured": true,
+    "highlights": [
+      "Multi-cam and pro audio",
+      "Dynamic aftermovie",
+      "Express delivery",
+      "Post-event reels"
+    ]
+  },
+  {
+    "id": "bodas",
+    "slug": "weddings",
+    "title": "Weddings",
+    "shortDescription": "Emotional, cinematic photo and video delivered with care.",
+    "description": "Every wedding is unique. We document your day with sensitivity and cinematic quality so you can relive every moment again and again.",
+    "icon": "wedding",
+    "image": "/imagenes_insta/ig-photo-1.jpg",
+    "featured": true,
+    "highlights": [
+      "Highlight film + trailer",
+      "Artistic photography",
+      "Music and narrative pacing",
+      "Personalized delivery"
+    ]
+  },
+  {
+    "id": "dron",
+    "slug": "drone",
+    "title": "Drone",
+    "shortDescription": "4K aerial shots integrated into brand, event and real estate video.",
+    "description": "Unique perspectives from the sky. Certified drone aerial filming for corporate videos, weddings, events and real estate promotions.",
+    "icon": "drone",
+    "image": "/imagenes_insta/ig-photo-2.jpg",
+    "featured": false,
+    "highlights": [
+      "Certified operator",
+      "Stabilized 4K",
+      "Ground video integration",
+      "Permits and insurance"
+    ]
+  }
+]

@@ -1,0 +1,330 @@
+{
+  "sectors": [
+    { "id": "hospitality", "label": "Hospitality" },
+    { "id": "weddings", "label": "Weddings" },
+    { "id": "business", "label": "Business" },
+    { "id": "retail", "label": "Retail" },
+    { "id": "real-estate", "label": "Real estate" }
+  ],
+  "home": {
+    "hero": {
+      "title": "Master the impact",
+      "eyebrow": "Audiovisual production · Valencia · Spain",
+      "subtitle": "One team for video, photo, social and drone. From weddings to business.",
+      "description": "We're not a platform or a single-service agency. We're your visual partner in Valencia: we produce, edit and publish with cinematic standards so you stand out where it matters.",
+      "ctaPrimary": "Request a quote",
+      "ctaSecondary": "View portfolio"
+    },
+    "servicesSection": {
+      "title": "Services",
+      "subtitle": "Everything you need to master visual impact"
+    },
+    "portfolioSection": {
+      "title": "Portfolio",
+      "subtitle": "Projects that speak for themselves",
+      "featuredLabel": "Featured"
+    },
+    "whySection": {
+      "title": "Why 24Shoots",
+      "items": [
+        {
+          "title": "One contact, zero friction",
+          "description": "No handoffs to third parties or losing the thread between production and agency. You talk to the people who shoot, edit and publish."
+        },
+        {
+          "title": "Cinematic standards everywhere",
+          "description": "The same level of craft in a 15-second reel as in a three-minute corporate film."
+        },
+        {
+          "title": "Valencia roots, national reach",
+          "description": "Fast response from a local team. Nationwide coverage when the project demands it."
+        }
+      ]
+    },
+    "differentiatorSection": {
+      "eyebrow": "What sets us apart",
+      "title": "Your entire visual impact, one team.",
+      "subtitle": "Many studios do video. Many agencies run social. At 24Shoots we unite production, content and strategy in one coherent project — with a Valencia team that actually knows you.",
+      "contrast": [
+        {
+          "instead": "Video on one side, social on another",
+          "with": "Production and publishing with the same creative vision"
+        },
+        {
+          "instead": "Impersonal platforms or rotating teams",
+          "with": "Our own team, direct contact and real follow-through"
+        },
+        {
+          "instead": "Corporate-only or one client type",
+          "with": "Weddings, hospitality, retail, business and real estate"
+        }
+      ],
+      "pillars": [
+        {
+          "title": "7 disciplines, one vision",
+          "description": "Video, photo, social, community, events, weddings and drone under the same visual and creative standard."
+        },
+        {
+          "title": "From idea to post",
+          "description": "Brief, shoot, edit and platform-ready delivery. No loss of coherence along the way."
+        },
+        {
+          "title": "Measurable impact",
+          "description": "Every project starts with a goal: bookings, sales, positioning. We don't create just to look good."
+        },
+        {
+          "title": "Closeness you can feel",
+          "description": "24h response, clear communication and a team that understands the Valencian and Spanish market."
+        }
+      ],
+      "media": [
+        "/imagenes_insta/ig-photo-1.jpg",
+        "/imagenes_insta/ig-photo-2.jpg",
+        "/imagenes_insta/ig-photo-3.jpg",
+        "/imagenes_insta/ig-photo-4.jpg"
+      ]
+    },
+    "sectorsSection": {
+      "title": "Sectors we work with"
+    },
+    "beforeAfterSection": {
+      "title": "From RAW to impact",
+      "subtitle": "The same frame. Colour, light and cinematic craft are what separate ordinary footage from work that sells.",
+      "rawLabel": "Ungraded",
+      "editedLabel": "Final",
+      "dragHint": "Drag · Swipe",
+      "image": "/imagenes_insta/ig-photo-2.jpg"
+    },
+    "ctaSection": {
+      "title": "Ready to master the impact?",
+      "description": "Tell us about your project and we'll prepare a tailored proposal.",
+      "button": "Contact us"
+    },
+    "processSection": {
+      "title": "How we work",
+      "subtitle": "A clear process from start to finish, so you know what to expect at every stage.",
+      "steps": [
+        {
+          "title": "Brief & strategy",
+          "description": "We listen to your goals, audience and timeline. Creative direction is set before shooting.",
+          "image": "/imagenes_insta/ig-photo-5.jpg"
+        },
+        {
+          "title": "Production",
+          "description": "Professional filming and photography. Weddings, events, product or social content.",
+          "image": "/imagenes_insta/ig-photo-1.jpg"
+        },
+        {
+          "title": "Post-production",
+          "description": "Editing, colour, sound and platform-ready delivery with cinematic standards.",
+          "image": "/imagenes_insta/ig-photo-3.jpg"
+        },
+        {
+          "title": "Delivery & support",
+          "description": "Optimised final files ready to publish. Support after delivery.",
+          "image": "/imagenes_insta/ig-photo-4.jpg"
+        }
+      ]
+    },
+    "statsSection": [
+      { "value": "Valencia", "label": "Home base" },
+      { "value": "Spain", "label": "Nationwide coverage" },
+      { "value": "7", "label": "Service lines" },
+      { "value": "24h", "label": "Typical response time" }
+    ],
+    "testimonialSection": {
+      "label": "Testimonial",
+      "quote": "They didn't just deliver a video — they understood the story we wanted to tell and translated it into imagery with real character.",
+      "author": "Corporate client",
+      "role": "Hospitality sector · Valencia"
+    },
+    "reviewsSection": {
+      "title": "Client reviews",
+      "subtitle": "Trusted by brands and individuals who have already worked with us.",
+      "items": [
+        {
+          "quote": "Our wedding film exceeded everything we imagined. Every detail, every glance — we have it forever.",
+          "author": "María & Carlos",
+          "role": "Wedding · Valencia",
+          "service": "Weddings"
+        },
+        {
+          "quote": "From the first reel we saw more bookings. They understand the product and know how to make it irresistible on screen.",
+          "author": "La Marina Restaurant",
+          "role": "Hospitality · Valencia",
+          "service": "Social content"
+        },
+        {
+          "quote": "Professional, on time, and we shared the result on social the same day as the event. We'll book again.",
+          "author": "Marketing team",
+          "role": "Corporate event · Spain",
+          "service": "Events"
+        }
+      ]
+    },
+    "reelSection": {
+      "title": "Every frame with purpose",
+      "subtitle": "Video, photo and content for brands that refuse to blend in.",
+      "cta": "View work",
+      "image": "/imagenes_insta/ig-photo-3.jpg",
+      "video": "/imagenes_insta/ig-reel-4.mp4"
+    },
+    "marqueeText": "Video · Photography · Weddings · Events · Social media · Drone · Valencia · Spain",
+    "marqueeMedia": [
+      "/imagenes_insta/ig-photo-1.jpg",
+      "/imagenes_insta/ig-photo-2.jpg",
+      "/imagenes_insta/ig-photo-3.jpg",
+      "/imagenes_insta/ig-photo-4.jpg",
+      "/imagenes_insta/ig-photo-5.jpg"
+    ],
+    "metadataTicker": [
+      "24FPS",
+      "REC",
+      "VALENCIA",
+      "4K",
+      "REEL",
+      "PHOTO",
+      "DRONE",
+      "COLOR"
+    ],
+    "instagramSection": {
+      "title": "Behind the lens",
+      "subtitle": "Real moments from shoots, events and recent projects.",
+      "followLabel": "Follow"
+    },
+    "faqSection": {
+      "title": "Frequently asked questions",
+      "subtitle": "What brands and businesses usually ask before getting started.",
+      "items": [
+        {
+          "question": "How much does a project cost?",
+          "answer": "It depends on production type, duration, locations and deliverables. We work with tailored quotes: tell us your idea and we'll respond with a clear proposal, no surprises."
+        },
+        {
+          "question": "Do you only do video or also manage social media?",
+          "answer": "Both. We can handle production, social content and community management. One team, one visual vision."
+        },
+        {
+          "question": "Do you work outside Valencia?",
+          "answer": "Yes. We're based in Valencia and cover projects across Spain. Travel costs are quoted upfront when needed."
+        },
+        {
+          "question": "How long does delivery take?",
+          "answer": "It varies by project. A reel can be ready in a few days; corporate video or event coverage typically takes 1–3 weeks. We give you concrete timelines in the proposal."
+        },
+        {
+          "question": "What does the workflow look like?",
+          "answer": "Brief, strategy, production, post-production and delivery. At every stage you know what to expect and who you're talking to. No middlemen or rotating teams."
+        },
+        {
+          "question": "We're a small brand — can we start small?",
+          "answer": "Yes. Many clients start with a single video or a monthly content pack. We scale with you when you need it."
+        }
+      ]
+    }
+  },
+  "about": {
+    "title": "About us",
+    "subtitle": "Passion for telling stories that impact",
+    "content": "24Shoots is an audiovisual production company and content agency based in Valencia. We combine video, photography, social media management and drone to help brands and businesses communicate with impact.\n\nOur motto — Master the impact — sums up what we seek in every project: content that doesn't go unnoticed and delivers real results.",
+    "values": [
+      { "title": "Creativity", "description": "Every project is unique. We find the angle no one else has seen." },
+      { "title": "Professionalism", "description": "Deadlines, quality and clear communication at every stage." },
+      { "title": "Impact", "description": "We measure success by the results we generate for our clients." }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Tell us about your project",
+    "description": "Fill in the form and we'll get back to you within 24–48 hours. For something more direct, message us on WhatsApp.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "service": "Service of interest",
+      "sector": "Sector / client type",
+      "date": "Approximate date",
+      "budget": "Estimated budget",
+      "message": "Tell us about your project",
+      "submit": "Send request",
+      "success": "Thank you! We've received your request. We'll be in touch soon.",
+      "error": "Something went wrong. Please try again or message us on WhatsApp."
+    },
+    "budgetOptions": [
+      "Under €500",
+      "€500 – €1,500",
+      "€1,500 – €3,000",
+      "€3,000 – €5,000",
+      "Over €5,000",
+      "Not sure yet"
+    ],
+    "sectorOptions": [
+      "Restaurant / hospitality",
+      "Wedding",
+      "Business / B2B",
+      "Retail / fashion",
+      "Real estate",
+      "Event",
+      "Other"
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Our work speaks for itself",
+    "filterAll": "All",
+    "filterService": "Service",
+    "filterSector": "Sector",
+    "viewInstagram": "View on Instagram",
+    "noResults": "No projects match these filters.",
+    "openProject": "View project",
+    "caseHint": "Challenge · Approach · Result",
+    "caseClient": "Client",
+    "caseChallenge": "Challenge",
+    "caseApproach": "Approach",
+    "caseDeliverables": "Deliverables",
+    "caseResult": "Result",
+    "close": "Close"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Tailored audiovisual solutions",
+    "cta": "Request a quote",
+    "highlights": "What's included",
+    "aboutService": "About this service",
+    "relatedWork": "Related projects",
+    "ctaHeadline": "Let's talk about your next project",
+    "ctaSubline": "Events, brands, weddings or local business — tell us what you need and we'll respond with a clear proposal."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "cookies": "Cookies"
+  },
+  "legal": {
+    "notice": {
+      "title": "Legal notice",
+      "content": "In compliance with applicable legislation, the owner of this website is [COMPANY NAME — PENDING], tax ID [TAX ID — PENDING], registered at [REGISTERED ADDRESS — PENDING].\n\nAccess to and use of this website attributes the condition of user and implies acceptance of these terms."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "content": "In accordance with GDPR and applicable data protection law, we inform you that personal data provided through the contact form will be processed by [COMPANY NAME — PENDING] for the purpose of managing your information or quote request.\n\nThe legal basis is your consent. We will retain your data as long as necessary to handle your request. You may exercise your rights by contacting hola@24shootsmedia.com."
+    },
+    "cookies": {
+      "title": "Cookie policy",
+      "content": "This website uses technical cookies necessary for its operation and, optionally, analytics cookies to improve user experience.\n\nYou can configure or reject non-essential cookies from the cookie banner or your browser settings."
+    }
+  },
+  "cookieBanner": {
+    "message": "We use cookies to improve your experience. You can accept all or only necessary ones.",
+    "accept": "Accept all",
+    "reject": "Necessary only"
+  }
+}

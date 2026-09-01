@@ -17,6 +17,7 @@ export interface SiteConfig {
     premium?: string;
   };
   contact: {
+    phone?: string;
     whatsapp: string;
     email: string;
     instagram: string;

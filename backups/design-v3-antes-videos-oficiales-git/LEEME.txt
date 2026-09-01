@@ -1,0 +1,26 @@
+# Backup diseño V3 — antes de vídeos oficiales + push Git
+
+**Fecha:** septiembre 2026
+
+## Qué incluye
+
+Copia de:
+- `src/` (componentes, app, lib)
+- `content/es/` y `content/en/` (portfolio oficial preparado)
+- `config/` (NIF cliente, teléfono, hero)
+- Scripts de compresión de vídeo
+
+Estado **antes** de:
+- Vídeos comprimidos en `public/videos/web/`
+- Push a GitHub con media oficial
+
+## Restaurar
+
+1. Doble clic en **`RESTAURAR-DISEÑO-V3.bat`**
+2. **`reiniciar-web.bat`**
+3. Recarga `/es`
+
+## Otros backups
+
+- **V1** (paleta original fría): `backups/design-v1-antes-refinamiento-color/`
+- **V2** (color refinado, sin modal): `backups/design-v2-antes-ideas-referencias/`

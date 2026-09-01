@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/ui";
 import { getPages, getServices, getPacks, getSiteConfig } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
 import { getRoute, isValidLocale } from "@/lib/i18n";
+import { buildMailtoLink } from "@/lib/mailto";
 import type { Locale } from "@/lib/types";
 
 export async function generateMetadata({
@@ -49,7 +50,7 @@ export default async function ContactEnPage({
 
       <div className="mb-10 flex flex-wrap gap-6 text-sm">
         <a
-          href={`mailto:${site.contact.email}`}
+          href={buildMailtoLink(site.contact.email, locale)}
           className="text-accent hover:underline"
         >
           {site.contact.email}

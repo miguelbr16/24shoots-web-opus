@@ -1,0 +1,114 @@
+[
+  {
+    "id": "produccion-video",
+    "slug": "produccion-video",
+    "title": "Producción de vídeo",
+    "shortDescription": "Spots, corporativos y piezas narrativas con montaje, color y sonido a nivel cine.",
+    "description": "Desde el concepto hasta la entrega final, creamos piezas audiovisuales que comunican, emocionan y convierten. Spots, vídeos corporativos, promos y contenido de marca.",
+    "icon": "video",
+    "image": "/imagenes_insta/ig-photo-3.jpg",
+    "featured": true,
+    "highlights": [
+      "Guion y dirección creativa",
+      "Rodaje multicámara",
+      "Color grading cinematográfico",
+      "Masters + versiones para web y redes"
+    ]
+  },
+  {
+    "id": "fotografia",
+    "slug": "fotografia",
+    "title": "Fotografía",
+    "shortDescription": "Producto, eventos, retrato y marca. Imágenes listas para web, catálogo y campañas.",
+    "description": "Capturamos la esencia de tu marca con imágenes que destacan. Sesiones de producto, retratos corporativos, cobertura de eventos y fotografía editorial.",
+    "icon": "camera",
+    "image": "/imagenes_insta/ig-photo-5.jpg",
+    "featured": true,
+    "highlights": [
+      "Estudio o exterior",
+      "Retoque y unificación visual",
+      "Entrega optimizada para cada canal",
+      "Dirección de arte en set"
+    ]
+  },
+  {
+    "id": "contenido-redes",
+    "slug": "contenido-redes",
+    "title": "Contenido para redes",
+    "shortDescription": "Reels y packs mensuales pensados para parar el scroll y generar consultas.",
+    "description": "Contenido que para el scroll y genera resultados. Reels, carruseles, stories y packs mensuales adaptados a cada plataforma y audiencia.",
+    "icon": "social",
+    "image": "/imagenes_insta/ig-photo-4.jpg",
+    "featured": true,
+    "highlights": [
+      "Reels vertical y short-form",
+      "Calendario editorial",
+      "Hooks y formatos virales",
+      "Adaptación Instagram / TikTok"
+    ]
+  },
+  {
+    "id": "community-management",
+    "slug": "community-management",
+    "title": "Community management",
+    "shortDescription": "Estrategia, publicación e interacción con una línea visual coherente mes a mes.",
+    "description": "No solo publicamos: construimos comunidad. Estrategia, creación de contenido, publicación, interacción y reporting mensual.",
+    "icon": "community",
+    "image": "/imagenes_insta/ig-photo-2.jpg",
+    "featured": true,
+    "highlights": [
+      "Plan de contenido mensual",
+      "Publicación y community",
+      "Informes de rendimiento",
+      "Mismo equipo que produce"
+    ]
+  },
+  {
+    "id": "eventos",
+    "slug": "eventos",
+    "title": "Eventos",
+    "shortDescription": "Corporativos, conciertos, lanzamientos y celebraciones — cobertura pro con entrega rápida.",
+    "description": "Profesionalizamos la imagen de tu evento: corporativos, galas, conciertos, ferias y lanzamientos de marca. Vídeo multicámara, foto, aftermovie y clips para redes con el mismo equipo de principio a fin.",
+    "icon": "event",
+    "image": "/imagenes_insta/ig-photo-3.jpg",
+    "featured": true,
+    "highlights": [
+      "Multicámara y audio pro",
+      "Aftermovie dinámico",
+      "Entrega express",
+      "Reels post-evento"
+    ]
+  },
+  {
+    "id": "bodas",
+    "slug": "bodas",
+    "title": "Bodas",
+    "shortDescription": "Vídeo y foto emotivos, cinematográficos y entregados con cuidado artesanal.",
+    "description": "Cada boda es única. Documentamos vuestro día con sensibilidad y calidad cinematográfica para que reviváis cada momento una y otra vez.",
+    "icon": "wedding",
+    "image": "/imagenes_insta/ig-photo-1.jpg",
+    "featured": true,
+    "highlights": [
+      "Vídeo highlight + trailer",
+      "Fotografía artística",
+      "Música y ritmo narrativo",
+      "Entrega personalizada"
+    ]
+  },
+  {
+    "id": "dron",
+    "slug": "dron",
+    "title": "Dron",
+    "shortDescription": "Tomas aéreas 4K integradas en vídeos de marca, eventos e inmobiliaria.",
+    "description": "Perspectivas únicas desde el cielo. Grabación aérea con dron certificado para vídeos corporativos, bodas, eventos y promociones inmobiliarias.",
+    "icon": "drone",
+    "image": "/imagenes_insta/ig-photo-2.jpg",
+    "featured": false,
+    "highlights": [
+      "Operador certificado",
+      "4K estabilizado",
+      "Integración con vídeo terrestre",
+      "Permisos y seguros"
+    ]
+  }
+]

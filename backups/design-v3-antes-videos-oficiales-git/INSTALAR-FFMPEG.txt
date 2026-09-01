@@ -1,0 +1,42 @@
+================================================================================
+  INSTALAR FFMPEG EN WINDOWS (para comprimir videos)
+================================================================================
+
+FFmpeg es un programa GRATIS que reduce videos de 400 MB a ~20-30 MB
+sin perder calidad suficiente para la web.
+
+OPCION A — Manual (la mas fiable si winget falla)
+-------------------------------------------------
+1. Abre: https://www.gyan.dev/ffmpeg/builds/
+2. Descarga: "ffmpeg-release-essentials.zip"
+3. Descomprime el ZIP
+4. Dentro hay una carpeta "bin" con ffmpeg.exe
+5. Copia ffmpeg.exe a:
+   C:\Users\Miguelbr\Downloads\24shoots\scripts\ffmpeg-portable\ffmpeg.exe
+6. Ejecuta: comprimir-videos.bat
+
+OPCION B — winget (si lo tienes)
+---------------------------------
+Abre PowerShell NORMAL (no hace falta admin):
+  winget install Gyan.FFmpeg
+
+Cierra y abre la terminal. Prueba:
+  ffmpeg -version
+
+OPCION C — Chocolatey COMO ADMINISTRADOR
+-----------------------------------------
+1. Clic derecho en PowerShell -> "Ejecutar como administrador"
+2. choco install ffmpeg -y
+3. Cierra y abre terminal
+
+DESPUES DE INSTALAR
+-------------------
+1. Los originales ya estan en: media-source\oficiales\
+2. Ejecuta: comprimir-videos.bat
+3. Salen en: public\videos\web\
+4. El portfolio ya apunta a esas rutas
+
+Si no tienes FFmpeg aun, la web funciona pero los videos oficiales
+del portfolio no cargaran hasta comprimirlos.
+
+================================================================================

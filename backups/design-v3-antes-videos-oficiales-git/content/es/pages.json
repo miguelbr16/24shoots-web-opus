@@ -1,0 +1,330 @@
+{
+  "sectors": [
+    { "id": "hosteleria", "label": "Hostelería" },
+    { "id": "bodas", "label": "Bodas" },
+    { "id": "empresas", "label": "Empresas" },
+    { "id": "retail", "label": "Retail" },
+    { "id": "inmobiliaria", "label": "Inmobiliaria" }
+  ],
+  "home": {
+    "hero": {
+      "title": "Domina el impacto",
+      "eyebrow": "Producción audiovisual · Valencia · España",
+      "subtitle": "Un solo equipo para vídeo, foto, redes y dron. De la boda al negocio.",
+      "description": "No somos una plataforma ni una agencia de un solo servicio. Somos tu socio visual en Valencia: producimos, editamos y publicamos con criterio cinematográfico para que destaques donde importa.",
+      "ctaPrimary": "Solicitar presupuesto",
+      "ctaSecondary": "Ver portfolio"
+    },
+    "servicesSection": {
+      "title": "Servicios",
+      "subtitle": "Todo lo que necesitas para dominar el impacto visual"
+    },
+    "portfolioSection": {
+      "title": "Portfolio",
+      "subtitle": "Proyectos que hablan por sí solos",
+      "featuredLabel": "Destacado"
+    },
+    "whySection": {
+      "title": "Por qué 24Shoots",
+      "items": [
+        {
+          "title": "Un interlocutor, cero fricción",
+          "description": "Sin derivar a terceros ni perder el hilo entre productora y agencia. Hablas con quien graba, edita y publica."
+        },
+        {
+          "title": "Criterio cinematográfico en todo",
+          "description": "El mismo nivel de exigencia en un reel de 15 segundos que en un vídeo corporativo de tres minutos."
+        },
+        {
+          "title": "Valencia, con alcance nacional",
+          "description": "Cercanía y respuesta rápida de un equipo local. Cobertura en toda España cuando el proyecto lo requiere."
+        }
+      ]
+    },
+    "differentiatorSection": {
+      "eyebrow": "Lo que nos diferencia",
+      "title": "Todo tu impacto visual, un solo equipo.",
+      "subtitle": "Muchas productoras hacen vídeo. Muchas agencias gestionan redes. En 24Shoots unimos producción, contenido y estrategia en un proyecto coherente — con un equipo de Valencia que te conoce de verdad.",
+      "contrast": [
+        {
+          "instead": "Vídeo por un lado, redes por otro",
+          "with": "Producción y publicación con la misma visión creativa"
+        },
+        {
+          "instead": "Plataformas impersonales o equipos rotativos",
+          "with": "Equipo propio, trato directo y seguimiento real"
+        },
+        {
+          "instead": "Solo corporativo o solo un tipo de cliente",
+          "with": "Bodas, hostelería, retail, empresas e inmobiliaria"
+        }
+      ],
+      "pillars": [
+        {
+          "title": "7 disciplinas, una visión",
+          "description": "Vídeo, foto, redes, community, eventos, bodas y dron bajo el mismo estándar visual y creativo."
+        },
+        {
+          "title": "De la idea al post",
+          "description": "Brief, rodaje, edición y adaptación a cada plataforma. Sin perder coherencia en el camino."
+        },
+        {
+          "title": "Impacto medible",
+          "description": "Cada proyecto nace con un objetivo: reservas, ventas, posicionamiento. No creamos solo para quedar bien."
+        },
+        {
+          "title": "Cercanía que se nota",
+          "description": "Respuesta en 24h, comunicación clara y un equipo que entiende el mercado valenciano y español."
+        }
+      ],
+      "media": [
+        "/imagenes_insta/ig-photo-1.jpg",
+        "/imagenes_insta/ig-photo-2.jpg",
+        "/imagenes_insta/ig-photo-3.jpg",
+        "/imagenes_insta/ig-photo-4.jpg"
+      ]
+    },
+    "sectorsSection": {
+      "title": "Sectores con los que trabajamos"
+    },
+    "beforeAfterSection": {
+      "title": "Del RAW al impacto",
+      "subtitle": "El mismo plano. Color, luz y criterio cinematográfico marcan la diferencia entre un vídeo cualquiera y uno que vende.",
+      "rawLabel": "Sin editar",
+      "editedLabel": "Final",
+      "dragHint": "Arrastra · Desliza",
+      "image": "/imagenes_insta/ig-photo-2.jpg"
+    },
+    "ctaSection": {
+      "title": "¿Listo para dominar el impacto?",
+      "description": "Cuéntanos tu proyecto y te preparamos una propuesta a medida.",
+      "button": "Contactar ahora"
+    },
+    "processSection": {
+      "title": "Cómo trabajamos",
+      "subtitle": "Un proceso claro de principio a fin, pensado para que sepas qué esperar en cada fase.",
+      "steps": [
+        {
+          "title": "Brief y estrategia",
+          "description": "Escuchamos tu objetivo, público y plazos. Definimos el enfoque creativo antes de grabar.",
+          "image": "/imagenes_insta/ig-photo-5.jpg"
+        },
+        {
+          "title": "Producción",
+          "description": "Rodaje y sesión foto con equipo profesional. Bodas, eventos, producto o redes.",
+          "image": "/imagenes_insta/ig-photo-1.jpg"
+        },
+        {
+          "title": "Postproducción",
+          "description": "Edición, color, sonido y adaptación a cada plataforma con criterio cinematográfico.",
+          "image": "/imagenes_insta/ig-photo-3.jpg"
+        },
+        {
+          "title": "Entrega y seguimiento",
+          "description": "Archivos finales optimizados y listos para publicar. Soporte tras la entrega.",
+          "image": "/imagenes_insta/ig-photo-4.jpg"
+        }
+      ]
+    },
+    "statsSection": [
+      { "value": "Valencia", "label": "Base operativa" },
+      { "value": "España", "label": "Cobertura nacional" },
+      { "value": "7", "label": "Líneas de servicio" },
+      { "value": "24h", "label": "Respuesta orientativa" }
+    ],
+    "testimonialSection": {
+      "label": "Testimonio",
+      "quote": "No solo entregaron un vídeo: entendieron la historia que queríamos contar y la tradujeron en imágenes con personalidad.",
+      "author": "Cliente corporativo",
+      "role": "Sector hostelería · Valencia"
+    },
+    "reviewsSection": {
+      "title": "Reseñas de clientes",
+      "subtitle": "La confianza de marcas y particulares que ya han trabajado con nosotros.",
+      "items": [
+        {
+          "quote": "El vídeo de nuestra boda superó todo lo que imaginábamos. Cada detalle, cada mirada… lo tenemos para siempre.",
+          "author": "María y Carlos",
+          "role": "Boda · Valencia",
+          "service": "Bodas"
+        },
+        {
+          "quote": "Desde el primer reel notamos más reservas. Entienden el producto y saben cómo hacerlo irresistible en pantalla.",
+          "author": "Restaurante La Marina",
+          "role": "Hostelería · Valencia",
+          "service": "Contenido redes"
+        },
+        {
+          "quote": "Profesionales, puntuales y con un resultado que dimos en redes el mismo día del evento. Repetiremos sin dudarlo.",
+          "author": "Equipo de marketing",
+          "role": "Evento corporativo · España",
+          "service": "Eventos"
+        }
+      ]
+    },
+    "reelSection": {
+      "title": "Cada frame con intención",
+      "subtitle": "Vídeo, foto y contenido para marcas que no quieren pasar desapercibidas.",
+      "cta": "Ver trabajos",
+      "image": "/imagenes_insta/ig-photo-3.jpg",
+      "video": "/imagenes_insta/ig-reel-4.mp4"
+    },
+    "marqueeText": "Vídeo · Fotografía · Bodas · Eventos · Redes sociales · Dron · Valencia · España",
+    "marqueeMedia": [
+      "/imagenes_insta/ig-photo-1.jpg",
+      "/imagenes_insta/ig-photo-2.jpg",
+      "/imagenes_insta/ig-photo-3.jpg",
+      "/imagenes_insta/ig-photo-4.jpg",
+      "/imagenes_insta/ig-photo-5.jpg"
+    ],
+    "metadataTicker": [
+      "24FPS",
+      "REC",
+      "VALENCIA",
+      "4K",
+      "REEL",
+      "PHOTO",
+      "DRON",
+      "COLOR"
+    ],
+    "instagramSection": {
+      "title": "Detrás del objetivo",
+      "subtitle": "Momentos reales de rodaje, eventos y proyectos recientes.",
+      "followLabel": "Seguir"
+    },
+    "faqSection": {
+      "title": "Preguntas frecuentes",
+      "subtitle": "Lo que suelen preguntarnos marcas y negocios antes de empezar.",
+      "items": [
+        {
+          "question": "¿Cuánto cuesta un proyecto?",
+          "answer": "Depende del tipo de producción, duración, locaciones y entregables. Trabajamos con presupuesto a medida: cuéntanos tu idea y te respondemos con una propuesta clara, sin sorpresas."
+        },
+        {
+          "question": "¿Hacéis solo vídeo o también gestionáis redes?",
+          "answer": "Ambas cosas. Podemos encargarnos de la producción, del contenido para redes y del community management. Un solo equipo, una sola visión visual."
+        },
+        {
+          "question": "¿Trabajáis fuera de Valencia?",
+          "answer": "Sí. Tenemos base en Valencia y cubrimos proyectos en toda España. Para desplazamientos te indicamos el coste con antelación."
+        },
+        {
+          "question": "¿Cuánto tarda la entrega?",
+          "answer": "Varía según el proyecto. Un reel puede estar listo en pocos días; un vídeo corporativo o cobertura de evento suele requerir 1–3 semanas. Te damos plazos concretos en la propuesta."
+        },
+        {
+          "question": "¿Cómo es el proceso de trabajo?",
+          "answer": "Brief, estrategia, producción, postproducción y entrega. En cada fase sabes qué esperar y con quién hablas. Sin intermediarios ni equipos rotativos."
+        },
+        {
+          "question": "Somos una marca pequeña, ¿podemos empezar con poco?",
+          "answer": "Sí. Muchos clientes empiezan con un vídeo o un pack de contenido mensual. Escalamos contigo cuando lo necesites."
+        }
+      ]
+    }
+  },
+  "about": {
+    "title": "Sobre nosotros",
+    "subtitle": "Pasión por contar historias que impactan",
+    "content": "24Shoots es una productora audiovisual y agencia de contenido con sede en Valencia. Combinamos vídeo, fotografía, gestión de redes y dron para ayudar a marcas y negocios a comunicar con impacto.\n\nNuestro lema — Domina el impacto — resume lo que buscamos en cada proyecto: contenido que no pasa desapercibido y que genera resultados reales.",
+    "values": [
+      { "title": "Creatividad", "description": "Cada proyecto es único. Buscamos el ángulo que nadie más ha visto." },
+      { "title": "Profesionalidad", "description": "Plazos, calidad y comunicación clara en cada fase." },
+      { "title": "Impacto", "description": "Medimos el éxito por los resultados que generamos para nuestros clientes." }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Cuéntanos tu proyecto",
+    "description": "Rellena el formulario y te respondemos en 24–48 horas. Si prefieres algo más directo, escríbenos por WhatsApp.",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "phone": "Teléfono",
+      "service": "Servicio de interés",
+      "sector": "Sector / tipo de cliente",
+      "date": "Fecha aproximada",
+      "budget": "Presupuesto orientativo",
+      "message": "Cuéntanos tu proyecto",
+      "submit": "Enviar solicitud",
+      "success": "¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto.",
+      "error": "Ha ocurrido un error. Inténtalo de nuevo o escríbenos por WhatsApp."
+    },
+    "budgetOptions": [
+      "Menos de 500 €",
+      "500 – 1.500 €",
+      "1.500 – 3.000 €",
+      "3.000 – 5.000 €",
+      "Más de 5.000 €",
+      "Aún no lo sé"
+    ],
+    "sectorOptions": [
+      "Restauración / hostelería",
+      "Boda",
+      "Empresa / B2B",
+      "Retail / moda",
+      "Inmobiliaria",
+      "Evento",
+      "Otro"
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Nuestro trabajo habla por nosotros",
+    "filterAll": "Todos",
+    "filterService": "Servicio",
+    "filterSector": "Sector",
+    "viewInstagram": "Ver en Instagram",
+    "noResults": "No hay proyectos con estos filtros.",
+    "openProject": "Ver proyecto",
+    "caseHint": "Reto · Enfoque · Resultado",
+    "caseClient": "Cliente",
+    "caseChallenge": "Reto",
+    "caseApproach": "Enfoque",
+    "caseDeliverables": "Entregables",
+    "caseResult": "Resultado",
+    "close": "Cerrar"
+  },
+  "services": {
+    "title": "Servicios",
+    "subtitle": "Soluciones audiovisuales a medida",
+    "cta": "Solicitar presupuesto",
+    "highlights": "Qué incluye",
+    "aboutService": "Sobre este servicio",
+    "relatedWork": "Proyectos relacionados",
+    "ctaHeadline": "¿Hablamos de tu próximo proyecto?",
+    "ctaSubline": "Eventos, marcas, bodas o negocio local — cuéntanos qué necesitas y te respondemos con una propuesta clara."
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "portfolio": "Portfolio",
+    "about": "Nosotros",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "legal": "Aviso legal",
+    "privacy": "Privacidad",
+    "cookies": "Cookies"
+  },
+  "legal": {
+    "notice": {
+      "title": "Aviso legal",
+      "content": "En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa que el titular de este sitio web es [RAZÓN SOCIAL — PENDIENTE], con CIF [CIF — PENDIENTE] y domicilio en [DIRECCIÓN FISCAL — PENDIENTE].\n\nEl acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación de las presentes condiciones."
+    },
+    "privacy": {
+      "title": "Política de privacidad",
+      "content": "De conformidad con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), le informamos que los datos personales que nos facilite a través del formulario de contacto serán tratados por [RAZÓN SOCIAL — PENDIENTE] con la finalidad de gestionar su solicitud de información o presupuesto.\n\nLa base legal del tratamiento es su consentimiento. Conservaremos sus datos mientras sea necesario para atender su solicitud. Puede ejercer sus derechos de acceso, rectificación, supresión y otros contactando en hola@24shootsmedia.com."
+    },
+    "cookies": {
+      "title": "Política de cookies",
+      "content": "Este sitio web utiliza cookies técnicas necesarias para su funcionamiento y, opcionalmente, cookies analíticas para mejorar la experiencia de usuario.\n\nPuede configurar o rechazar las cookies no esenciales desde el banner de cookies o ajustando la configuración de su navegador."
+    }
+  },
+  "cookieBanner": {
+    "message": "Usamos cookies para mejorar tu experiencia. Puedes aceptar todas o solo las necesarias.",
+    "accept": "Aceptar todas",
+    "reject": "Solo necesarias"
+  }
+}
