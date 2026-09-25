@@ -36,6 +36,7 @@ const report = [];
 for (const w of VPS) {
   const ctx = await browser.newContext({ viewport: { width: w, height: heightFor(w) }, reducedMotion: reduced ? "reduce" : "no-preference", deviceScaleFactor: 1 });
   for (const route of ROUTES) {
+   try {
     const page = await ctx.newPage();
     const errors = [];
     const failed = [];
@@ -94,6 +95,9 @@ for (const w of VPS) {
     await page.screenshot({ path: join(OUT, `${name}.jpg`), type: "jpeg", quality: 55, fullPage: full });
     report.push({ vp: w, route, status: res?.status?.(), ...info, lcp, errors, failed, a11y });
     await page.close();
+   } catch (e) {
+    report.push({ vp: w, route, errors: [`QA runner: ${String(e).slice(0, 160)}`], failed: [], a11y: [], h1: [], overflow: 0 });
+   }
   }
   await ctx.close();
 }

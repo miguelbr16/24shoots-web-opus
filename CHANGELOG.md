@@ -1,37 +1,23 @@
 # Changelog
 
-Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/).
+## [2.0.0] — 2026-09-25
 
-## [Unreleased]
+Reconstrucción completa (V2). Detalle y motivos en `docs/V2-MASTER-PLAN.md`.
 
-_Nada pendiente en working tree tras `1ce4bef`._
+### Añadido
+- Hero «El corte»: montaje de planos reales de cinco proyectos con cortes, pie de montaje, timecode, lista de planos enlazada y control de pausa.
+- Cinco casos verificados con URL propia, película, fotogramas y VideoObject.
+- Tres áreas de servicio (Eventos corporativos, Contenido de marca, Campañas) con FAQ.
+- Páginas de Estudio y Contacto; versión en inglés completa bajo `/en`.
+- Formulario con entrega real (Resend), validación, antispam y funcionamiento sin JavaScript.
+- Pipeline de media y scripts de QA.
 
-## [2026-07-24] — Producción 24Shoots
+### Cambiado
+- Castellano en la raíz; todas las páginas estáticas; 301 desde todas las URLs de V1.
+- Nuevo sistema visual (tinta/papel, naranja solo como señal, Archivo + IBM Plex Mono).
+- Analítica sin cookies; sin banner de consentimiento.
 
-### Added
-
-- Rueda de clientes en arco (`ClientLogoArcWheel`) con animación CSS, pausa en hover y copy centrado.
-- Filtros de portfolio desplegables (`filterToggle` en `pages.json`).
-- 10 líneas de servicio/portfolio unificadas en JSON.
-- Script `scripts/gen-client-placeholders.mjs` para logos SVG de prueba.
-- Documentación: `docs/AVANCES-2026-07-24.md`.
-
-### Changed
-
-- Orden del home orientado a conversión (10 pasos).
-- Espaciado vertical reducido en secciones principales.
-- Subtítulo sección clientes (marcas, instituciones y particulares).
-- CTAs de presupuesto en fichas de servicio.
-- Lazy loading de bloques pesados en home.
-
-### Removed
-
-- Componentes sin uso: `PortfolioGrid`, `ReelBand`, `MediaFilmstrip`, etc.
-
-### Fixed
-
-- Visibilidad y solapamiento de la rueda de logos (posición, máscara, diámetro).
-
----
-
-Commits desde `e2d5983` hasta `1ce4bef`. Detalle en `docs/AVANCES-2026-07-24.md`.
+### Eliminado
+- Proyectos, reseñas, métricas y logos de clientes inventados.
+- Packs, diez fichas de servicio genéricas, rueda de logos, marquees, FAQ de home, Instagram embebido, botón flotante de WhatsApp.
+- 190 MB de reels y el vídeo de Sol y Luna Events del despliegue (conservados en `archive/media/`).

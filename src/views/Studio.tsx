@@ -1,4 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
 import { ClientsList } from "@/components/ClientsList";
+import { caseMedia, getCase } from "@/content/cases";
 import { ContactBlock } from "@/components/ContactBlock";
 import { t } from "@/content/copy";
 import { href, type Locale } from "@/lib/i18n";
@@ -18,12 +21,25 @@ export const studioMeta = (locale: Locale) =>
  */
 export function StudioView({ locale }: { locale: Locale }) {
   const c = t(locale).studio;
+  const k = getCase("premios-isabel-ferrer")!;
+  const m = caseMedia(k.slug);
   return (
     <>
       <header className="wrap grid-12 gap-y-8 pt-14 pb-16 md:pt-24 md:pb-24">
         <h1 className="t-display col-span-12">{c.title}</h1>
         <p className="t-lead col-span-12 max-w-[46ch] md:col-span-8 md:col-start-5">{c.lead}</p>
       </header>
+
+      <figure className="wrap pb-16 md:pb-24">
+        <div className="relative -mx-[var(--gutter)] aspect-[4/3] bg-ink-2 md:mx-0 md:aspect-[21/9]" data-reveal="expose">
+          <Image src={m.cover} alt={k.stillAlts[locale][7]} fill sizes="(min-width: 1760px) 1700px, 100vw" quality={70} className="object-cover" />
+        </div>
+        <figcaption className="t-mono mt-3 text-ash">
+          <Link className="hover:text-bone" href={href.case(locale, k.slug)}>
+            {k.client} · {k.title[locale]} →
+          </Link>
+        </figcaption>
+      </figure>
 
       <section aria-labelledby="how-title" className="on-paper py-16 md:py-24">
         <div className="wrap grid-12 gap-y-10">
@@ -49,7 +65,7 @@ export function StudioView({ locale }: { locale: Locale }) {
         <p className="t-h3 col-span-12 max-w-[34ch] md:col-span-8">{c.agencies}</p>
       </section>
 
-      <ClientsList locale={locale} />
+      <ClientsList locale={locale} agencies={false} />
       <ContactBlock locale={locale} />
     </>
   );

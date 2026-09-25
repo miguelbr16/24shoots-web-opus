@@ -1,5 +1,7 @@
 # 24SHOOTS V2 — Auditoría + Master Plan
 
+> **Estado (25/09/2026): implementado.** El código de V2 está en esta rama. Pendientes externos y desviaciones justificadas respecto a este plan: [`V2-PENDIENTES.md`](V2-PENDIENTES.md).
+
 Fase 1. Todavía no hay cambios en el código de la web. Este documento recoge lo que he encontrado, lo que decido y lo que falta para construir.
 
 Evidencia visual en [`docs/v2-audit/`](v2-audit/): hojas de contacto de cada vídeo (12 fotogramas por pieza) y capturas de la home actual en desktop y mobile.

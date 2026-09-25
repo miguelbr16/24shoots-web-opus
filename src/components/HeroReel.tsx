@@ -48,8 +48,9 @@ export function HeroReel({ segments, shot, poster, sources, labels }: Props) {
     const video = videoRef.current;
     if (!video) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-    if (reduce || saveData) {
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    const slow = conn?.saveData || /(^|-)2g$|^3g$/.test(conn?.effectiveType ?? "");
+    if (reduce || slow) {
       setMode("static");
       return;
     }
@@ -143,7 +144,7 @@ export function HeroReel({ segments, shot, poster, sources, labels }: Props) {
   return (
     <div className="grid-12 gap-y-4">
       {/* Shot list — desktop only */}
-      <ol className="col-span-3 hidden flex-col justify-end gap-0 self-stretch lg:flex" aria-label={labels.reel}>
+      <ol className="col-span-3 hidden flex-col justify-end gap-0 self-stretch xl:flex" aria-label={labels.reel}>
         {segments.map((s, i) => (
           <li key={s.href} className="rule-t last:rule-b">
             <Link
@@ -168,10 +169,10 @@ export function HeroReel({ segments, shot, poster, sources, labels }: Props) {
         ))}
       </ol>
 
-      <div className="col-span-12 lg:col-span-9">
+      <div className="col-span-12 xl:col-span-9">
         <div
           ref={frameRef}
-          className="relative -mx-[var(--gutter)] aspect-[4/5] max-h-[56svh] w-[calc(100%+2*var(--gutter))] md:w-auto overflow-hidden bg-ink-2 md:mx-0 md:aspect-video md:max-h-none lg:max-h-[calc(100svh-var(--header-h)-19rem)] lg:min-h-[22rem] lg:w-full"
+          className="relative -mx-[var(--gutter)] aspect-[4/5] max-h-[56svh] w-[calc(100%+2*var(--gutter))] md:w-auto overflow-hidden bg-ink-2 md:mx-0 md:aspect-video md:max-h-none lg:max-h-[calc(100svh-var(--header-h)-22rem)] lg:min-h-[22rem] lg:w-full"
         >
           <picture>
             <source media="(min-width: 768px)" srcSet={poster.wide.srcSet} sizes={poster.wide.sizes} />

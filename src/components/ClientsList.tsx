@@ -4,7 +4,7 @@ import { t } from "@/content/copy";
 import { href, type Locale } from "@/lib/i18n";
 
 /** Real clients only, each linked to its project. No logos, no wheel. */
-export function ClientsList({ locale, headingLevel = "h2" }: { locale: Locale; headingLevel?: "h2" | "h3" }) {
+export function ClientsList({ locale, headingLevel = "h2", agencies = true }: { locale: Locale; headingLevel?: "h2" | "h3"; agencies?: boolean }) {
   const c = t(locale).clients;
   const H = headingLevel;
   return (
@@ -28,7 +28,7 @@ export function ClientsList({ locale, headingLevel = "h2" }: { locale: Locale; h
               </li>
             ))}
           </ul>
-          <p className="mt-8 max-w-[52ch] text-ash">{c.agencies}</p>
+          {agencies && <p className="mt-8 max-w-[52ch] text-ash">{c.agencies}</p>}
         </div>
       </div>
     </section>

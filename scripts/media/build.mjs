@@ -57,7 +57,7 @@ const CASES = {
 
 // Hero montage: hard cuts, 2.4 s per shot. cropX = left edge (px, 1920 source) of the 4:5 mobile crop.
 const HERO = [
-  { case: "huhtamaki-50", t: 88.4, cropX: 950 },
+  { case: "huhtamaki-50", t: 88.4, cropX: 880 },
   { case: "premios-isabel-ferrer", t: 21.4, cropX: 528 },
   { case: "gala-esport-manises", t: 41.6, cropX: 300 },
   { case: "premios-innovacion-valencia", t: 49.8, cropX: 420 },

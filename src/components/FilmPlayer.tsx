@@ -26,7 +26,7 @@ export function FilmPlayer({ src, poster, title, playLabel, duration }: { src: s
           aria-label={title}
         />
       ) : (
-        <button type="button" onClick={() => setOn(true)} className="group absolute inset-0 block size-full cursor-pointer text-left" aria-label={`${playLabel}: ${title} (${mins})`}>
+        <button type="button" onClick={() => setOn(true)} className="group absolute inset-0 block size-full cursor-pointer text-left">
           <Image src={poster} alt="" fill priority sizes="(min-width: 1760px) 1700px, 100vw" quality={72} className="expose object-cover" />
           <span className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" aria-hidden />
           <span className="absolute bottom-0 left-0 flex items-center gap-4 p-[var(--gutter)] md:p-8">
@@ -34,7 +34,10 @@ export function FilmPlayer({ src, poster, title, playLabel, duration }: { src: s
               <svg viewBox="0 0 24 24" className="ml-1 size-5 md:size-7" fill="currentColor"><path d="M7 4.5v15l12-7.5z" /></svg>
             </span>
             <span>
-              <span className="block font-medium">{playLabel}</span>
+              <span className="block font-medium">
+                {playLabel}
+                <span className="sr-only">: {title}</span>
+              </span>
               <span className="t-mono text-bone/80">{mins}</span>
             </span>
           </span>

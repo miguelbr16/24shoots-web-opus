@@ -61,6 +61,7 @@ body {
   outline-color: var(--color-rec-deep);
 }
 
+@layer components {
 /* ---------- Type ---------- */
 
 .t-display {
@@ -202,59 +203,6 @@ body {
   flex: none;
 }
 
-/* ---------- Motion ---------- */
-
-/* Exposure: an image rises from black to its light, once. */
-@keyframes expose {
-  from {
-    filter: brightness(0);
-  }
-  to {
-    filter: brightness(1);
-  }
-}
-.expose {
-  animation: expose 900ms var(--ease-cut) both;
-}
-
-/* Scroll reveal (only when JS has marked the document). */
-.js [data-reveal] {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 480ms var(--ease-cut), transform 480ms var(--ease-cut);
-}
-.js [data-reveal].is-in {
-  opacity: 1;
-  transform: none;
-}
-.js [data-reveal="expose"] {
-  transform: none;
-  opacity: 1;
-  filter: brightness(0);
-  transition: filter 900ms var(--ease-cut);
-}
-.js [data-reveal="expose"].is-in {
-  filter: brightness(1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-  .js [data-reveal],
-  .js [data-reveal="expose"] {
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-}
 
 /* ---------- Components ---------- */
 
@@ -383,3 +331,59 @@ body {
   outline: 2px solid var(--color-rec);
   outline-offset: 2px;
 }
+}
+
+/* ---------- Motion ---------- */
+
+/* Exposure: an image rises from black to its light, once. */
+@keyframes expose {
+  from {
+    filter: brightness(0);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+.expose {
+  animation: expose 900ms var(--ease-cut) both;
+}
+
+/* Scroll reveal (only when JS has marked the document). */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 480ms var(--ease-cut), transform 480ms var(--ease-cut);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+.js [data-reveal="expose"] {
+  transform: none;
+  opacity: 1;
+  filter: brightness(0);
+  transition: filter 900ms var(--ease-cut);
+}
+.js [data-reveal="expose"].is-in {
+  filter: brightness(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js [data-reveal],
+  .js [data-reveal="expose"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+

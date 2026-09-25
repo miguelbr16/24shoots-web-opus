@@ -16,8 +16,8 @@ export function PreviewLoop({ webm, mp4, className = "" }: { webm: string; mp4: 
     const video = ref.current;
     if (!video) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-    if (reduce || saveData) return;
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    if (reduce || conn?.saveData || /(^|-)2g$|^3g$/.test(conn?.effectiveType ?? "")) return;
 
     let loaded = false;
     const play = () => {
