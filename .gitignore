@@ -1,20 +1,11 @@
 node_modules/
 .next/
-.env*.local
 .env
-
-# Copia duplicada de media (la web usa public/imagenes_insta)
-/imagenes_insta/
-
-# Originales pesados (no subir a Git)
-/media-source/
-*.zip
-
-# Archivos locales / temporales
-ENLACE-PUBLICO.txt
+.env*.local
 *.log
+*.tsbuildinfo
 .DS_Store
 Thumbs.db
-
-# Copias locales de seguridad (ver docs/AVANCES-2026-07-24.md)
-/backups/
+# Film masters (upload to the video host / keep out of git)
+/media-source/
+*.zip

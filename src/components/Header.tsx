@@ -1,184 +1,161 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import type { Locale } from "@/lib/types";
-import { getRoute, getHomeRoute } from "@/lib/i18n";
-import { Button, LocaleSwitcher } from "./ui";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { alternatePath, href, type Locale } from "@/lib/i18n";
+import { t } from "@/content/copy";
+import { site } from "@/lib/site";
+import { Wordmark } from "./Wordmark";
 
-interface HeaderProps {
-  locale: Locale;
-  nav: Record<string, string>;
-  logo: string;
-  siteName: string;
-  alternatePath: string;
-}
-
-function ViewfinderMark() {
-  return (
-    <span className="hidden text-accent/50 md:inline" aria-hidden>
-      <span className="mr-1 inline-block h-3 w-3 border-l border-t border-current" />
-      <span className="inline-block h-3 w-3 border-r border-t border-current" />
-    </span>
-  );
-}
-
-export function Header({
-  locale,
-  nav,
-  logo,
-  siteName,
-  alternatePath,
-}: HeaderProps) {
+export function Header({ locale }: { locale: Locale }) {
+  const c = t(locale).nav;
+  const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const other: Locale = locale === "es" ? "en" : "es";
+
+  const links = [
+    { href: href.page(locale, "work"), label: c.work },
+    { href: href.page(locale, "services"), label: c.services },
+    { href: href.page(locale, "studio"), label: c.studio },
+  ];
+  const contactHref = href.page(locale, "contact");
+  const isCurrent = (h: string) => pathname === h || pathname.startsWith(h + "/");
+
+  // Close the menu on navigation.
+  useEffect(() => setOpen(false), [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    const root = document.documentElement;
+    root.style.overflow = "hidden";
+    const first = menuRef.current?.querySelector<HTMLElement>("a,button");
+    first?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+      if (e.key === "Tab" && menuRef.current) {
+        const items = Array.from(menuRef.current.querySelectorAll<HTMLElement>("a,button"));
+        const [a, b] = [items[0], items[items.length - 1]];
+        if (e.shiftKey && document.activeElement === a) {
+          e.preventDefault();
+          b.focus();
+        } else if (!e.shiftKey && document.activeElement === b) {
+          e.preventDefault();
+          a.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = "";
+      root.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
-  const links = [
-    { href: getHomeRoute(locale), label: nav.home },
-    { href: getRoute(locale, "services"), label: nav.services },
-    { href: getRoute(locale, "packs"), label: nav.packs },
-    { href: getRoute(locale, "portfolio"), label: nav.portfolio },
-    { href: getRoute(locale, "about"), label: nav.about },
-    { href: getRoute(locale, "contact"), label: nav.contact },
-  ];
-
   return (
-    <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ${
-          scrolled
-            ? "border-border bg-background/95 shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl"
-            : "border-border/60 bg-background/80 backdrop-blur-md"
-        }`}
-      >
-        {/* Accent rail — 24Shoots signature, not a pill */}
-        <div
-          className={`h-0.5 w-full bg-accent transition-opacity duration-500 ${
-            scrolled ? "opacity-100" : "opacity-70"
-          }`}
-        />
+    <header className="fixed inset-x-0 top-0 z-50 bg-ink/92 backdrop-blur-[2px] rule-b">
+      <a href="#main" className="skip-link">
+        {c.skip}
+      </a>
+      <div className="wrap flex h-[var(--header-h)] items-center justify-between gap-6">
+        <Link href={href.home(locale)} className="relative z-10 -my-2 py-2" aria-label={`24SHOOTS — ${c.home}`}>
+          <Wordmark />
+        </Link>
 
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3.5 md:px-6 md:py-4">
+        <nav aria-label={locale === "es" ? "Principal" : "Main"} className="hidden md:block">
+          <ul className="flex items-center gap-8 text-[0.98rem]">
+            {links.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  aria-current={isCurrent(l.href) ? "page" : undefined}
+                  className="group inline-flex items-center gap-2 py-3"
+                >
+                  <span className={`rec-dot transition-opacity ${isCurrent(l.href) ? "opacity-100" : "opacity-0"}`} aria-hidden />
+                  <span className="link no-underline group-hover:underline">{l.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="hidden items-center gap-7 md:flex">
           <Link
-            href={getHomeRoute(locale)}
-            className="group flex min-w-0 shrink items-center gap-3"
+            href={alternatePath(pathname, other)}
+            hrefLang={other}
+            lang={other}
+            className="t-mono text-ash hover:text-bone py-3"
+            aria-label={c.language}
           >
-            <span className="hidden h-8 w-1 shrink-0 bg-accent sm:block" aria-hidden />
-            <Image
-              src={logo}
-              alt={siteName}
-              width={130}
-              height={44}
-              className="h-8 w-auto max-w-[120px] object-contain brightness-110 sm:max-w-none md:h-9"
-              priority
-            />
+            {c.languageShort}
           </Link>
-
-          <nav className="hidden items-center gap-1 xl:flex">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-foreground/70 transition hover:bg-surface hover:text-accent"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="hidden items-center gap-2 border border-border px-2.5 py-1.5 lg:flex">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-              <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-muted">
-                Rec
-              </span>
-            </span>
-
-            <div className="hidden sm:block">
-              <LocaleSwitcher locale={locale} alternatePath={alternatePath} />
-            </div>
-
-            <Button
-              href={getRoute(locale, "contact")}
-              className="hidden !px-4 !py-2.5 !text-[10px] sm:inline-flex md:!px-5"
-            >
-              {locale === "es" ? "Presupuesto" : "Quote"}
-            </Button>
-
-            <button
-              type="button"
-              className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-1.5 border border-border bg-surface/80 xl:hidden"
-              onClick={() => setOpen(!open)}
-              aria-label={open ? "Cerrar menú" : "Abrir menú"}
-              aria-expanded={open}
-            >
-              <span
-                className={`block h-px w-5 bg-foreground transition ${open ? "translate-y-[5px] rotate-45" : ""}`}
-              />
-              <span
-                className={`block h-px w-5 bg-foreground transition ${open ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`block h-px w-5 bg-foreground transition ${open ? "-translate-y-[5px] -rotate-45" : ""}`}
-              />
-            </button>
-          </div>
+          <Link
+            href={contactHref}
+            aria-current={isCurrent(contactHref) ? "page" : undefined}
+            className="inline-flex items-center gap-2 border-b-2 border-rec py-1.5 font-medium"
+          >
+            {c.cta}
+          </Link>
         </div>
-      </header>
 
-      {/* Mobile / tablet drawer */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity xl:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        onClick={() => setOpen(false)}
-        aria-hidden={!open}
-      />
+        <button
+          ref={buttonRef}
+          type="button"
+          className="relative z-10 -mr-2 inline-flex min-h-11 items-center px-2 t-mono text-[0.8rem] md:hidden"
+          aria-expanded={open}
+          aria-controls="menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? c.close : c.menu}
+        </button>
+      </div>
 
+      {/* Mobile menu: full screen, large type */}
       <div
-        className={`fixed inset-x-0 top-[57px] z-50 max-h-[calc(100vh-57px)] overflow-y-auto border-b border-accent/40 bg-background shadow-2xl transition-transform duration-300 xl:hidden ${
-          open ? "translate-y-0" : "-translate-y-4 pointer-events-none opacity-0"
-        }`}
+        id="menu"
+        ref={menuRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={c.menu}
+        hidden={!open}
+        className="fixed inset-0 top-[var(--header-h)] z-40 flex h-[calc(100dvh-var(--header-h))] flex-col justify-between bg-ink md:hidden"
       >
-        <div className="border-l-4 border-accent px-4 py-6">
-          <div className="mb-4 flex items-center justify-between">
-            <ViewfinderMark />
-            <LocaleSwitcher locale={locale} alternatePath={alternatePath} />
-          </div>
-          <nav className="flex flex-col">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="border-b border-border py-4 text-sm font-medium uppercase tracking-[0.2em] text-foreground/90 active:text-accent"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
+        <nav aria-label={locale === "es" ? "Menú" : "Menu"} className="wrap pt-8">
+          <ul>
+            {[...links, { href: contactHref, label: c.contact }].map((l, i) => (
+              <li key={l.href} className="rule-b">
+                <Link
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isCurrent(l.href) ? "page" : undefined}
+                  className="flex items-baseline justify-between py-4"
+                >
+                  <span className="t-credit text-[3.4rem]">{l.label}</span>
+                  <span className="t-mono text-ash">{String(i + 1).padStart(2, "0")}</span>
+                </Link>
+              </li>
             ))}
-          </nav>
-          <div className="mt-6">
-            <Button href={getRoute(locale, "contact")} className="w-full justify-center">
-              {locale === "es" ? "Solicitar presupuesto" : "Request a quote"}
-            </Button>
+          </ul>
+        </nav>
+        <div className="wrap flex items-end justify-between pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+          <div className="t-mono space-y-2 text-ash">
+            <a className="block text-bone" href={`mailto:${site.contact.email}`}>
+              {site.contact.email}
+            </a>
+            <a className="block" href={`tel:${site.contact.phone}`}>
+              {site.contact.phoneDisplay}
+            </a>
           </div>
+          <Link href={alternatePath(pathname, other)} hrefLang={other} lang={other} className="t-mono min-h-11 inline-flex items-end">
+            {c.language}
+          </Link>
         </div>
       </div>
-    </>
+    </header>
   );
 }

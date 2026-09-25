@@ -1,25 +1,11 @@
-import { LegalContent, generateLegalMetadata } from "@/components/LegalPage";
-import { resolveLegalContent } from "@/lib/legal-text";
-import { isValidLocale } from "@/lib/i18n";
-import { notFound } from "next/navigation";
-import type { Locale } from "@/lib/types";
+import { localeFor, type LocaleParams } from "@/lib/page";
+import { LegalView, legalMeta } from "@/views/Legal";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  return generateLegalMetadata(locale, "privacy", "/privacy");
+export async function generateMetadata({ params }: { params: LocaleParams }) {
+  return legalMeta(await localeFor(params, "en"), "privacy");
 }
 
-export default async function PrivacyEnPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale: localeParam } = await params;
-  if (!isValidLocale(localeParam)) notFound();
-  const { title, content } = resolveLegalContent(localeParam as Locale, "privacy");
-  return <LegalContent title={title} content={content} />;
+export default async function Page({ params }: { params: LocaleParams }) {
+  const locale = await localeFor(params, "en");
+  return <LegalView locale={locale} kind="privacy" />;
 }

@@ -1,56 +1,25 @@
 import { notFound } from "next/navigation";
-import { ServiceDetailView } from "@/components/ServiceDetailView";
-import { getPages, getPortfolio, getServiceBySlug } from "@/lib/content";
-import { buildMetadata } from "@/lib/seo";
-import { isValidLocale } from "@/lib/i18n";
-import type { Locale } from "@/lib/types";
+import { getService } from "@/content/services";
+import { serviceKeyFromSlug, serviceSlugs } from "@/lib/i18n";
+import { localeFor, type SlugParams } from "@/lib/page";
+import { ServiceView, serviceMeta } from "@/views/Services";
 
-export async function generateStaticParams() {
-  const { getServices } = await import("@/lib/content");
-  return getServices("en").map((s) => ({ slug: s.slug }));
+export const dynamicParams = false;
+export const generateStaticParams = () => Object.values(serviceSlugs).map((s) => ({ slug: s.en }));
+
+async function load(params: SlugParams) {
+  const locale = await localeFor(params, "en");
+  const key = serviceKeyFromSlug(locale, (await params).slug);
+  if (!key) notFound();
+  return { locale, s: getService(key) };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
-  const { locale: localeParam, slug } = await params;
-  if (!isValidLocale(localeParam)) return {};
-  const locale = localeParam as Locale;
-  const service = getServiceBySlug(locale, slug);
-  if (!service) return {};
-  return buildMetadata({
-    locale,
-    title: service.title,
-    description: service.shortDescription,
-    path: `/services/${slug}`,
-  });
+export async function generateMetadata({ params }: { params: SlugParams }) {
+  const { locale, s } = await load(params);
+  return serviceMeta(locale, s);
 }
 
-export default async function ServiceDetailEnPage({
-  params,
-}: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
-  const { locale: localeParam, slug } = await params;
-  if (!isValidLocale(localeParam)) notFound();
-
-  const locale = localeParam as Locale;
-  const service = getServiceBySlug(locale, slug);
-  if (!service) notFound();
-
-  const pages = getPages(locale);
-  const relatedProjects = getPortfolio(locale)
-    .filter((p) => p.services.includes(service.id))
-    .slice(0, 3);
-
-  return (
-    <ServiceDetailView
-      service={service}
-      locale={locale}
-      pages={{ services: pages.services, nav: pages.nav, sectors: pages.portfolioCategories }}
-      relatedProjects={relatedProjects}
-    />
-  );
+export default async function Page({ params }: { params: SlugParams }) {
+  const { locale, s } = await load(params);
+  return <ServiceView locale={locale} s={s} />;
 }

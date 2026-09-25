@@ -1,0 +1,149 @@
+{
+  "cases": {
+    "huhtamaki-50": {
+      "duration": 93.13,
+      "stills": [
+        "/media/huhtamaki-50/stills/01.jpg",
+        "/media/huhtamaki-50/stills/02.jpg",
+        "/media/huhtamaki-50/stills/03.jpg",
+        "/media/huhtamaki-50/stills/04.jpg",
+        "/media/huhtamaki-50/stills/05.jpg",
+        "/media/huhtamaki-50/stills/06.jpg",
+        "/media/huhtamaki-50/stills/07.jpg",
+        "/media/huhtamaki-50/stills/08.jpg",
+        "/media/huhtamaki-50/stills/09.jpg",
+        "/media/huhtamaki-50/stills/10.jpg"
+      ],
+      "cover": "/media/huhtamaki-50/stills/10.jpg",
+      "preview": {
+        "webm": "/media/huhtamaki-50/preview.webm",
+        "mp4": "/media/huhtamaki-50/preview.mp4"
+      },
+      "film": "/media/huhtamaki-50/film.mp4",
+      "og": "/og/huhtamaki-50.jpg",
+      "sheet": [
+        "/media/huhtamaki-50/sheet/01.jpg",
+        "/media/huhtamaki-50/sheet/02.jpg",
+        "/media/huhtamaki-50/sheet/03.jpg",
+        "/media/huhtamaki-50/sheet/04.jpg",
+        "/media/huhtamaki-50/sheet/05.jpg",
+        "/media/huhtamaki-50/sheet/06.jpg",
+        "/media/huhtamaki-50/sheet/07.jpg",
+        "/media/huhtamaki-50/sheet/08.jpg",
+        "/media/huhtamaki-50/sheet/09.jpg",
+        "/media/huhtamaki-50/sheet/10.jpg",
+        "/media/huhtamaki-50/sheet/11.jpg",
+        "/media/huhtamaki-50/sheet/12.jpg"
+      ],
+      "sheetTimes": [
+        5.33,
+        17.3,
+        21.37,
+        27.3,
+        34.13,
+        45.12,
+        51.97,
+        58.82,
+        60.55,
+        72.12,
+        76.22,
+        89.97
+      ]
+    },
+    "premios-isabel-ferrer": {
+      "duration": 89.47,
+      "stills": [
+        "/media/premios-isabel-ferrer/stills/01.jpg",
+        "/media/premios-isabel-ferrer/stills/02.jpg",
+        "/media/premios-isabel-ferrer/stills/03.jpg",
+        "/media/premios-isabel-ferrer/stills/04.jpg",
+        "/media/premios-isabel-ferrer/stills/05.jpg",
+        "/media/premios-isabel-ferrer/stills/06.jpg",
+        "/media/premios-isabel-ferrer/stills/07.jpg",
+        "/media/premios-isabel-ferrer/stills/08.jpg",
+        "/media/premios-isabel-ferrer/stills/09.jpg"
+      ],
+      "cover": "/media/premios-isabel-ferrer/stills/08.jpg",
+      "preview": {
+        "webm": "/media/premios-isabel-ferrer/preview.webm",
+        "mp4": "/media/premios-isabel-ferrer/preview.mp4"
+      },
+      "film": "/media/premios-isabel-ferrer/film.mp4",
+      "og": "/og/premios-isabel-ferrer.jpg"
+    },
+    "premios-innovacion-valencia": {
+      "duration": 75.8,
+      "stills": [
+        "/media/premios-innovacion-valencia/stills/01.jpg",
+        "/media/premios-innovacion-valencia/stills/02.jpg",
+        "/media/premios-innovacion-valencia/stills/03.jpg",
+        "/media/premios-innovacion-valencia/stills/04.jpg",
+        "/media/premios-innovacion-valencia/stills/05.jpg",
+        "/media/premios-innovacion-valencia/stills/06.jpg",
+        "/media/premios-innovacion-valencia/stills/07.jpg",
+        "/media/premios-innovacion-valencia/stills/08.jpg",
+        "/media/premios-innovacion-valencia/stills/09.jpg",
+        "/media/premios-innovacion-valencia/stills/10.jpg"
+      ],
+      "cover": "/media/premios-innovacion-valencia/stills/06.jpg",
+      "preview": {
+        "webm": "/media/premios-innovacion-valencia/preview.webm",
+        "mp4": "/media/premios-innovacion-valencia/preview.mp4"
+      },
+      "film": "/media/premios-innovacion-valencia/film.mp4",
+      "og": "/og/premios-innovacion-valencia.jpg"
+    },
+    "imperia-scm": {
+      "duration": 94.1,
+      "stills": [
+        "/media/imperia-scm/stills/01.jpg",
+        "/media/imperia-scm/stills/02.jpg",
+        "/media/imperia-scm/stills/03.jpg",
+        "/media/imperia-scm/stills/04.jpg",
+        "/media/imperia-scm/stills/05.jpg",
+        "/media/imperia-scm/stills/06.jpg",
+        "/media/imperia-scm/stills/07.jpg",
+        "/media/imperia-scm/stills/08.jpg",
+        "/media/imperia-scm/stills/09.jpg"
+      ],
+      "cover": "/media/imperia-scm/stills/05.jpg",
+      "preview": {
+        "webm": "/media/imperia-scm/preview.webm",
+        "mp4": "/media/imperia-scm/preview.mp4"
+      },
+      "film": "/media/imperia-scm/film.mp4",
+      "og": "/og/imperia-scm.jpg"
+    },
+    "gala-esport-manises": {
+      "duration": 53.37,
+      "stills": [
+        "/media/gala-esport-manises/stills/01.jpg",
+        "/media/gala-esport-manises/stills/02.jpg",
+        "/media/gala-esport-manises/stills/03.jpg",
+        "/media/gala-esport-manises/stills/04.jpg",
+        "/media/gala-esport-manises/stills/05.jpg",
+        "/media/gala-esport-manises/stills/06.jpg",
+        "/media/gala-esport-manises/stills/07.jpg",
+        "/media/gala-esport-manises/stills/08.jpg",
+        "/media/gala-esport-manises/stills/09.jpg"
+      ],
+      "cover": "/media/gala-esport-manises/stills/07.jpg",
+      "preview": {
+        "webm": "/media/gala-esport-manises/preview.webm",
+        "mp4": "/media/gala-esport-manises/preview.mp4"
+      },
+      "film": "/media/gala-esport-manises/film.mp4",
+      "og": "/og/gala-esport-manises.jpg"
+    }
+  },
+  "hero": {
+    "shot": 2.4,
+    "segments": [
+      "huhtamaki-50",
+      "premios-isabel-ferrer",
+      "gala-esport-manises",
+      "premios-innovacion-valencia",
+      "imperia-scm"
+    ]
+  }
+}

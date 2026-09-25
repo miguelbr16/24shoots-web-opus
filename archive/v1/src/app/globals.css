@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #141414;
+  --color-foreground: #f0ebe4;
+  --color-accent: #e8833a;
+  --color-accent-hover: #d4722f;
+  --color-muted: #9a948c;
+  --color-surface: #1c1c1c;
+  --color-elevated: #242424;
+  --color-border: #2a2622;
+  --color-premium: #c4a574;
+  --color-panel: #121210;
+  --color-media: #181614;
+  --color-light-band: #f0ebe4;
+  --color-light-band-bright: #faf8f5;
+  --color-light-band-text: #141414;
+  --color-light-band-muted: #5c5650;
+  --color-light-band-border: #d4cdc4;
+  --color-light-band-surface: #e8e0d6;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 18s ease-out forwards;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 45s linear infinite;
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -10px) scale(1.05); }
+}
+
+.animate-glow-drift {
+  animation: glow-drift 8s ease-in-out infinite;
+}
+
+.client-orbit-stage {
+  --orbit-radius: clamp(13.5rem, 38vw, 18.5rem);
+}
+
+.client-orbit-ring {
+  width: calc(var(--orbit-radius) * 2);
+}
+
+.client-orbit-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6rem;
+  height: 6rem;
+  offset-path: circle(var(--orbit-radius) at 50% 50%);
+  offset-distance: 0%;
+  offset-rotate: 0deg;
+  offset-anchor: center;
+  animation: client-orbit-travel 58s linear infinite;
+}
+
+@keyframes client-orbit-travel {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+.client-wheel-group:hover .client-orbit-item {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-orbit-item {
+    animation: none;
+    offset-distance: var(--orbit-offset, 0%);
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.accent-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-accent) 55%, transparent) 18%,
+    color-mix(in srgb, var(--color-accent) 55%, transparent) 82%,
+    transparent 100%
+  );
+}
+
+.section-rule-y {
+  border-width: 1px 0;
+  border-style: solid;
+  border-top-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+  border-bottom-color: color-mix(in srgb, var(--color-accent) 24%, var(--color-border));
+}
+
+.section-rule-t {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+}
+
+.section-rule-strong-t {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: var(--color-accent);
+}
+
+/* Subtle film grain overlay utility */
+.grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

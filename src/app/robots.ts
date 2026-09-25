@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
-import { getSiteConfig } from "@/lib/content";
+import { isIndexable, site } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const site = getSiteConfig();
+  if (!isIndexable) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: { userAgent: "*", allow: "/" },
+    rules: { userAgent: "*", allow: "/", disallow: ["/api/"] },
     sitemap: `${site.url}/sitemap.xml`,
+    host: site.url,
   };
 }

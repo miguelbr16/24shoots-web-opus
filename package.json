@@ -1,28 +1,33 @@
 {
   "name": "24shoots-web",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "new-site": "node scripts/new-site.mjs"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "media": "node scripts/media/build.mjs",
+    "qa": "node scripts/qa/run.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "next": "^15.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.7",
     "@types/node": "^22.15.21",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
+    "axe-core": "^4.13.0",
     "eslint": "^9.27.0",
     "eslint-config-next": "^15.3.3",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.7",
-    "@tailwindcss/postcss": "^4.1.7",
     "typescript": "^5.8.3"
   }
 }
