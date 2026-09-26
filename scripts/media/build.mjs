@@ -29,7 +29,7 @@ const CASES = {
   "huhtamaki-50": {
     stills: [10.67, 17.3, 34.13, 45.12, 48.98, 58.82, 72.12, 76.22, 80.48, 89.97],
     cover: 9, // index into stills
-    preview: [65.5, 4],
+    preview: [73.4, 4],
     // "Un día, en doce planos": contact sheet on the home page
     sheet: [5.33, 17.3, 21.37, 27.3, 34.13, 45.12, 51.97, 58.82, 60.55, 72.12, 76.22, 89.97],
   },

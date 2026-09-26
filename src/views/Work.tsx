@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CaseRow } from "@/components/CaseRow";
 import { FilmPlayer } from "@/components/FilmPlayer";
+import { ClosingBlock } from "@/components/ClosingBlock";
 import { cases, caseMedia, type Case } from "@/content/cases";
 import { getService } from "@/content/services";
 import { t } from "@/content/copy";
@@ -88,7 +89,7 @@ export function CaseView({ locale, k }: { locale: Locale; k: Case }) {
         </nav>
         <div className="grid-12 mt-8 items-end gap-y-8">
           <h1 className="col-span-12 lg:col-span-8">
-            <span className="t-credit block text-[clamp(3rem,1.4rem+7vw,9rem)]">{k.client}</span>
+            <span className="t-credit block text-[clamp(3rem,1.4rem+7vw,9rem)]">{k.client}</span>{" "}
             <span className="t-h2 mt-4 block">{k.title[locale]}</span>
           </h1>
           <dl className="col-span-12 grid grid-cols-2 gap-x-6 lg:col-span-4 lg:grid-cols-1">
@@ -143,23 +144,18 @@ export function CaseView({ locale, k }: { locale: Locale; k: Case }) {
       </section>
 
       <section className="rule-t">
-        <div className="wrap grid-12 gap-y-10 py-16 md:py-24">
-          <div className="col-span-12 md:col-span-6">
-            <p className="t-h2">{c.case.cta}</p>
-            <Link href={href.page(locale, "contact")} className="cta mt-8">
-              {c.case.ctaButton} <span aria-hidden>→</span>
-            </Link>
-          </div>
-          <Link href={href.case(locale, next.slug)} className="group col-span-12 md:col-span-5 md:col-start-8">
-            <span className="t-mono text-ash">{c.case.next} →</span>
-            <span className="relative mt-3 block aspect-video overflow-hidden bg-ink-2">
-              <Image src={nm.cover} alt="" fill sizes="(min-width: 768px) 40vw, 100vw" quality={65} className="object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
-            </span>
-            <span className="t-credit mt-4 block text-[2.4rem] group-hover:text-rec transition-colors">{next.client}</span>
+        <Link href={href.case(locale, next.slug)} className="group wrap grid-12 items-end gap-y-6 py-12 md:py-16">
+          <span className="relative col-span-12 block aspect-video overflow-hidden bg-ink-2 md:col-span-5">
+            <Image src={nm.cover} alt="" fill sizes="(min-width: 768px) 40vw, 100vw" quality={65} className="object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+          </span>
+          <span className="col-span-12 md:col-span-7 md:pl-6">
+            <span className="t-mono block text-ash">{c.case.next} →</span>
+            <span className="t-credit mt-2 block text-[clamp(2.6rem,1rem+5vw,6.5rem)] transition-colors group-hover:text-rec">{next.client}</span>
             <span className="block text-ash">{next.title[locale]}</span>
-          </Link>
-        </div>
+          </span>
+        </Link>
       </section>
+      <ClosingBlock locale={locale} title={c.case.cta} />
     </article>
   );
 }

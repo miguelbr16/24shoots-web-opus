@@ -104,10 +104,12 @@ const browser = await pw.chromium.launch();
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, javaScriptEnabled: false });
   const page = await ctx.newPage();
-  await page.goto(BASE + "/", { waitUntil: "load" });
-  const visible = await page.locator("article").first().isVisible();
-  const opacity = await page.evaluate(() => getComputedStyle(document.querySelector("[data-reveal]")).opacity);
-  ok(visible && opacity === "1", "without JS, reveal content is visible");
+  for (const route of ["/", "/trabajo", "/servicios"]) {
+    await page.goto(BASE + route, { waitUntil: "load" });
+    const hidden = await page.evaluate(() => [...document.querySelectorAll("main *")].filter((e) => getComputedStyle(e).opacity === "0" && !e.closest("video,[aria-hidden=true]") && e.tagName !== "VIDEO").length);
+    const h1 = await page.locator("h1").first().isVisible();
+    ok(hidden === 0 && h1, `without JS, ${route} shows all content (hidden: ${hidden})`);
+  }
   await ctx.close();
 }
 

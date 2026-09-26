@@ -18,6 +18,7 @@ export function Footer({ locale }: { locale: Locale }) {
         <nav aria-label={locale === "es" ? "Pie de página" : "Footer"} className="col-span-6 md:col-span-3">
           <ul className="space-y-2">
             <li><Link className="link no-underline hover:underline" href={href.page(locale, "work")}>{c.nav.work}</Link></li>
+            <li><Link className="link no-underline hover:underline" href={href.page(locale, "packs")}>{c.nav.packs}</Link></li>
             <li><Link className="link no-underline hover:underline" href={href.page(locale, "services")}>{c.nav.services}</Link></li>
             <li><Link className="link no-underline hover:underline" href={href.page(locale, "studio")}>{c.nav.studio}</Link></li>
             <li><Link className="link no-underline hover:underline" href={href.page(locale, "contact")}>{c.nav.contact}</Link></li>

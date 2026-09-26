@@ -36,6 +36,7 @@ async function deliver(input: ContactInput) {
     ["Email", input.email],
     ["Empresa", input.company || "—"],
     ["Tipo", input.type || "—"],
+    ["Pack", input.pack || "—"],
     ["Fecha / plazo", input.date || "—"],
     ["Idioma", input.locale],
   ];

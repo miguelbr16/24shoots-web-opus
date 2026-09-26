@@ -1,11 +1,12 @@
 /** Shared contact-form contract (client + server). */
-export const CONTACT_LIMITS = { name: 120, email: 200, company: 160, type: 60, date: 120, message: 4000, minMessage: 20 };
+export const CONTACT_LIMITS = { name: 120, email: 200, company: 160, type: 60, pack: 60, date: 120, message: 4000, minMessage: 20 };
 
 export interface ContactInput {
   name: string;
   email: string;
   company: string;
   type: string;
+  pack: string;
   date: string;
   message: string;
   locale: "es" | "en";
@@ -28,6 +29,7 @@ export function normalise(raw: Record<string, unknown>): ContactInput {
     email: str(raw.email, CONTACT_LIMITS.email),
     company: str(raw.company, CONTACT_LIMITS.company),
     type: str(raw.type, CONTACT_LIMITS.type),
+    pack: str(raw.pack, CONTACT_LIMITS.pack),
     date: str(raw.date, CONTACT_LIMITS.date),
     message: str(raw.message, CONTACT_LIMITS.message),
     locale: raw.locale === "en" ? "en" : "es",

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ClientsList } from "@/components/ClientsList";
 import { caseMedia, getCase } from "@/content/cases";
-import { ContactBlock } from "@/components/ContactBlock";
+import { ClosingBlock } from "@/components/ClosingBlock";
 import { t } from "@/content/copy";
 import { href, type Locale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -66,7 +66,7 @@ export function StudioView({ locale }: { locale: Locale }) {
       </section>
 
       <ClientsList locale={locale} agencies={false} />
-      <ContactBlock locale={locale} />
+      <ClosingBlock locale={locale} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ServicesIndex } from "@/components/ServicesIndex";
 import { CaseRow } from "@/components/CaseRow";
-import { ContactBlock } from "@/components/ContactBlock";
+import { ClosingBlock } from "@/components/ClosingBlock";
 import { services, type Service } from "@/content/services";
 import { cases } from "@/content/cases";
 import { t } from "@/content/copy";
@@ -164,7 +164,7 @@ export function ServiceView({ locale, s }: { locale: Locale; s: Service }) {
         </ul>
       </nav>
 
-      <ContactBlock locale={locale} />
+      <ClosingBlock locale={locale} />
     </>
   );
 }

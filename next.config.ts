@@ -14,7 +14,7 @@ const esOld: Record<string, string> = {
   about: "/estudio",
   contacto: "/contacto",
   contact: "/contacto",
-  packs: "/servicios",
+  packs: "/packs",
   "aviso-legal": "/aviso-legal",
   "legal-notice": "/aviso-legal",
   privacidad: "/privacidad",
@@ -27,7 +27,6 @@ const enOld: Record<string, string> = {
   "sobre-nosotros": "/en/studio",
   about: "/en/studio",
   contacto: "/en/contact",
-  packs: "/en/services",
   "aviso-legal": "/en/legal-notice",
   privacidad: "/en/privacy",
 };
@@ -77,6 +76,13 @@ const nextConfig: NextConfig = {
     }
     for (const [from, to] of Object.entries(esOld)) p(`/es/${from}`, to);
     for (const [from, to] of Object.entries(enOld)) p(`/en/${from}`, to);
+    // V1 paths that some links may use without the /es prefix
+    p("/portfolio", "/trabajo");
+    p("/sobre-nosotros", "/estudio");
+    p("/about", "/estudio");
+    for (const old of ["bodas", "fallas", "fiestas", "aftermovies", "presupuesto"]) p(`/${old}`, "/servicios");
+    p("/en/legal", "/en/legal-notice");
+    p("/favicon.ico", "/icon.svg");
     p("/es", "/");
     p("/es/:path*", "/:path*");
     return r;

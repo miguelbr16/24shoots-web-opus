@@ -7,6 +7,7 @@ export const isLocale = (v: string): v is Locale => (locales as readonly string[
 /** Public URL segments per locale. Spanish lives at the root, English under /en. */
 const segments = {
   work: { es: "trabajo", en: "work" },
+  packs: { es: "packs", en: "packs" },
   services: { es: "servicios", en: "services" },
   studio: { es: "estudio", en: "studio" },
   contact: { es: "contacto", en: "contact" },

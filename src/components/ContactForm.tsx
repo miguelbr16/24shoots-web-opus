@@ -6,6 +6,7 @@ import { t } from "@/content/copy";
 import { href, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { CONTACT_LIMITS, validate, type ContactErrors, type ContactField } from "@/lib/contact";
+import { packs } from "@/content/packs";
 
 type Status = "idle" | "sending" | "sent" | "failed";
 
@@ -19,6 +20,7 @@ export function ContactForm({ locale, idPrefix = "cf", tone = "ink" }: { locale:
   const [errors, setErrors] = useState<ContactErrors>({});
   const [serverError, setServerError] = useState<string | null>(null);
   const [sentTo, setSentTo] = useState("");
+  const [pack, setPack] = useState("");
   const started = useRef<number>(0);
   const formRef = useRef<HTMLFormElement>(null);
   const summaryRef = useRef<HTMLParagraphElement>(null);
@@ -27,10 +29,13 @@ export function ContactForm({ locale, idPrefix = "cf", tone = "ink" }: { locale:
   useEffect(() => {
     started.current = Date.now();
     // Server-side (no-JS) result via query string
-    const q = new URLSearchParams(window.location.search).get("enviado");
+    const params = new URLSearchParams(window.location.search);
+    const p = packs.find((x) => x.slug === params.get("pack"));
+    if (p) setPack(p.name[locale]);
+    const q = params.get("enviado");
     if (q === "1") setStatus("sent");
     if (q === "0") setStatus("failed");
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     if (status === "sent" || status === "failed") resultRef.current?.focus();
@@ -99,6 +104,16 @@ export function ContactForm({ locale, idPrefix = "cf", tone = "ink" }: { locale:
   return (
     <form ref={formRef} action="/api/contact" method="post" noValidate onSubmit={onSubmit} className="space-y-8">
       <input type="hidden" name="locale" value={locale} />
+      {pack && (
+        <p className="t-mono flex items-center gap-3">
+          <input type="hidden" name="pack" value={pack} />
+          <span className="rec-dot" aria-hidden />
+          <span>Pack: {pack}</span>
+          <button type="button" className="text-ash underline hover:text-bone" onClick={() => setPack("")}>
+            {locale === "es" ? "quitar" : "remove"}
+          </button>
+        </p>
+      )}
       {/* Honeypot: hidden from people and assistive tech */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label htmlFor={id("website")}>Website</label>
@@ -157,8 +172,9 @@ export function ContactForm({ locale, idPrefix = "cf", tone = "ink" }: { locale:
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-6 pt-2">
-        <button type="submit" disabled={status === "sending"} className="cta cursor-pointer disabled:opacity-60" aria-busy={status === "sending"}>
-          {status === "sending" ? c.sending : c.submit} <span aria-hidden>→</span>
+        <button type="submit" disabled={status === "sending"} className="cta-slab cta-slab--block cursor-pointer disabled:opacity-60 sm:!inline-grid sm:!w-auto" aria-busy={status === "sending"}>
+          <span>{status === "sending" ? c.sending : c.submit}</span>
+          <span aria-hidden>→</span>
         </button>
         <p className={`max-w-[40ch] text-sm ${muted}`}>
           {c.privacy}{" "}

@@ -18,8 +18,10 @@ export function Header({ locale }: { locale: Locale }) {
 
   const links = [
     { href: href.page(locale, "work"), label: c.work },
+    { href: href.page(locale, "packs"), label: c.packs },
     { href: href.page(locale, "services"), label: c.services },
     { href: href.page(locale, "studio"), label: c.studio },
+    { href: href.page(locale, "contact"), label: c.contact },
   ];
   const contactHref = href.page(locale, "contact");
   const isCurrent = (h: string) => pathname === h || pathname.startsWith(h + "/");
@@ -68,7 +70,7 @@ export function Header({ locale }: { locale: Locale }) {
         </Link>
 
         <nav aria-label={locale === "es" ? "Principal" : "Main"} className="hidden md:block">
-          <ul className="flex items-center gap-8 text-[0.98rem]">
+          <ul className="flex items-center gap-6 text-[0.98rem] lg:gap-8">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
@@ -94,12 +96,9 @@ export function Header({ locale }: { locale: Locale }) {
           >
             {c.languageShort}
           </Link>
-          <Link
-            href={contactHref}
-            aria-current={isCurrent(contactHref) ? "page" : undefined}
-            className="inline-flex items-center gap-2 border-b-2 border-rec py-1.5 font-medium"
-          >
-            {c.cta}
+          <Link href={contactHref} className="cta-slab !min-h-10 text-[0.95rem]">
+            <span className="!py-2.5">{c.cta}</span>
+            <span aria-hidden>→</span>
           </Link>
         </div>
 
@@ -127,7 +126,7 @@ export function Header({ locale }: { locale: Locale }) {
       >
         <nav aria-label={locale === "es" ? "Menú" : "Menu"} className="wrap pt-8">
           <ul>
-            {[...links, { href: contactHref, label: c.contact }].map((l, i) => (
+            {links.map((l, i) => (
               <li key={l.href} className="rule-b">
                 <Link
                   href={l.href}
@@ -135,7 +134,7 @@ export function Header({ locale }: { locale: Locale }) {
                   aria-current={isCurrent(l.href) ? "page" : undefined}
                   className="flex items-baseline justify-between py-4"
                 >
-                  <span className="t-credit text-[3.4rem]">{l.label}</span>
+                  <span className="t-credit text-[3rem]">{l.label}</span>
                   <span className="t-mono text-ash">{String(i + 1).padStart(2, "0")}</span>
                 </Link>
               </li>

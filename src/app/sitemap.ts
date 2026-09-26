@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const both = (f: (l: Locale) => string, priority: number): Entry => ({ es: f("es"), en: f("en"), priority });
   const pages: Entry[] = [
     both((l) => href.home(l), 1),
-    ...(["work", "services", "studio", "contact"] as PageKey[]).map((k) => both((l) => href.page(l, k), 0.8)),
+    ...(["work", "packs", "services", "studio", "contact"] as PageKey[]).map((k) => both((l) => href.page(l, k), 0.8)),
     ...cases.map((c) => both((l) => href.case(l, c.slug), 0.7)),
     ...Object.values(serviceSlugs).map((s) => both((l) => href.service(l, s[l]), 0.8)),
   ];

@@ -62,6 +62,120 @@ body {
 }
 
 @layer components {
+/* ---------- CTA slab: the 24SHOOTS action. A rectangular label, like a slate or a
+   tape strip on a flight case — orange = the thing you can press. ---------- */
+.cta-slab {
+  display: inline-grid;
+  grid-template-columns: auto 3.25rem;
+  align-items: stretch;
+  min-height: 3.25rem;
+  background: var(--color-rec);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-variation-settings: "wdth" 72;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(1rem, 0.9rem + 0.35vw, 1.2rem);
+  line-height: 1;
+  transition: background-color 180ms ease-out, color 180ms ease-out;
+}
+.cta-slab > span:first-child {
+  display: flex;
+  align-items: center;
+  padding: 0.95rem 1.1rem 0.85rem;
+}
+.cta-slab > span:last-child {
+  display: grid;
+  place-items: center;
+  border-left: 1px solid color-mix(in srgb, var(--color-ink) 35%, transparent);
+  font-size: 1.25em;
+  transition: transform 180ms var(--ease-cut);
+}
+.cta-slab:hover {
+  background: var(--color-bone);
+}
+.cta-slab:hover > span:last-child {
+  transform: translateX(3px);
+}
+.cta-slab:focus-visible {
+  outline: 2px solid var(--color-bone);
+  outline-offset: 3px;
+}
+.on-paper .cta-slab:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.on-paper .cta-slab:hover > span:last-child {
+  border-left-color: color-mix(in srgb, var(--color-paper) 35%, transparent);
+}
+.cta-slab--block {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 3.5rem;
+}
+
+/* Hero "Ventana 24": the numerals are a window onto the footage. Where scroll-driven
+   animations exist, the window opens as you scroll (no hijack: plain native scroll). */
+.hero24 {
+  position: relative;
+  height: calc(100svh - var(--header-h));
+  min-height: 34rem;
+}
+.hero24 .hero24-stage {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h));
+  min-height: 34rem;
+  overflow: hidden;
+}
+.hero24-digits {
+  font-size: min(106vw, 50svh);
+  line-height: 0.74;
+}
+@media (min-width: 1024px) {
+  .hero24-digits {
+    font-size: min(60vw, calc((100svh - var(--header-h) - 3rem) / 0.74));
+  }
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero24 {
+      height: calc(175svh - var(--header-h));
+    }
+    .hero24-window {
+      animation: hero24-open linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 60svh;
+    }
+    .hero24-shade {
+      animation: hero24-shade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 10svh 60svh;
+    }
+  }
+}
+@keyframes hero24-open {
+  to {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes hero24-shade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Knockout: white type over black, multiplied over footage = footage seen through the letters. */
+.knockout {
+  mix-blend-mode: multiply;
+  background: #000;
+  color: #fff;
+}
+
 /* ---------- Type ---------- */
 
 .t-display {
@@ -348,24 +462,16 @@ body {
   animation: expose 900ms var(--ease-cut) both;
 }
 
-/* Scroll reveal (only when JS has marked the document). */
-.js [data-reveal] {
+/* Scroll reveal: subtle and never hiding content. Elements are fully visible by default;
+   only once JS confirms an element is BELOW the fold does it get a short rise-in. */
+.js [data-reveal].will-reveal {
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 480ms var(--ease-cut), transform 480ms var(--ease-cut);
+  transform: translateY(12px);
 }
-.js [data-reveal].is-in {
+.js [data-reveal].will-reveal.is-in {
   opacity: 1;
   transform: none;
-}
-.js [data-reveal="expose"] {
-  transform: none;
-  opacity: 1;
-  filter: brightness(0);
-  transition: filter 900ms var(--ease-cut);
-}
-.js [data-reveal="expose"].is-in {
-  filter: brightness(1);
+  transition: opacity 520ms var(--ease-cut), transform 520ms var(--ease-cut);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -379,11 +485,9 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .js [data-reveal],
-  .js [data-reveal="expose"] {
+  .js [data-reveal].will-reveal {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 }
 

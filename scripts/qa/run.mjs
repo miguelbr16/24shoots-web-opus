@@ -25,7 +25,7 @@ const axe = process.argv.includes("--axe") ? (await import("node:fs")).readFileS
 const reduced = process.argv.includes("--reduced");
 
 const ROUTES = (arg("routes") ||
-  "/,/trabajo,/trabajo/huhtamaki-50,/trabajo/imperia-scm,/servicios,/servicios/eventos-corporativos,/servicios/campanas,/estudio,/contacto,/aviso-legal,/en,/en/work/premios-isabel-ferrer,/en/services/brand-content,/en/studio,/en/contact,/no-existe").split(",");
+  "/,/packs,/en/packs,/trabajo,/trabajo/huhtamaki-50,/trabajo/imperia-scm,/servicios,/servicios/eventos-corporativos,/servicios/campanas,/estudio,/contacto,/aviso-legal,/en,/en/work/premios-isabel-ferrer,/en/services/brand-content,/en/studio,/en/contact,/no-existe").split(",");
 const VPS = (arg("vp") || "360,375,390,430,768,1024,1280,1440,1920").split(",").map(Number);
 const heightFor = (w) => (w < 500 ? 844 : w < 1100 ? 1024 : w < 1500 ? 900 : 1080);
 
