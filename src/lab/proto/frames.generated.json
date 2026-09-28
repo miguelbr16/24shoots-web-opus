@@ -1,0 +1,266 @@
+[
+  {
+    "n": 1,
+    "slug": "huhtamaki-50",
+    "still": 1,
+    "t": 10.67,
+    "fx": 50,
+    "loop": [
+      10.07,
+      1.88
+    ]
+  },
+  {
+    "n": 2,
+    "slug": "huhtamaki-50",
+    "still": 2,
+    "t": 17.3,
+    "fx": 45,
+    "loop": [
+      16.7,
+      2.32
+    ]
+  },
+  {
+    "n": 3,
+    "slug": "huhtamaki-50",
+    "still": 3,
+    "t": 34.13,
+    "fx": 55,
+    "loop": [
+      33.53,
+      2.4
+    ]
+  },
+  {
+    "n": 4,
+    "slug": "huhtamaki-50",
+    "still": 7,
+    "t": 72.12,
+    "fx": 45,
+    "loop": [
+      71.52,
+      1.43
+    ]
+  },
+  {
+    "n": 5,
+    "slug": "huhtamaki-50",
+    "still": 9,
+    "t": 80.48,
+    "fx": 50,
+    "loop": [
+      79.88,
+      1.61
+    ]
+  },
+  {
+    "n": 6,
+    "slug": "huhtamaki-50",
+    "still": 10,
+    "t": 89.97,
+    "fx": 50,
+    "loop": [
+      89.37,
+      2.4
+    ]
+  },
+  {
+    "n": 7,
+    "slug": "premios-isabel-ferrer",
+    "still": 1,
+    "t": 5.92,
+    "fx": 30,
+    "loop": [
+      5.32,
+      2.4
+    ]
+  },
+  {
+    "n": 8,
+    "slug": "premios-isabel-ferrer",
+    "still": 3,
+    "t": 23.92,
+    "fx": 50,
+    "loop": [
+      23.32,
+      2.4
+    ]
+  },
+  {
+    "n": 9,
+    "slug": "premios-isabel-ferrer",
+    "still": 5,
+    "t": 54.6,
+    "fx": 60,
+    "loop": [
+      54.01,
+      1.17
+    ]
+  },
+  {
+    "n": 10,
+    "slug": "premios-isabel-ferrer",
+    "still": 7,
+    "t": 63.13,
+    "fx": 42,
+    "loop": [
+      62.53,
+      2.4
+    ]
+  },
+  {
+    "n": 11,
+    "slug": "premios-isabel-ferrer",
+    "still": 8,
+    "t": 74.1,
+    "fx": 50,
+    "loop": [
+      73.5,
+      2.4
+    ]
+  },
+  {
+    "n": 12,
+    "slug": "premios-innovacion-valencia",
+    "still": 2,
+    "t": 12.87,
+    "fx": 40,
+    "loop": [
+      11.82,
+      1.2
+    ]
+  },
+  {
+    "n": 13,
+    "slug": "premios-innovacion-valencia",
+    "still": 3,
+    "t": 36.05,
+    "fx": 50,
+    "loop": [
+      35.51,
+      1.07
+    ]
+  },
+  {
+    "n": 14,
+    "slug": "premios-innovacion-valencia",
+    "still": 7,
+    "t": 62.75,
+    "fx": 45,
+    "loop": [
+      62.15,
+      1.44
+    ]
+  },
+  {
+    "n": 15,
+    "slug": "premios-innovacion-valencia",
+    "still": 8,
+    "t": 66.27,
+    "fx": 50,
+    "loop": [
+      65.67,
+      1.22
+    ]
+  },
+  {
+    "n": 16,
+    "slug": "premios-innovacion-valencia",
+    "still": 10,
+    "t": 73.82,
+    "fx": 55,
+    "loop": [
+      73.22,
+      2.4
+    ]
+  },
+  {
+    "n": 17,
+    "slug": "imperia-scm",
+    "still": 2,
+    "t": 39.05,
+    "fx": 40,
+    "loop": [
+      38.58,
+      0.94
+    ]
+  },
+  {
+    "n": 18,
+    "slug": "imperia-scm",
+    "still": 3,
+    "t": 45,
+    "fx": 52,
+    "loop": [
+      44.4,
+      2.35
+    ]
+  },
+  {
+    "n": 19,
+    "slug": "imperia-scm",
+    "still": 7,
+    "t": 62.38,
+    "fx": 45,
+    "loop": [
+      61.78,
+      1.54
+    ]
+  },
+  {
+    "n": 20,
+    "slug": "imperia-scm",
+    "still": 8,
+    "t": 71.23,
+    "fx": 50,
+    "loop": [
+      70.63,
+      1.82
+    ]
+  },
+  {
+    "n": 21,
+    "slug": "gala-esport-manises",
+    "still": 1,
+    "t": 0.77,
+    "fx": 30,
+    "loop": [
+      0.17,
+      1.28
+    ]
+  },
+  {
+    "n": 22,
+    "slug": "gala-esport-manises",
+    "still": 7,
+    "t": 38.15,
+    "fx": 50,
+    "loop": [
+      37.55,
+      1.4
+    ]
+  },
+  {
+    "n": 23,
+    "slug": "gala-esport-manises",
+    "still": 8,
+    "t": 42.85,
+    "fx": 38,
+    "loop": [
+      42.25,
+      2
+    ]
+  },
+  {
+    "n": 24,
+    "slug": "gala-esport-manises",
+    "still": 9,
+    "t": 49.1,
+    "fx": 40,
+    "loop": [
+      48.5,
+      2.09
+    ]
+  }
+]
