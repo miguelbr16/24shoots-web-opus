@@ -66,25 +66,27 @@ const browser = await pw.chromium.launch();
   await page.close();
 }
 
-// Hero reel plays and cuts
+// Home story: the opening changes phase with scroll, steps advance, the example film plays
 {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await page.goto(BASE + "/", { waitUntil: "networkidle" });
-  await page.waitForTimeout(3500);
-  const state = await page.evaluate(() => {
-    const v = document.querySelector("section video");
-    return { src: v?.currentSrc, paused: v?.paused, t: v?.currentTime };
-  });
-  ok(Boolean(state.src) && !state.paused && state.t > 0, `hero reel playing (${state.src?.split("/").pop()}, t=${state.t?.toFixed(1)})`);
-  const slate1 = await page.locator("text=/Plano \\d\\d\\/05/").first().textContent();
-  await page.waitForTimeout(2600);
-  const slate2 = await page.locator("text=/Plano \\d\\d\\/05/").first().textContent();
-  ok(slate1 !== slate2, `slate advances with the cut (${slate1} → ${slate2})`);
-  await page.getByRole("button", { name: /pausar/i }).click();
-  const t1 = await page.evaluate(() => document.querySelector("section video").currentTime);
+  const op = (sel) => page.evaluate((s) => getComputedStyle(document.querySelector(s)).opacity, sel);
   await page.waitForTimeout(800);
-  const t2 = await page.evaluate(() => document.querySelector("section video").currentTime);
-  ok(t1 === t2, "pause button stops the reel");
+  ok((await op(".st-stack > .st-phase:nth-child(1)")) === "1" && (await op(".st-stack > .st-phase:nth-child(3)")) === "0", "opening starts on «Un evento dura un día.»");
+  await page.evaluate(() => { const s = document.querySelector(".st-open"); scrollTo(0, (s.offsetHeight - innerHeight) * 0.85); });
+  await page.waitForTimeout(900);
+  ok((await op(".st-stack > .st-phase:nth-child(3)")) === "1" && (await page.locator("#story-title").isVisible()), "scrolling the opening reveals the brand line (h1)");
+  const word = async (f) => {
+    await page.evaluate((f) => { const s = document.querySelector("[data-chapter='2']"); scrollTo(0, s.getBoundingClientRect().top + scrollY + (s.offsetHeight - innerHeight) * f); }, f);
+    await page.waitForTimeout(700);
+    return page.locator(".st-word").textContent();
+  };
+  const w1 = await word(0.05), w3 = await word(0.9);
+  ok(w1 === "Antes" && w3 === "Después", `steps advance with scroll (${w1} → ${w3})`);
+  await page.evaluate(() => document.querySelector("[data-chapter='3'] a[data-track='case_open']").scrollIntoView({ block: "center" }));
+  await page.waitForTimeout(3000);
+  const film = await page.evaluate(() => { const v = document.querySelector("[data-chapter='3'] video"); return { src: v?.currentSrc, paused: v?.paused }; });
+  ok(Boolean(film.src) && !film.paused, `example film loop plays in view (${film.src?.split("/").pop()})`);
   await page.close();
 }
 

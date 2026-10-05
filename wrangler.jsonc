@@ -1,0 +1,35 @@
+{
+  // 24SHOOTS on Cloudflare Workers (OpenNext). Nothing here is deployed until someone
+  // runs `npm run cf:deploy` with their own Cloudflare account. See docs/CLOUDFLARE.md.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "24shoots-web",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // next/image optimisation via Cloudflare Images (Free plan: 5,000 unique transformations/month;
+  // the site needs roughly 1,000 — images are a few dozen stills at ~8 widths × 2 formats).
+  "images": {
+    "binding": "IMAGES"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "24shoots-web"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  // Runtime vars. Build-time vars (SITE_ENV, NEXT_PUBLIC_*) must be present when running cf:build.
+  // Secrets (RESEND_API_KEY) are set with `npx wrangler secret put RESEND_API_KEY`, never here.
+  // SITE_ENV=preview keeps every page noindex. Switch to "production" only for the launch
+  // deploy on the real domain (also export it when running cf:build).
+  "vars": {
+    "SITE_ENV": "preview",
+    "CONTACT_TO": "info@24shoots.es"
+  }
+}

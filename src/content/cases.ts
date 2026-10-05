@@ -246,5 +246,14 @@ export interface CaseMedia {
   sheet?: string[];
   sheetTimes?: number[];
 }
-export const caseMedia = (slug: Case["slug"]): CaseMedia => media.cases[slug];
+/**
+ * Full films are too large for static hosting on Workers (25 MiB per asset), so in
+ * production they can live in object storage (Cloudflare R2): set NEXT_PUBLIC_FILM_BASE
+ * to its public origin, e.g. https://media.24shoots.es. Unset = served from /public.
+ */
+const FILM_BASE = (process.env.NEXT_PUBLIC_FILM_BASE || "").replace(/\/$/, "");
+export const caseMedia = (slug: Case["slug"]): CaseMedia => {
+  const m = media.cases[slug];
+  return FILM_BASE ? { ...m, film: `${FILM_BASE}${m.film}` } : m;
+};
 export const heroMedia = media.hero;

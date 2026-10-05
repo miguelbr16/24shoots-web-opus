@@ -9,3 +9,8 @@ Thumbs.db
 # Film masters (upload to the video host / keep out of git)
 /media-source/
 *.zip
+
+# Cloudflare / OpenNext build output and local secrets
+/.open-next/
+/.wrangler/
+.dev.vars

@@ -491,3 +491,107 @@ body {
   }
 }
 
+
+/* ---------- Home story ---------- */
+@layer components {
+  /* Opening: pinned frame, the lights go down as you scroll */
+  .st-open {
+    height: 260svh;
+  }
+  .st-open-stage {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    min-height: 34rem;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .st-open-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 42% 50%;
+    transform: scale(calc(1.08 - var(--p, 0) * 0.08));
+    transform-origin: 50% 60%;
+  }
+  .st-open-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(14, 13, 12, 0.92), rgba(14, 13, 12, 0.25) 60%),
+      rgba(14, 13, 12, calc(min(1, var(--p, 0) * 2.2) * 0.86));
+  }
+  .st-stack {
+    position: relative;
+    padding-bottom: clamp(4.5rem, 10svh, 7rem);
+  }
+  .js .st-stack {
+    display: grid;
+  }
+  .js .st-stack > .st-phase {
+    grid-area: 1 / 1;
+    align-self: end;
+    opacity: 0;
+    transform: translateY(1.2rem);
+    transition: opacity 600ms var(--ease-cut), transform 700ms var(--ease-cut);
+  }
+  .js .st-stack > .st-phase.on {
+    opacity: 1;
+    transform: none;
+  }
+  .st-hint {
+    position: absolute;
+    right: var(--gutter);
+    bottom: 1.5rem;
+    color: var(--color-ash);
+    transition: opacity 300ms;
+  }
+  .st-hint.off {
+    opacity: 0;
+  }
+
+  /* Line-by-line reveal (only after JS has armed it below the fold) */
+  .st-line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.04em;
+  }
+  .st-line > span {
+    display: inline-block;
+    transition: transform 800ms var(--ease-cut), opacity 800ms var(--ease-cut);
+    transition-delay: inherit;
+  }
+  .st-lines.armed .st-line > span {
+    transform: translateY(105%);
+    opacity: 0;
+  }
+
+  /* Before / during / after */
+  .st-word {
+    animation: st-in 600ms var(--ease-cut) both;
+  }
+  .st-desc,
+  .st-steps-media {
+    animation: st-in 700ms var(--ease-cut) 80ms both;
+  }
+}
+@keyframes st-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.8rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-open-img {
+    transform: none;
+  }
+  .js .st-stack > .st-phase,
+  .st-word,
+  .st-desc,
+  .st-steps-media {
+    transition: none;
+    animation: none;
+  }
+}

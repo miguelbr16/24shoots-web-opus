@@ -1,0 +1,89 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+type Img = { src: string; srcSet?: string; sizes?: string };
+
+interface Props {
+  image: { wide: Img; tall: Img; alt: string };
+  p1: string;
+  p2: string;
+  p3a: string;
+  p3b: string;
+  scroll: string;
+  /** Short line under the brand phrase (what the studio is). */
+  descriptor: string;
+}
+
+/**
+ * Chapter 0 — the opening. A pinned frame: "An event lasts a day." → the lights go down
+ * as you scroll → "An event ends. The content lives on." Progress is read from scroll
+ * position (no library). Without JS the three phrases simply stack under the image;
+ * with reduced motion the phases switch without transitions.
+ */
+export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor }: Props) {
+  const ref = useRef<HTMLElement>(null);
+  const [p, setP] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf = 0;
+    const on = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        const max = el.offsetHeight - window.innerHeight;
+        setP(max > 0 ? Math.min(1, Math.max(0, -r.top / max)) : 0);
+      });
+    };
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    window.addEventListener("resize", on);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", on);
+      window.removeEventListener("resize", on);
+    };
+  }, []);
+
+  const phase = p < 0.3 ? 0 : p < 0.62 ? 1 : 2;
+
+  return (
+    <section ref={ref} className="st-open relative -mt-[var(--header-h)] bg-ink" aria-labelledby="story-title" data-chapter-open>
+      <div className="st-open-stage">
+        <picture>
+          <source media="(min-width: 768px)" srcSet={image.wide.srcSet ?? image.wide.src} sizes={image.wide.sizes} />
+          <img
+            src={image.tall.src}
+            srcSet={image.tall.srcSet}
+            sizes={image.tall.sizes}
+            alt={image.alt}
+            fetchPriority="high"
+            decoding="async"
+            className="st-open-img"
+            style={{ ["--p" as string]: p }}
+          />
+        </picture>
+        {/* the lights go down */}
+        <div className="st-open-shade" style={{ ["--p" as string]: p }} aria-hidden />
+
+        <div className="st-stack wrap">
+          <p className={`st-phase t-display ${phase === 0 ? "on" : ""}`}>{p1}</p>
+          <p className={`st-phase t-display ${phase === 1 ? "on" : ""}`}>{p2}</p>
+          <div className={`st-phase ${phase === 2 ? "on" : ""}`}>
+            <h1 id="story-title" className="t-display">
+              <span className="block">{p3a}</span>
+              <span className="block text-ash">{p3b}</span>
+            </h1>
+            <p className="t-lead mt-6 max-w-[34ch] text-bone/85">{descriptor}</p>
+          </div>
+        </div>
+
+        <p className={`st-hint t-mono ${p > 0.05 ? "off" : ""}`} aria-hidden>
+          {scroll} ↓
+        </p>
+      </div>
+    </section>
+  );
+}

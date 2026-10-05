@@ -59,6 +59,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // Explicit allow-list (required by Next 16 and by OpenNext's optimizer). Fewer variants
+    // also means fewer unique Cloudflare Images transformations (free tier: 5,000/month).
+    qualities: [60, 65, 68, 70, 72, 75],
     deviceSizes: [390, 640, 828, 1080, 1280, 1600, 1920, 2560],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
@@ -93,7 +96,9 @@ const nextConfig: NextConfig = {
       afterFiles: [
         { source: "/", destination: "/es" },
         // Everything that is not English, an API route or a Next internal is Spanish.
-        { source: "/:path((?!en(?:/|$)|api/|_next/|es(?:/|$)).*)", destination: "/es/:path" },
+        // Written as first segment + rest so the destination can be rebuilt by any router
+        // (Next on Vercel and OpenNext on Cloudflare Workers).
+        { source: "/:first((?!(?:en|es|api|_next)(?:/|$))[^/]+)/:rest*", destination: "/es/:first/:rest*" },
       ],
       fallback: [],
     };

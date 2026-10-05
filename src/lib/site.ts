@@ -29,8 +29,14 @@ export const site = {
   contentUpdated: "2026-09-25",
 } as const;
 
-/** Index only the production deployment; previews stay out of search engines. */
-export const isIndexable =
-  process.env.VERCEL_ENV ? process.env.VERCEL_ENV === "production" : process.env.NODE_ENV === "production";
+/**
+ * Index only the production deployment; previews stay out of search engines.
+ * Provider-neutral: SITE_ENV=production (Cloudflare or any host) wins; Vercel sets VERCEL_ENV.
+ */
+export const isIndexable = process.env.SITE_ENV
+  ? process.env.SITE_ENV === "production"
+  : process.env.VERCEL_ENV
+    ? process.env.VERCEL_ENV === "production"
+    : process.env.NODE_ENV === "production";
 
-export const absoluteUrl = (path: string) => `${site.url}${path === "/" ? "" : path}`;
+export const absoluteUrl = (path: string) => (/^https?:\/\//.test(path) ? path : `${site.url}${path === "/" ? "" : path}`);

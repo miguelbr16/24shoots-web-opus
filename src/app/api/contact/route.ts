@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
     return isJson ? NextResponse.json({ ok: false, errors }, { status: 422 }) : back(false);
   }
 
-  const ip = (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
+  const ip = req.headers.get("cf-connecting-ip") || (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
   if (rateLimited(ip)) {
     return isJson ? NextResponse.json({ ok: false, code: "rate" }, { status: 429 }) : back(false);
   }
