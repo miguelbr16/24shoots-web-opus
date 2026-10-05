@@ -1,7 +1,14 @@
 # 24SHOOTS en Cloudflare (Workers + R2) — guía de despliegue
 
-Estado: **preparado y verificado en local** con el runtime real de Workers (`workerd`).
-**No se ha desplegado nada.** Hace falta tu cuenta de Cloudflare y, para el dominio, tu confirmación.
+Estado (05-10-2026): **preview desplegada** en https://24shoots-web.miguelborrasroig.workers.dev
+(`SITE_ENV=preview` → `noindex` + `robots: Disallow: /`). Desplegado desde la sesión de Claude Code con
+`CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` del entorno.
+
+Pendiente:
+- **R2** sin activar en la cuenta (error 10042), así que las películas completas de las páginas de caso dan 404.
+  Los loops y las imágenes funcionan.
+- `RESEND_API_KEY` sin configurar: el formulario devuelve un error explícito y muestra el email.
+- Dominio `24shoots.es`: no se ha tocado (requiere confirmación).
 
 ## Qué hay en el repo
 
