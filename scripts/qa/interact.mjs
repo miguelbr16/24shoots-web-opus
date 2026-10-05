@@ -90,6 +90,25 @@ const browser = await pw.chromium.launch();
   await page.close();
 }
 
+// WhatsApp: hidden over the opening CTA, then opens preset messages; Escape closes
+{
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  await page.goto(BASE + "/", { waitUntil: "networkidle" });
+  const wa = page.locator('button[data-track="whatsapp_open"]');
+  const vis = () => page.evaluate(() => getComputedStyle(document.querySelector('button[data-track="whatsapp_open"]').parentElement).opacity);
+  await page.waitForTimeout(600);
+  ok((await vis()) === "0", "WhatsApp button stays out of the way of the opening CTA");
+  await page.evaluate(() => scrollTo(0, innerHeight * 3));
+  await page.waitForTimeout(700);
+  ok((await vis()) === "1", "WhatsApp button appears once the story starts");
+  await wa.click();
+  const links = await page.locator('a[data-channel="whatsapp"]').evaluateAll((as) => as.map((a) => a.href));
+  ok(links.length === 3 && links.every((h) => /^https:\/\/wa\.me\/\d+\?text=.+/.test(h)), `three preset messages open wa.me with text (${links.length})`);
+  await page.keyboard.press("Escape");
+  ok((await page.locator('a[data-channel="whatsapp"]').count()) === 0, "Escape closes the WhatsApp panel");
+  await page.close();
+}
+
 // Reduced motion: no video
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });

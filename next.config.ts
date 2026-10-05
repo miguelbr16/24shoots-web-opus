@@ -83,7 +83,9 @@ const nextConfig: NextConfig = {
     p("/portfolio", "/trabajo");
     p("/sobre-nosotros", "/estudio");
     p("/about", "/estudio");
-    for (const old of ["bodas", "fallas", "fiestas", "aftermovies", "presupuesto"]) p(`/${old}`, "/servicios");
+    for (const old of ["bodas", "fallas", "fiestas", "aftermovies"]) p(`/${old}`, "/servicios");
+    // Budget intent goes straight to the form.
+    p("/presupuesto", "/contacto");
     p("/en/legal", "/en/legal-notice");
     p("/favicon.ico", "/icon.svg");
     p("/es", "/");

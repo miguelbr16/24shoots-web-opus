@@ -10,6 +10,7 @@ import { organizationJsonLd, JsonLd } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
+import { WhatsApp } from "@/components/WhatsApp";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => locales.map((locale) => ({ locale }));
@@ -51,6 +52,7 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer locale={locale} />
+        <WhatsApp locale={locale} />
         <Reveal />
         {/* Provider-specific, cookieless analytics: only on the platform that serves the site. */}
         {process.env.VERCEL === "1" && (

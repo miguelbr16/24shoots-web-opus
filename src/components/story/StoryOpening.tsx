@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 type Img = { src: string; srcSet?: string; sizes?: string };
@@ -13,6 +14,9 @@ interface Props {
   scroll: string;
   /** Short line under the brand phrase (what the studio is). */
   descriptor: string;
+  /** What you can hire, visible from the first second, with the main action. */
+  offer: string;
+  cta: { label: string; href: string };
 }
 
 /**
@@ -21,9 +25,10 @@ interface Props {
  * position (no library). Without JS the three phrases simply stack under the image;
  * with reduced motion the phases switch without transitions.
  */
-export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor }: Props) {
+export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor, offer, cta }: Props) {
   const ref = useRef<HTMLElement>(null);
-  const [p, setP] = useState(0);
+  const [phase, setPhase] = useState(0);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -34,7 +39,12 @@ export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor }: Pr
       raf = requestAnimationFrame(() => {
         const r = el.getBoundingClientRect();
         const max = el.offsetHeight - window.innerHeight;
-        setP(max > 0 ? Math.min(1, Math.max(0, -r.top / max)) : 0);
+        const p = max > 0 ? Math.min(1, Math.max(0, -r.top / max)) : 0;
+        // Continuous values go straight to CSS (no React render per frame); React only
+        // re-renders when the phase changes.
+        el.style.setProperty("--p", String(p));
+        setPhase(p < 0.3 ? 0 : p < 0.62 ? 1 : 2);
+        setStarted(p > 0.05);
       });
     };
     on();
@@ -46,8 +56,6 @@ export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor }: Pr
       window.removeEventListener("resize", on);
     };
   }, []);
-
-  const phase = p < 0.3 ? 0 : p < 0.62 ? 1 : 2;
 
   return (
     <section ref={ref} className="st-open relative -mt-[var(--header-h)] bg-ink" aria-labelledby="story-title" data-chapter-open>
@@ -62,11 +70,10 @@ export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor }: Pr
             fetchPriority="high"
             decoding="async"
             className="st-open-img"
-            style={{ ["--p" as string]: p }}
           />
         </picture>
         {/* the lights go down */}
-        <div className="st-open-shade" style={{ ["--p" as string]: p }} aria-hidden />
+        <div className="st-open-shade" aria-hidden />
 
         <div className="st-stack wrap">
           <p className={`st-phase t-display ${phase === 0 ? "on" : ""}`}>{p1}</p>
@@ -80,9 +87,19 @@ export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor }: Pr
           </div>
         </div>
 
-        <p className={`st-hint t-mono ${p > 0.05 ? "off" : ""}`} aria-hidden>
-          {scroll} ↓
-        </p>
+        {/* What 24SHOOTS sells + the main action, above the fold from the first second */}
+        <div className="st-offer wrap">
+          <p className="max-w-[46ch] text-[0.95rem] leading-snug text-bone/85 md:text-base">{offer}</p>
+          <div className="flex shrink-0 items-center gap-5">
+            <span className={`st-hint t-mono hidden md:inline ${started ? "off" : ""}`} aria-hidden>
+              {scroll} ↓
+            </span>
+            <Link href={cta.href} className="cta-slab" data-track="cta" data-cta="hablemos" data-location="home-opening">
+              <span>{cta.label}</span>
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -64,7 +64,7 @@ export function Home({ locale }: { locale: Locale }) {
     <>
       <ChapterRail chapters={s.chapters} />
 
-      <StoryOpening image={openImg} p1={s.open.p1} p2={s.open.p2} p3a={s.open.p3a} p3b={s.open.p3b} scroll={s.open.scroll} descriptor={copy.hero.lead} />
+      <StoryOpening image={openImg} p1={s.open.p1} p2={s.open.p2} p3a={s.open.p3a} p3b={s.open.p3b} scroll={s.open.scroll} descriptor={copy.hero.lead} offer={s.open.offer} cta={{ label: copy.nav.cta, href: href.page(locale, "contact") }} />
 
       {/* 01 — the idea */}
       <section className="py-24 md:py-36" data-chapter="1" aria-labelledby="idea-title">

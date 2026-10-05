@@ -14,6 +14,7 @@ const es = {
     p3a: "Un evento termina.",
     p3b: "El contenido continúa.",
     scroll: "Desliza",
+    offer: "Vídeo y fotografía para eventos corporativos, contenido de marca y campañas · Valencia",
     alt: "Celebración del 50 aniversario de Huhtamaki",
   },
   idea: {
@@ -60,6 +61,7 @@ const en: Story = {
     p3a: "An event ends.",
     p3b: "The content lives on.",
     scroll: "Scroll",
+    offer: "Film and photography for corporate events, brand content and campaigns · Valencia",
     alt: "Huhtamaki’s 50th anniversary celebration",
   },
   idea: {

@@ -525,7 +525,25 @@ body {
   }
   .st-stack {
     position: relative;
-    padding-bottom: clamp(4.5rem, 10svh, 7rem);
+    padding-bottom: clamp(9.5rem, 18svh, 11rem);
+  }
+  @media (min-width: 768px) {
+    .st-stack {
+      padding-bottom: clamp(7rem, 14svh, 9rem);
+    }
+  }
+  .st-offer {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem 1.5rem;
+    padding-block: 1rem 1.25rem;
+    border-top: 1px solid var(--rule);
+    background: linear-gradient(to top, rgba(14, 13, 12, 0.9), rgba(14, 13, 12, 0.55));
   }
   .js .st-stack {
     display: grid;
@@ -542,9 +560,6 @@ body {
     transform: none;
   }
   .st-hint {
-    position: absolute;
-    right: var(--gutter);
-    bottom: 1.5rem;
     color: var(--color-ash);
     transition: opacity 300ms;
   }
@@ -568,7 +583,15 @@ body {
     opacity: 0;
   }
 
-  /* Before / during / after */
+  /* Before / during / after — keep the pinned frame inside short viewports (e.g. 1024×570) */
+  @media (max-height: 760px) {
+    .st-steps .st-word {
+      font-size: clamp(2.6rem, 9vh, 5rem);
+    }
+    .st-steps .st-steps-media img {
+      max-height: 32vh;
+    }
+  }
   .st-word {
     animation: st-in 600ms var(--ease-cut) both;
   }

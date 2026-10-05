@@ -8,7 +8,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const c = t(locale);
   const year = 2026;
   return (
-    <footer className="rule-t">
+    <footer className="rule-t pb-24">
       <div className="wrap grid-12 gap-y-10 py-14 md:py-20">
         <div className="col-span-12 md:col-span-5">
           <Wordmark className="text-[2.6rem]" />
