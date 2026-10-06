@@ -88,6 +88,10 @@ const browser = await pw.chromium.launch();
   await page.waitForTimeout(3000);
   const film = await page.evaluate(() => { const v = document.querySelector("[data-chapter='4'] video"); return { src: v?.currentSrc, paused: v?.paused }; });
   ok(Boolean(film.src) && !film.paused, `example film loop plays in view (${film.src?.split("/").pop()})`);
+  await page.getByRole("button", { name: "Ejemplo siguiente" }).click();
+  await page.waitForTimeout(1200);
+  const counter = await page.locator("[aria-roledescription='carousel'] [aria-live]").textContent();
+  ok(/^02/.test(counter.trim()), `examples carousel advances with the arrow (${counter.trim().slice(0, 28)})`);
   await page.close();
 }
 

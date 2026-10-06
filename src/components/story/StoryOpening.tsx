@@ -2,11 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { FilmLoop } from "@/components/FilmLoop";
 
 type Img = { src: string; srcSet?: string; sizes?: string };
+type Sources = { webm: string; mp4: string };
 
 interface Props {
-  image: { wide: Img; tall: Img; alt: string };
+  /** Background montage: poster first (LCP), silent loop after load (FilmLoop rules). */
+  film: { poster: { wide: Img; tall: Img }; sources: { wide: Sources; tall: Sources }; alt: string };
   p1: string;
   p2: string;
   p3a: string;
@@ -25,7 +28,7 @@ interface Props {
  * position (no library). Without JS the three phrases simply stack under the image;
  * with reduced motion the phases switch without transitions.
  */
-export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor, offer, cta }: Props) {
+export function StoryOpening({ film, p1, p2, p3a, p3b, scroll, descriptor, offer, cta }: Props) {
   const ref = useRef<HTMLElement>(null);
   const [phase, setPhase] = useState(0);
   const [started, setStarted] = useState(false);
@@ -60,18 +63,9 @@ export function StoryOpening({ image, p1, p2, p3a, p3b, scroll, descriptor, offe
   return (
     <section ref={ref} className="st-open relative -mt-[var(--header-h)] bg-ink" aria-labelledby="story-title" data-chapter-open>
       <div className="st-open-stage">
-        <picture>
-          <source media="(min-width: 768px)" srcSet={image.wide.srcSet ?? image.wide.src} sizes={image.wide.sizes} />
-          <img
-            src={image.tall.src}
-            srcSet={image.tall.srcSet}
-            sizes={image.tall.sizes}
-            alt={image.alt}
-            fetchPriority="high"
-            decoding="async"
-            className="st-open-img"
-          />
-        </picture>
+        <div className="st-open-img">
+          <FilmLoop poster={film.poster} sources={film.sources} alt={film.alt} className="absolute inset-0" priority />
+        </div>
         {/* the lights go down */}
         <div className="st-open-shade" aria-hidden />
 

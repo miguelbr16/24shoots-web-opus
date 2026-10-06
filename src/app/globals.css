@@ -496,7 +496,30 @@ body {
 @layer components {
   /* Opening: pinned frame, the lights go down as you scroll */
   .st-open {
-    height: 260svh;
+    height: 220svh;
+  }
+  @media (min-width: 768px) {
+    .st-open {
+      height: 260svh;
+    }
+  }
+  /* Method: scroll distance per step (shorter on phones). */
+  .st-steps {
+    height: calc(var(--n, 3) * 62svh + 30svh);
+  }
+  @media (min-width: 768px) {
+    .st-steps {
+      height: calc(var(--n, 3) * 85svh + 40svh);
+    }
+  }
+  /* Horizontal swipers (examples, lines on phones): no visible scrollbar. */
+  .ex-track,
+  .swipe {
+    scrollbar-width: none;
+  }
+  .ex-track::-webkit-scrollbar,
+  .swipe::-webkit-scrollbar {
+    display: none;
   }
   .st-open-stage {
     position: sticky;

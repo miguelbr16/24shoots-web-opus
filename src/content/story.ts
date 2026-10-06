@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n";
  * the method is described generically.
  */
 const es = {
-  chapters: ["El problema", "El método", "Lo que hacemos", "Un ejemplo", "Quién", "Confianza", "Empezar"],
+  chapters: ["El problema", "El método", "Lo que hacemos", "Ejemplos", "Quién", "Confianza", "Empezar"],
   open: {
     p1: "Tu marca ya tiene algo que contar.",
     p2: "Casi nunca falta qué decir. Falta saber cómo y dónde.",
@@ -16,7 +16,7 @@ const es = {
     descriptor: "Estudio de contenido y marketing audiovisual en Valencia. Estrategia, producción y redes con el mismo equipo.",
     scroll: "Desliza",
     offer: "Estrategia, contenido para redes y producción audiovisual para marcas, negocios y personas · Valencia",
-    alt: "Detalle dorado del interior de Oceans Social Club, en Valencia",
+    alt: "Montaje de trabajos recientes: Oceans Social Club, Physem VLC, Aurum Capital Properties, Alex Navarro y eventos corporativos",
   },
   problem: {
     title: "Subir contenido es fácil. Que sirva para algo, no tanto.",
@@ -43,7 +43,12 @@ const es = {
       ],
       shotHead: ["Plano", "Qué grabar", "Montaje"],
       report: ["Dato", "Lectura", "Decisión"],
-      shootAlt: "Sesión de contenido para la clínica Physem VLC",
+      month: "Calendario del mes",
+      pillars: ["Marca", "Producto", "Comunidad", "Agenda"],
+      rec: "REC",
+      kpis: ["Alcance", "Retención", "Guardados"],
+      reportLines: ["El reel de detalle retuvo más que el resto.", "El gancho del primer segundo funciona.", "Repetir el formato la próxima semana."],
+      shootAlt: "Nuestra cámara grabando en un evento: en el monitor se ve el plano",
       calendarAlt: "Ejemplo genérico de calendario mensual de contenido por formatos",
       shotsAlt: "Ejemplo genérico de guion de una pieza, plano a plano",
       reportAlt: "Ejemplo genérico de informe mensual: dato, lectura y decisión",
@@ -58,14 +63,54 @@ const es = {
       { key: "events", name: "Eventos", d: "El día se acaba; el contenido sigue trabajando para ti.", client: "Huhtamaki · 50 aniversario", alt: "Foto de grupo del 50 aniversario de Huhtamaki frente a la planta" },
     ],
   },
-  example: {
-    kicker: "Oceans Social Club · Valencia",
-    title: "Un sitio nuevo necesitaba que Valencia supiera que existía.",
-    body: "Acompañamos a Oceans desde antes de abrir: qué contar, cómo contarlo y con qué imagen. Primero, la expectativa; después, la vida que pasa dentro.",
-    whatTitle: "Qué hacemos con ellos",
-    what: ["Estrategia mensual", "Guiones por pieza", "Sesiones de contenido", "Reels, carruseles y stories", "Informe mensual"],
-    cta: "Verlo en su Instagram",
-    alts: ["Interior de Oceans Social Club: busto dorado iluminado", "Estantería con objetos dorados en Oceans Social Club", "Detalle de un sofá capitoné en Oceans Social Club"],
+  examples: {
+    title: "Así se ve cuando lo hacemos.",
+    prev: "Ejemplo anterior",
+    next: "Ejemplo siguiente",
+    of: "de",
+    whatTitle: "Qué hacemos",
+    items: [
+      {
+        key: "oceans",
+        kicker: "Oceans Social Club · Valencia",
+        title: "Un sitio nuevo necesitaba que Valencia supiera que existía.",
+        body: "Acompañamos a Oceans desde antes de abrir: qué contar, cómo contarlo y con qué imagen. Primero, la expectativa; después, la vida que pasa dentro.",
+        what: ["Estrategia mensual", "Guiones por pieza", "Sesiones de contenido", "Reels, carruseles y stories"],
+        cta: "Verlo en su Instagram",
+        href: "https://www.instagram.com/oceans_socialclub/",
+        alts: ["Interior de Oceans Social Club: busto dorado iluminado", "Estantería con objetos dorados en Oceans Social Club", "Detalle de un sofá capitoné en Oceans Social Club"],
+      },
+      {
+        key: "physem",
+        kicker: "Physem VLC · Clínica deportiva",
+        title: "Una clínica que quería que su trabajo se viera como se hace.",
+        body: "Fotografía y vídeo para sus redes: las instalaciones, el entrenamiento y sus deportistas en el día a día.",
+        what: ["Sesión de fotografía", "Reels de entrenamiento", "Contenido para redes"],
+        cta: "Verlo en su Instagram",
+        href: "https://www.instagram.com/physemvlc/",
+        alts: ["Jugador de Physem VLC golpeando el balón en un entrenamiento", "Balón medicinal en la sala de Physem VLC", "Pies en la línea de salida pintada en el suelo de Physem VLC"],
+      },
+      {
+        key: "aurum",
+        kicker: "Aurum Capital Properties · Inmobiliaria",
+        title: "Una casa se vende mejor si la ves antes de visitarla.",
+        body: "Vídeos de cada propiedad para sus redes: vista aérea con dron, el recorrido por dentro y una persona que la presenta.",
+        what: ["Grabación con dron", "Recorrido presentado", "Reels por propiedad"],
+        cta: "Verlo en su Instagram",
+        href: "https://www.instagram.com/aurumcapitalproperties/",
+        alts: ["Vista aérea con dron de una casa en venta de Aurum Capital", "Casa rodeada de campos de naranjos vista desde el aire", "Fachada de la casa en venta vista con dron"],
+      },
+      {
+        key: "alex",
+        kicker: "Alex Navarro · This is my story",
+        title: "Un golfista joven, contado por él mismo.",
+        body: "Un documental corto sobre su día a día: entrenamiento, competición y lo que cuenta delante de la cámara.",
+        what: ["Entrevista", "Rodaje en el campo y el gimnasio", "Pieza documental"],
+        cta: "Ver el documental",
+        href: "https://www.instagram.com/reel/DXm452MiPu8/",
+        alts: ["Alex Navarro camina con su bolsa de golf por un pasillo de taquillas", "Alex Navarro en pleno swing", "Alex Navarro saliendo de un búnker"],
+      },
+    ],
   },
   who: {
     kicker: "Quién hay detrás",
@@ -95,7 +140,7 @@ const es = {
 type Story = typeof es;
 
 const en: Story = {
-  chapters: ["The problem", "The method", "What we do", "An example", "Who", "Trust", "Get started"],
+  chapters: ["The problem", "The method", "What we do", "Examples", "Who", "Trust", "Get started"],
   open: {
     p1: "Your brand already has something to say.",
     p2: "It rarely lacks something to say. It lacks knowing how, and where.",
@@ -104,7 +149,7 @@ const en: Story = {
     descriptor: "Content and audiovisual marketing studio in Valencia. Strategy, production and social, by the same team.",
     scroll: "Scroll",
     offer: "Strategy, social content and audiovisual production for brands, businesses and people · Valencia",
-    alt: "Gold detail inside Oceans Social Club, Valencia",
+    alt: "Montage of recent work: Oceans Social Club, Physem VLC, Aurum Capital Properties, Alex Navarro and corporate events",
   },
   problem: {
     title: "Posting is easy. Making it count is not.",
@@ -131,7 +176,12 @@ const en: Story = {
       ],
       shotHead: ["Shot", "What to film", "Edit"],
       report: ["Data", "Reading", "Decision"],
-      shootAlt: "Content session for the Physem VLC clinic",
+      month: "Monthly calendar",
+      pillars: ["Brand", "Product", "Community", "What’s on"],
+      rec: "REC",
+      kpis: ["Reach", "Retention", "Saves"],
+      reportLines: ["The detail reel held attention longer than the rest.", "The first-second hook works.", "Repeat the format next week."],
+      shootAlt: "Our camera filming at an event: the monitor shows the shot",
       calendarAlt: "Generic example of a monthly content calendar by format",
       shotsAlt: "Generic example of a shot-by-shot script for one piece",
       reportAlt: "Generic example of a monthly report: data, reading and decision",
@@ -146,14 +196,54 @@ const en: Story = {
       { key: "events", name: "Events", d: "The day ends; the content keeps working for you.", client: "Huhtamaki · 50th anniversary", alt: "Group photo of Huhtamaki’s 50th anniversary in front of the site" },
     ],
   },
-  example: {
-    kicker: "Oceans Social Club · Valencia",
-    title: "A new place needed Valencia to know it existed.",
-    body: "We’ve been with Oceans since before it opened: what to say, how to say it and with which look. First, the anticipation; then, the life inside.",
-    whatTitle: "What we do with them",
-    what: ["Monthly strategy", "Scripts for every piece", "Content sessions", "Reels, carousels and stories", "Monthly report"],
-    cta: "See it on their Instagram",
-    alts: ["Inside Oceans Social Club: a lit gold bust", "Shelf with gold objects at Oceans Social Club", "Detail of a tufted sofa at Oceans Social Club"],
+  examples: {
+    title: "This is what it looks like.",
+    prev: "Previous example",
+    next: "Next example",
+    of: "of",
+    whatTitle: "What we do",
+    items: [
+      {
+        key: "oceans",
+        kicker: "Oceans Social Club · Valencia",
+        title: "A new place needed Valencia to know it existed.",
+        body: "We’ve been with Oceans since before it opened: what to say, how to say it and with which look. First, the anticipation; then, the life inside.",
+        what: ["Monthly strategy", "Scripts for every piece", "Content sessions", "Reels, carousels and stories"],
+        cta: "See it on their Instagram",
+        href: "https://www.instagram.com/oceans_socialclub/",
+        alts: ["Inside Oceans Social Club: a lit gold bust", "Shelf with gold objects at Oceans Social Club", "Detail of a tufted sofa at Oceans Social Club"],
+      },
+      {
+        key: "physem",
+        kicker: "Physem VLC · Sports clinic",
+        title: "A clinic that wanted its work to look the way it’s done.",
+        body: "Photo and video for its social channels: the facilities, the training and its athletes day to day.",
+        what: ["Photo session", "Training reels", "Social content"],
+        cta: "See it on their Instagram",
+        href: "https://www.instagram.com/physemvlc/",
+        alts: ["A Physem VLC player striking the ball in training", "Medicine ball in the Physem VLC gym", "Feet on the start line painted on the Physem VLC floor"],
+      },
+      {
+        key: "aurum",
+        kicker: "Aurum Capital Properties · Real estate",
+        title: "A house sells better when you see it before visiting.",
+        body: "Videos of every property for their social channels: drone views, the walk-through and a person presenting it.",
+        what: ["Drone filming", "Presented walk-through", "Reels per property"],
+        cta: "See it on their Instagram",
+        href: "https://www.instagram.com/aurumcapitalproperties/",
+        alts: ["Drone view of a house for sale by Aurum Capital", "House surrounded by orange groves seen from the air", "Facade of the house for sale seen by drone"],
+      },
+      {
+        key: "alex",
+        kicker: "Alex Navarro · This is my story",
+        title: "A young golfer, in his own words.",
+        body: "A short documentary about his day to day: training, competing and what he says in front of the camera.",
+        what: ["Interview", "Filming on the course and in the gym", "Documentary piece"],
+        cta: "Watch the documentary",
+        href: "https://www.instagram.com/reel/DXm452MiPu8/",
+        alts: ["Alex Navarro walks with his golf bag down a locker-room corridor", "Alex Navarro mid-swing", "Alex Navarro playing out of a bunker"],
+      },
+    ],
   },
   who: {
     kicker: "Who’s behind it",
@@ -184,4 +274,3 @@ export const story = (locale: Locale): Story => (locale === "en" ? en : es);
 
 /** Clients shown in the trust list that don't have a case page yet. */
 export const newClients = ["Oceans Social Club", "Physem VLC", "Aurum Capital Properties"];
-export const oceansInstagram = "https://www.instagram.com/oceans_socialclub/";

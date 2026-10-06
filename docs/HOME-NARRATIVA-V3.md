@@ -186,3 +186,20 @@ Caso protagonista: **Oceans Social Club** si llegan los originales y el OK de te
 3. Cita de Javier y foto.
 4. Slugs nuevos de servicios: `negocios` y `eventos`, con redirección.
 5. Imágenes del método: diseñamos nosotros ejemplos genéricos, o tenéis fotos propias de un calendario o una sesión.
+
+---
+
+## Cambios tras la primera revisión (06-10-2026)
+
+- **Apertura:** en lugar de una foto fija, un montaje de cortes secos con trabajos reales: Oceans, Physem, Aurum, Alex Navarro, cámara en rodaje y eventos. En escritorio son tres paneles verticales; en móvil, uno a pantalla completa. Las frases son las mismas. Sigue abierta a cambios.
+- **Método:**
+  - Pensar: calendario completo del mes, con formatos por día.
+  - Preparar: storyboard con cuatro fotogramas reales de un reel de Oceans y su duración.
+  - Grabar: nuestra cámara en rodaje (Imperia), con el monitor y el indicador REC.
+  - Medir: tres indicadores con tendencia (sin cifras) y frases de ejemplo para dato, lectura y decisión.
+- **Ejemplos:** carrusel con flechas y deslizamiento. Oceans, Physem, Aurum y Alex Navarro, cada uno con un vídeo y dos fotos.
+- **Móvil, la misma historia con menos texto:**
+  - Las cuatro líneas se deslizan en horizontal.
+  - Se ocultan los textos secundarios: el párrafo del problema, el texto bajo la cita y la nota de agencias.
+  - Las secciones fijas recorren menos al hacer scroll.
+  - La lista de clientes es más compacta.

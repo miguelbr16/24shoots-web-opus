@@ -4,12 +4,13 @@ import { Lines } from "@/components/story/Lines";
 import { StoryOpening } from "@/components/story/StoryOpening";
 import { StorySteps } from "@/components/story/StorySteps";
 import { ChapterRail } from "@/components/story/ChapterRail";
-import { CalendarArt, ReportArt, ShotsArt } from "@/components/story/MethodArt";
+import { CalendarArt, ReportArt, ShootArt, ShotsArt } from "@/components/story/MethodArt";
+import { ExamplesCarousel } from "@/components/story/ExamplesCarousel";
 import { cases, caseMedia } from "@/content/cases";
 import { t } from "@/content/copy";
-import { newClients, oceansInstagram, story } from "@/content/story";
+import { newClients, story } from "@/content/story";
 import { href, serviceSlugs, type Locale } from "@/lib/i18n";
-import { img } from "@/lib/media";
+import { img, preloadPosters } from "@/lib/media";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -27,8 +28,10 @@ const M = "/media/home";
 
 /**
  * Home as a story about the client's brand, ending in a decision:
- * 0 opening → 1 the problem → 2 the method (we guide you) → 3 four lines of work
- * → 4 one example → 5 who is behind it → 6 trust → 7 how to start (packs + contact).
+ * 0 opening (montage of real work) → 1 the problem → 2 the method (we guide you)
+ * → 3 four lines of work → 4 examples (carousel) → 5 who is behind it → 6 trust
+ * → 7 how to start (packs + contact). On phones the same story is shorter: lines and
+ * examples swipe sideways, secondary copy is hidden and pinned sections scroll less.
  * Media: client work published on Instagram (scripts/media/home.mjs) and the event films.
  */
 export function Home({ locale }: { locale: Locale }) {
@@ -37,20 +40,21 @@ export function Home({ locale }: { locale: Locale }) {
   const contact = href.page(locale, "contact");
   const huhM = caseMedia("huhtamaki-50");
 
-  const openImg = {
-    wide: img(`${M}/open-wide.jpg`, 2400, 1350, "100vw", 72),
-    tall: img(`${M}/open-tall.jpg`, 1200, 1600, "100vw", 72),
+  const film = {
+    poster: { wide: img(`${M}/hero-wide.jpg`, 1920, 1080, "100vw", 70), tall: img(`${M}/hero-tall.jpg`, 720, 1280, "100vw", 70) },
+    sources: { wide: { webm: `${M}/hero-wide.webm`, mp4: `${M}/hero-wide.mp4` }, tall: { webm: `${M}/hero-tall.webm`, mp4: `${M}/hero-tall.mp4` } },
     alt: s.open.alt,
   };
+  preloadPosters(film.poster);
 
   const art = s.method.art;
   const half = "(min-width: 768px) 50vw, 100vw";
-  const shoot = img(`${M}/method-shoot.jpg`, 1200, 1600, half);
+  const shoot = img(`${M}/method-camera.jpg`, 1200, 900, half);
+  const board = [1, 2, 3, 4].map((n) => img(`${M}/board-${n}.jpg`, 360, 640, "(min-width: 768px) 10vw, 22vw"));
   const media = [
     <CalendarArt key="c" art={art} label={art.calendarAlt} />,
-    <ShotsArt key="s" art={art} label={art.shotsAlt} />,
-    // eslint-disable-next-line @next/next/no-img-element -- srcset from getImageProps
-    <img key="g" src={shoot.src} srcSet={shoot.srcSet} sizes={shoot.sizes} alt={art.shootAlt} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover object-[50%_40%]" />,
+    <ShotsArt key="s" art={art} label={art.shotsAlt} frames={board} />,
+    <ShootArt key="g" art={art} image={shoot} alt={art.shootAlt} />,
     <ReportArt key="r" art={art} label={art.reportAlt} />,
   ];
   const steps = s.method.items.map((it, n) => ({ ...it, media: media[n] }));
@@ -69,23 +73,40 @@ export function Home({ locale }: { locale: Locale }) {
     events: href.service(locale, serviceSlugs.events[locale]),
   } as const;
 
-  const third = "(min-width: 768px) 20vw, 33vw";
-  const loopPoster = img(`${M}/oceans-loop.jpg`, 720, 1280, third);
-  const oceansLoop = {
-    poster: { wide: loopPoster, tall: loopPoster },
-    sources: {
-      wide: { webm: `${M}/oceans-loop.webm`, mp4: `${M}/oceans-loop.mp4` },
-      tall: { webm: `${M}/oceans-loop.webm`, mp4: `${M}/oceans-loop.mp4` },
-    },
+  const third = "(min-width: 768px) 18vw, 31vw";
+  const exMedia: Record<string, { loop: string; pics: string[] }> = {
+    oceans: { loop: "oceans-reel", pics: ["oceans-shelf", "oceans-detail"] },
+    physem: { loop: "physem-loop", pics: ["physem-1", "physem-2"] },
+    aurum: { loop: "aurum-loop", pics: ["aurum-1", "aurum-2"] },
+    alex: { loop: "alex-loop", pics: ["alex-1", "alex-2"] },
   };
-  const oceansPics = [img(`${M}/oceans-shelf.jpg`, 1200, 1600, third), img(`${M}/oceans-detail.jpg`, 1200, 1600, third)];
+  const slides = s.examples.items.map((e) => {
+    const m = exMedia[e.key];
+    const poster = img(`${M}/${m.loop}.jpg`, 720, 1280, third);
+    const src = { webm: `${M}/${m.loop}.webm`, mp4: `${M}/${m.loop}.mp4` };
+    return {
+      ...e,
+      media: (
+        <div className="grid grid-cols-3 gap-2 md:gap-3">
+          <div className="relative aspect-[9/16] overflow-hidden bg-ink-2">
+            <FilmLoop poster={{ wide: poster, tall: poster }} sources={{ wide: src, tall: src }} className="absolute inset-0" alt={e.alts[0]} />
+          </div>
+          {m.pics.map((pic, i) => {
+            const p = img(`${M}/${pic}.jpg`, pic.startsWith("oceans") || pic.startsWith("physem") ? 1200 : 720, pic.startsWith("oceans") || pic.startsWith("physem") ? 1600 : 1280, third);
+            // eslint-disable-next-line @next/next/no-img-element -- srcset from getImageProps
+            return <img key={pic} src={p.src} srcSet={p.srcSet} sizes={p.sizes} alt={e.alts[i + 1]} loading="lazy" decoding="async" className="aspect-[9/16] w-full object-cover" />;
+          })}
+        </div>
+      ),
+    };
+  });
 
   return (
     <>
       <ChapterRail chapters={s.chapters} />
 
       <StoryOpening
-        image={openImg}
+        film={film}
         p1={s.open.p1}
         p2={s.open.p2}
         p3a={s.open.p3a}
@@ -97,14 +118,14 @@ export function Home({ locale }: { locale: Locale }) {
       />
 
       {/* 01 — the problem */}
-      <section className="py-24 md:py-36" data-chapter="1" aria-labelledby="problem-title">
+      <section className="py-20 md:py-36" data-chapter="1" aria-labelledby="problem-title">
         <div className="wrap grid-12 gap-y-10">
           <p className="t-mono col-span-12 text-ash md:col-span-3">01 — {s.chapters[0]}</p>
           <div className="col-span-12 md:col-span-9">
             <Lines as="h2" id="problem-title" className="t-h1 max-w-[20ch]">
               {[s.problem.title]}
             </Lines>
-            <p className="t-lead mt-8 max-w-[48ch] text-bone/80">{s.problem.body}</p>
+            <p className="t-lead mt-8 hidden max-w-[48ch] text-bone/80 md:block">{s.problem.body}</p>
             <Lines as="ul" className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-[clamp(1.2rem,1rem+1vw,1.8rem)] text-ash" stagger={120}>
               {s.problem.list.map((u) => (
                 <span key={u} className="inline-flex items-center gap-3 line-through decoration-rec decoration-2">
@@ -120,7 +141,7 @@ export function Home({ locale }: { locale: Locale }) {
       <StorySteps title={s.method.title} steps={steps} kicker={`02 — ${s.chapters[1]}`} />
 
       {/* 03 — four lines of work */}
-      <section className="rule-t py-24 md:py-32" data-chapter="3" aria-labelledby="lines-title">
+      <section className="rule-t py-20 md:py-32" data-chapter="3" aria-labelledby="lines-title">
         <div className="wrap">
           <div className="grid-12 gap-y-6">
             <p className="t-mono col-span-12 text-ash md:col-span-3">03 — {s.chapters[2]}</p>
@@ -129,12 +150,12 @@ export function Home({ locale }: { locale: Locale }) {
             </Lines>
           </div>
           {/* Starts at the content column so the chapter marker (bottom-left) never covers a card. */}
-          <div className="grid-12 mt-14">
-            <ul className="col-span-12 grid gap-x-4 gap-y-12 md:col-span-9 md:col-start-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid-12 mt-10 md:mt-14">
+            <ul className="swipe col-span-12 -mx-[var(--gutter)] flex snap-x snap-mandatory gap-3 overflow-x-auto px-[var(--gutter)] md:col-span-9 md:col-start-4 md:mx-0 md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-12 md:overflow-visible md:px-0 lg:grid-cols-4">
               {s.lines.items.map((l, n) => {
                 const im = lineImg[l.key as keyof typeof lineImg];
                 return (
-                  <li key={l.key}>
+                  <li key={l.key} className="w-[72%] shrink-0 snap-start md:w-auto">
                     <Link href={lineHref[l.key as keyof typeof lineHref]} className="group block" data-track="cta" data-cta={`line-${l.key}`} data-location="home-lines">
                       <span className="block aspect-[4/5] overflow-hidden bg-ink-2">
                         {/* eslint-disable-next-line @next/next/no-img-element -- srcset from getImageProps */}
@@ -155,7 +176,7 @@ export function Home({ locale }: { locale: Locale }) {
                           →
                         </span>
                       </span>
-                      <span className="mt-2 block max-w-[36ch] text-bone/80">{l.d}</span>
+                      <span className="mt-2 block max-w-[36ch] text-[0.95rem] text-bone/80 md:text-base">{l.d}</span>
                       <span className="t-mono mt-3 block text-[0.75rem] text-ash">{l.client}</span>
                     </Link>
                   </li>
@@ -166,49 +187,23 @@ export function Home({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* 04 — one example: a brand we work with every month */}
-      <section className="rule-t py-24 md:py-36" data-chapter="4" aria-labelledby="example-title">
-        <div className="wrap grid-12 gap-y-10">
+      {/* 04 — examples: one client at a time, swipe or arrows */}
+      <section className="rule-t py-20 md:py-32" data-chapter="4" aria-labelledby="examples-title">
+        <div className="wrap grid-12 gap-y-8">
           <p className="t-mono col-span-12 text-ash md:col-span-3">04 — {s.chapters[3]}</p>
           <div className="col-span-12 md:col-span-9">
-            <p className="t-mono text-ash">{s.example.kicker}</p>
-            <Lines as="h2" id="example-title" className="t-h1 mt-4 max-w-[20ch]">
-              {[s.example.title]}
+            <Lines as="h2" id="examples-title" className="t-h1 max-w-[18ch]">
+              {[s.examples.title]}
             </Lines>
-            <p className="t-lead mt-8 max-w-[46ch] text-bone/80">{s.example.body}</p>
-          </div>
-          <div className="col-span-12 grid grid-cols-3 gap-2 md:col-start-4 md:col-span-9 md:gap-3">
-            <div className="relative aspect-[9/16] overflow-hidden bg-ink-2">
-              <FilmLoop {...oceansLoop} className="absolute inset-0" alt={s.example.alts[0]} />
+            <div className="mt-10 md:mt-14">
+              <ExamplesCarousel slides={slides} labels={{ prev: s.examples.prev, next: s.examples.next, of: s.examples.of, whatTitle: s.examples.whatTitle, region: s.chapters[3] }} />
             </div>
-            {oceansPics.map((p, i) => (
-              // eslint-disable-next-line @next/next/no-img-element -- srcset from getImageProps
-              <img key={p.src} src={p.src} srcSet={p.srcSet} sizes={p.sizes} alt={s.example.alts[i + 1]} loading="lazy" decoding="async" className="aspect-[9/16] w-full object-cover" />
-            ))}
-          </div>
-          <div className="col-span-12 grid gap-8 md:col-start-4 md:col-span-9 md:grid-cols-2">
-            <div>
-              <p className="t-mono text-ash">{s.example.whatTitle}</p>
-              <Lines as="ul" className="mt-4 space-y-1 text-[clamp(1.1rem,1rem+0.5vw,1.4rem)]" stagger={110}>
-                {s.example.what.map((o, n) => (
-                  <span key={o} className="flex gap-4">
-                    <span className="t-mono pt-1.5 text-ash">{pad(n + 1)}</span>
-                    {o}
-                  </span>
-                ))}
-              </Lines>
-            </div>
-            <p className="self-end md:text-right">
-              <a href={oceansInstagram} target="_blank" rel="noopener noreferrer" className="link text-bone" data-track="cta" data-cta="example-instagram" data-location="home-example">
-                {s.example.cta} ↗
-              </a>
-            </p>
           </div>
         </div>
       </section>
 
       {/* 05 — who is behind it */}
-      <section className="rule-t py-24 md:py-36" data-chapter="5" aria-labelledby="who-title">
+      <section className="rule-t py-20 md:py-36" data-chapter="5" aria-labelledby="who-title">
         <div className="wrap grid-12 gap-y-10">
           <p className="t-mono col-span-12 text-ash md:col-span-3">05 — {s.chapters[4]}</p>
           <figure className="col-span-12 md:col-span-9">
@@ -216,7 +211,7 @@ export function Home({ locale }: { locale: Locale }) {
               {s.who.kicker}
             </h2>
             <blockquote>
-              <Lines as="p" className="t-h1 max-w-[24ch]">
+              <Lines as="p" className="t-h1 max-w-[24ch] !text-[clamp(2rem,1.2rem+4.4vw,6.5rem)]">
                 {[`«${s.who.quote}»`]}
               </Lines>
             </blockquote>
@@ -225,7 +220,7 @@ export function Home({ locale }: { locale: Locale }) {
               <span className="font-medium text-bone">{s.who.name}</span>
               <span className="t-mono text-ash">{s.who.role}</span>
             </figcaption>
-            <p className="t-lead mt-10 max-w-[46ch] text-bone/80">{s.who.body}</p>
+            <p className="t-lead mt-10 hidden max-w-[46ch] text-bone/80 md:block">{s.who.body}</p>
             <p className="mt-8">
               <Link href={href.page(locale, "studio")} className="link text-bone" data-track="cta" data-cta="studio" data-location="home-who">
                 {s.who.cta} →
@@ -236,7 +231,7 @@ export function Home({ locale }: { locale: Locale }) {
       </section>
 
       {/* 06 — trust */}
-      <section className="rule-t py-24 md:py-32" data-chapter="6" aria-labelledby="trust-title">
+      <section className="rule-t py-20 md:py-32" data-chapter="6" aria-labelledby="trust-title">
         <div className="wrap grid-12 gap-y-10">
           <p className="t-mono col-span-12 text-ash md:col-span-3">06 — {s.chapters[5]}</p>
           <div className="col-span-12 md:col-span-9">
@@ -246,7 +241,7 @@ export function Home({ locale }: { locale: Locale }) {
             <Lines as="ul" className="mt-8" stagger={90}>
               {[
                 ...newClients.map((c) => (
-                  <span key={c} className="t-credit block py-1 text-[clamp(2rem,1rem+4.5vw,5rem)]">
+                  <span key={c} className="t-credit block py-0.5 text-[clamp(1.6rem,0.8rem+4.5vw,5rem)] md:py-1">
                     {c}
                   </span>
                 )),
@@ -254,7 +249,7 @@ export function Home({ locale }: { locale: Locale }) {
                   <Link
                     key={k.slug}
                     href={href.case(locale, k.slug)}
-                    className="t-credit block py-1 text-[clamp(2rem,1rem+4.5vw,5rem)] transition-colors hover:text-rec"
+                    className="t-credit block py-0.5 text-[clamp(1.6rem,0.8rem+4.5vw,5rem)] md:py-1 transition-colors hover:text-rec"
                     data-track="case_open"
                     data-slug={k.slug}
                     data-from="home-trust"
@@ -264,7 +259,7 @@ export function Home({ locale }: { locale: Locale }) {
                 )),
               ]}
             </Lines>
-            <p className="mt-8 max-w-[52ch] text-ash">{copy.clients.agencies}</p>
+            <p className="mt-8 hidden max-w-[52ch] text-ash md:block">{copy.clients.agencies}</p>
           </div>
         </div>
       </section>

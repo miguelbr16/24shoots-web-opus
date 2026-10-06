@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 interface Step {
   k: string;
@@ -66,7 +66,7 @@ export function StorySteps({ title, steps, kicker }: { title: string; steps: Ste
 
   const s = steps[i];
   return (
-    <section ref={ref} className="st-steps rule-t" style={{ height: `${steps.length * 85 + 40}svh` }} data-chapter="2" aria-labelledby="steps-title">
+    <section ref={ref} className="st-steps rule-t" style={{ "--n": steps.length } as CSSProperties} data-chapter="2" aria-labelledby="steps-title">
       <div className="sticky top-0 flex h-[100svh] flex-col justify-center overflow-hidden pt-[var(--header-h)]">
         <div className="wrap grid-12 items-center gap-y-6">
           <div className="col-span-12 md:col-span-6">
