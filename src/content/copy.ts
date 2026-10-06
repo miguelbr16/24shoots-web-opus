@@ -3,9 +3,9 @@ import type { Locale } from "@/lib/i18n";
 /** Interface and page copy. PENDING: final approval of wording by 24SHOOTS. */
 const es = {
   meta: {
-    homeTitle: "24SHOOTS — Estudio creativo de contenido y comunicación visual · Valencia",
+    homeTitle: "24SHOOTS — Estrategia y contenido audiovisual para marcas · Valencia",
     homeDescription:
-      "Estudio creativo de contenido y comunicación visual para marcas en Valencia. Vídeo y fotografía para eventos corporativos, contenido de marca y campañas.",
+      "Estudio de contenido en Valencia: estrategia, vídeo, foto y redes para marcas, negocios y personas. Lo pensamos, lo grabamos y lo hacemos funcionar.",
     orgDescription:
       "Estudio creativo de contenido y comunicación visual con base en Valencia. Vídeo y fotografía para eventos corporativos, contenido de marca y campañas.",
   },
@@ -163,9 +163,9 @@ type Copy = typeof es;
 
 const en: Copy = {
   meta: {
-    homeTitle: "24SHOOTS — Creative studio for content and visual communication · Valencia",
+    homeTitle: "24SHOOTS — Strategy and audiovisual content for brands · Valencia",
     homeDescription:
-      "Creative studio for content and visual communication, based in Valencia. Film and photography for corporate events, brand content and campaigns.",
+      "Content studio in Valencia: strategy, film, photo and social media for brands, businesses and people. We think it, we shoot it, we make it work.",
     orgDescription:
       "Creative studio for content and visual communication based in Valencia, Spain. Film and photography for corporate events, brand content and campaigns.",
   },

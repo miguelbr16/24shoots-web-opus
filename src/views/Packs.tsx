@@ -38,7 +38,7 @@ export function PacksView({ locale }: { locale: Locale }) {
       </header>
       <ol className="wrap pb-12 md:pb-20">
         {packs.map((p) => (
-          <li key={p.slug} className="grid-12 rule-t gap-y-5 py-8 md:py-12">
+          <li key={p.slug} id={p.slug} className="grid-12 rule-t gap-y-5 py-8 md:py-12">
             <p className="t-credit col-span-2 text-[clamp(2.4rem,1rem+3vw,4.5rem)] text-rec md:col-span-1">{p.index}</p>
             <div className="col-span-10 md:col-span-5">
               <h2 className="t-credit text-[clamp(2.2rem,1rem+3.2vw,4.4rem)]">{p.name[locale]}</h2>

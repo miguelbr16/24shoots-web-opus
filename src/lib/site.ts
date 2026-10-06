@@ -17,8 +17,8 @@ export const site = {
     instagramHandle: "@24shootsmedia",
   },
   legal: {
-    /** taxId confirmed by 24SHOOTS (06-10-2026); it is a personal NIF, so the holder is a natural person. PENDING: holder name and fiscal address. */
-    holder: null as string | null,
+    /** Holder and taxId confirmed by 24SHOOTS (06-10-2026). PENDING: fiscal address. */
+    holder: "Javier Renovell" as string | null,
     taxId: "26761401G",
     address: null as string | null,
     updated: { es: "septiembre de 2026", en: "September 2026" },

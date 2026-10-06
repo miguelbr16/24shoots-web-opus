@@ -20,8 +20,8 @@ interface Props {
 }
 
 /**
- * Chapter 0 — the opening. A pinned frame: "An event lasts a day." → the lights go down
- * as you scroll → "An event ends. The content lives on." Progress is read from scroll
+ * Chapter 0 — the opening. A pinned frame with three phrases that change as you scroll
+ * while the image dims (copy in src/content/story.ts). Progress is read from scroll
  * position (no library). Without JS the three phrases simply stack under the image;
  * with reduced motion the phases switch without transitions.
  */

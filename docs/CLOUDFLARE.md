@@ -1,6 +1,6 @@
 # 24SHOOTS en Cloudflare (Workers + R2) — guía de despliegue
 
-Estado (05-10-2026): **preview desplegada** en https://24shoots-web.miguelborrasroig.workers.dev
+Estado (06-10-2026): **preview desplegada** (Home V3) en https://24shoots-web.miguelborrasroig.workers.dev
 (`SITE_ENV=preview` → `noindex` + `robots: Disallow: /`). Desplegado desde la sesión de Claude Code con
 `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` del entorno.
 
@@ -73,3 +73,8 @@ El código ya no depende de Vercel:
 - `npm run cf:preview` levanta el sitio en `http://localhost:8787` con `workerd`. El paso de *populate cache* de OpenNext (incluido en `preview` y `deploy`) es el que publica las páginas prerenderizadas: **no basta con `wrangler dev` a secas**.
 - La reescritura «español en la raíz» (`next.config.ts`) está escrita como `/:first/:rest*` porque el router de OpenNext no recompone un parámetro con barras. Es equivalente en Vercel.
 - Vercel queda como entorno de previews de la rama; el plan Hobby no permite uso comercial.
+
+
+## Nota: indexación
+
+Las páginas se prerenderizan al compilar, así que `SITE_ENV` tiene que estar definido **en el build**, no solo en `wrangler.jsonc`. `npm run cf:build` usa `SITE_ENV=preview` por defecto (noindex + `Disallow: /`). Para producción: `SITE_ENV=production npm run cf:deploy`, solo con confirmación explícita.

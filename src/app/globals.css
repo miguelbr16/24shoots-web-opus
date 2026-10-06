@@ -505,7 +505,8 @@ body {
     min-height: 34rem;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .st-open-img {
     position: absolute;
@@ -523,19 +524,20 @@ body {
     background: linear-gradient(to top, rgba(14, 13, 12, 0.92), rgba(14, 13, 12, 0.25) 60%),
       rgba(14, 13, 12, calc(min(1, var(--p, 0) * 2.2) * 0.86));
   }
+  /* The phrases sit directly above the offer bar (both in flow), whatever its height. */
   .st-stack {
     position: relative;
-    padding-bottom: clamp(9.5rem, 18svh, 11rem);
+    width: 100%;
+    padding-bottom: 1.75rem;
   }
   @media (min-width: 768px) {
     .st-stack {
-      padding-bottom: clamp(7rem, 14svh, 9rem);
+      padding-bottom: 2.5rem;
     }
   }
   .st-offer {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
+    position: relative;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

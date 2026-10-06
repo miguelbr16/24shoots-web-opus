@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "media": "node scripts/media/build.mjs",
     "qa": "node scripts/qa/run.mjs",
-    "cf:build": "opennextjs-cloudflare build && node scripts/cloudflare/post-build.mjs",
+    "cf:build": "SITE_ENV=${SITE_ENV:-preview} opennextjs-cloudflare build && node scripts/cloudflare/post-build.mjs",
     "cf:preview": "npm run cf:build && opennextjs-cloudflare preview",
     "cf:deploy": "npm run cf:build && opennextjs-cloudflare deploy",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"

@@ -2,7 +2,7 @@
 
 Actualizado: 06-10-2026.
 
-**Confirmado por 24SHOOTS (06-10-2026):** teléfono/WhatsApp `+34 661 101 863` y NIF `26761401G`.
+**Confirmado por 24SHOOTS (06-10-2026):** teléfono/WhatsApp `+34 661 101 863`, NIF `26761401G` y titular Javier Renovell.
 
 **Diseño:** la web es una versión de trabajo, no el diseño definitivo. La Home (sobre todo la apertura) puede seguir cambiando según avancemos; cada cambio pasa por la preview antes de darse por bueno.
 
@@ -18,7 +18,7 @@ Nada de lo que falta está inventado en la web: donde falta un dato, la web no l
 | 1 | Prototipos A/D/E (`/lab/*`, noindex) | ✅ Hecho, descartados como Home |
 | 2 | Home contada como historia + build y preview en Cloudflare Workers | ✅ Hecho ([preview](https://24shoots-web.miguelborrasroig.workers.dev), noindex) |
 | 2b | Correcciones de auditoría + botón de WhatsApp con mensajes predeterminados | ✅ Hecho |
-| **3** | **Reposicionamiento: de "productora de eventos" a "la marca del cliente"** | **⏳ Narrativa entregada (`docs/HOME-NARRATIVA-V3.md`), pendiente de aprobar. Plan completo: `docs/PLAN-V3.md`** |
+| **3** | **Reposicionamiento: de "productora de eventos" a "la marca del cliente"** | **✅ Narrativa (`docs/HOME-NARRATIVA-V3.md`) implementada en la Home de la preview como versión de trabajo; se irá ajustando. Plan: `docs/PLAN-V3.md`** |
 | 4 | Nuevos casos y material (pipeline de medios) | Pendiente de material y permisos |
 | 5 | Pestaña "Diario": tablón conectado a Instagram | Planificado, a la espera del cliente |
 | 6 | Paso a producción (R2, Resend, analítica, legal, dominio, indexación) | Bloqueado por datos y accesos del cliente |
@@ -74,7 +74,7 @@ Plan:
 |---|---|---|
 | 1 | **Activar R2** en el panel de Cloudflare (error 10042) | Películas completas (ahora dan 404) e imágenes del Diario |
 | 2 | **Cuenta de Resend** con `24shoots.es` verificado (SPF/DKIM) y la API key como secreto del Worker | Que el formulario envíe a `info@24shoots.es` |
-| 3 | **Datos legales:** nombre completo del titular (el NIF `26761401G` ya está confirmado y es de persona física) y domicilio fiscal | Aviso legal y privacidad |
+| 3 | **Datos legales:** domicilio fiscal (titular y NIF ya confirmados) | Aviso legal y privacidad |
 | 4 | **Revisión de los textos legales** por su asesoría | Cumplimiento |
 | 5 | **Cuenta de Umami Cloud** (gratis) y el ID del sitio como variable de entorno | Medir visitas y conversiones |
 | 6 | **Confirmación para el dominio** `24shoots.es`: pasarlo a Cloudflare (DNS) y quitar el noindex | Publicar. Solo con confirmación explícita |

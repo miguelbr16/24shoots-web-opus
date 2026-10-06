@@ -16,8 +16,8 @@ const copy = {
     title: "¿Sobre qué quieres hablar?",
     note: "Se abre WhatsApp con el mensaje escrito; puedes cambiarlo antes de enviarlo.",
     options: [
-      { id: "event", label: "Tengo un evento", text: "Hola, 24SHOOTS. Tengo un evento y me gustaría pedir presupuesto para cubrirlo en vídeo y foto." },
-      { id: "packs", label: "Contenido para mi marca", text: "Hola, 24SHOOTS. Me interesa contenido para mi marca (packs mensuales). ¿Me contáis cómo funciona?" },
+      { id: "brand", label: "Quiero contenido para mi marca", text: "Hola, 24SHOOTS. Me interesa que llevéis el contenido de mi marca. ¿Me contáis cómo trabajáis?" },
+      { id: "shoot", label: "Tengo un evento o rodaje", text: "Hola, 24SHOOTS. Tengo un evento o rodaje y me gustaría pedir presupuesto." },
       { id: "other", label: "Otra consulta", text: "Hola, 24SHOOTS. Quería consultaros un proyecto." },
     ],
   },
@@ -27,8 +27,8 @@ const copy = {
     title: "What would you like to talk about?",
     note: "WhatsApp opens with the message written; you can edit it before sending.",
     options: [
-      { id: "event", label: "I have an event", text: "Hi 24SHOOTS, I have an event coming up and would like a quote to cover it on film and photo." },
-      { id: "packs", label: "Content for my brand", text: "Hi 24SHOOTS, I’m interested in content for my brand (monthly packs). How does it work?" },
+      { id: "brand", label: "Content for my brand", text: "Hi 24SHOOTS, I’d like you to handle my brand’s content. How do you work?" },
+      { id: "shoot", label: "I have an event or shoot", text: "Hi 24SHOOTS, I have an event or shoot and would like a quote." },
       { id: "other", label: "Something else", text: "Hi 24SHOOTS, I’d like to ask you about a project." },
     ],
   },
