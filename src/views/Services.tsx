@@ -60,12 +60,15 @@ export function ServiceView({ locale, s }: { locale: Locale; s: Service }) {
           ]),
         ]}
       />
-      <header className="wrap pt-10 pb-12 md:pt-16 md:pb-20">
-        <nav aria-label={locale === "es" ? "Migas de pan" : "Breadcrumb"} className="t-mono text-ash">
-          <Link className="hover:text-bone" href={href.page(locale, "services")}>
-            {c.nav.services}
-          </Link>{" "}
-          / <span aria-current="page">{s.name[locale]}</span>
+      <header className="wrap pt-8 pb-12 md:pt-12 md:pb-20">
+        <nav aria-label={locale === "es" ? "Migas de pan" : "Breadcrumb"} className="t-mono flex flex-wrap items-center gap-x-4 gap-y-2 text-ash">
+          {/* Back to the three blocks: the obvious way out of a service page. */}
+          <Link className="back-pill" href={href.page(locale, "services")} data-track="nav" data-nav="service-back">
+            <span aria-hidden>←</span> {locale === "es" ? "Volver a servicios" : "Back to services"}
+          </Link>
+          <span>
+            {c.nav.services} / <span aria-current="page">{s.name[locale]}</span>
+          </span>
         </nav>
         <div className="grid-12 mt-8 gap-y-8">
           <p className="t-mono col-span-12 text-ash md:col-span-1">{s.index}</p>
@@ -162,6 +165,11 @@ export function ServiceView({ locale, s }: { locale: Locale; s: Service }) {
             </li>
           ))}
         </ul>
+        <div className="wrap rule-t py-6">
+          <Link className="back-pill t-mono" href={href.page(locale, "services")} data-track="nav" data-nav="service-back-bottom">
+            <span aria-hidden>←</span> {locale === "es" ? "Ver los tres servicios" : "See all three services"}
+          </Link>
+        </div>
       </nav>
 
       <ClosingBlock locale={locale} />

@@ -64,11 +64,15 @@ body {
 @layer components {
 /* ---------- CTA slab: the 24SHOOTS action. A rectangular label, like a slate or a
    tape strip on a flight case — orange = the thing you can press. ---------- */
+/* Primary button: a pill with the arrow in its own round chip. */
 .cta-slab {
   display: inline-grid;
-  grid-template-columns: auto 3.25rem;
-  align-items: stretch;
+  grid-template-columns: auto 2.6rem;
+  align-items: center;
+  gap: 0.35rem;
   min-height: 3.25rem;
+  padding: 0.3rem;
+  border-radius: 999px;
   background: var(--color-rec);
   color: var(--color-ink);
   font-weight: 600;
@@ -82,14 +86,16 @@ body {
 .cta-slab > span:first-child {
   display: flex;
   align-items: center;
-  padding: 0.95rem 1.1rem 0.85rem;
+  padding: 0.6rem 0.5rem 0.5rem 1.1rem;
 }
 .cta-slab > span:last-child {
   display: grid;
   place-items: center;
-  border-left: 1px solid color-mix(in srgb, var(--color-ink) 35%, transparent);
-  font-size: 1.25em;
-  transition: transform 180ms var(--ease-cut);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-ink) 12%, transparent);
+  font-size: 1.15em;
+  transition: transform 180ms var(--ease-cut), background-color 180ms ease-out;
 }
 .cta-slab:hover {
   background: var(--color-bone);
@@ -106,12 +112,78 @@ body {
   color: var(--color-paper);
 }
 .on-paper .cta-slab:hover > span:last-child {
-  border-left-color: color-mix(in srgb, var(--color-paper) 35%, transparent);
+  background: color-mix(in srgb, var(--color-paper) 15%, transparent);
 }
 .cta-slab--block {
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 3.5rem;
+  grid-template-columns: 1fr 2.8rem;
+}
+/* Secondary pill: "back" and similar quiet actions. */
+.back-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.5rem 1.1rem 0.45rem 0.9rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--color-bone);
+  transition: border-color 180ms ease-out, background-color 180ms ease-out, color 180ms ease-out;
+}
+.back-pill:hover {
+  border-color: var(--color-bone);
+  background: var(--color-bone);
+  color: var(--color-ink);
+}
+.back-pill > span[aria-hidden] {
+  transition: transform 180ms var(--ease-cut);
+}
+.back-pill:hover > span[aria-hidden] {
+  transform: translateX(-3px);
+}
+
+/* Outlined pill (secondary choices next to a primary one). */
+.cta-slab--ghost {
+  background: transparent;
+  color: var(--color-bone);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-bone) 30%, transparent);
+}
+.cta-slab--ghost > span:last-child {
+  background: color-mix(in srgb, var(--color-bone) 10%, transparent);
+}
+.cta-slab--ghost:hover {
+  background: var(--color-bone);
+  color: var(--color-ink);
+}
+
+/* Compact pill (header). */
+.cta-slab--sm {
+  grid-template-columns: auto 2rem;
+  min-height: 2.5rem;
+  padding: 0.22rem;
+  gap: 0.25rem;
+}
+.cta-slab--sm > span:first-child {
+  padding: 0.4rem 0.35rem 0.32rem 0.85rem;
+}
+/* Dark pill, for use on the orange blocks. */
+.cta-slab--ink {
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+.cta-slab--ink > span:last-child {
+  background: color-mix(in srgb, var(--color-bone) 14%, transparent);
+}
+.cta-slab--ink:hover {
+  background: var(--color-bone);
+  color: var(--color-ink);
+}
+.cta-slab--ink:hover > span:last-child {
+  background: color-mix(in srgb, var(--color-ink) 12%, transparent);
+}
+.cta-slab--ink:focus-visible {
+  outline-color: var(--color-ink);
 }
 
 /* Hero "Ventana 24": the numerals are a window onto the footage. Where scroll-driven
@@ -420,8 +492,9 @@ body {
   align-items: center;
   gap: 0.5rem;
   min-height: 44px;
-  padding: 0.55rem 0.9rem;
+  padding: 0.55rem 1.1rem;
   border: 1px solid var(--rule);
+  border-radius: 999px;
   cursor: pointer;
   transition: border-color 180ms ease-out, background 180ms ease-out;
 }

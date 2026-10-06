@@ -53,3 +53,20 @@ export const packs: Pack[] = [
     },
   },
 ];
+
+/**
+ * Side-by-side comparison, from archive/notes/legal/PACKS-24SHOOTS-ES.txt.
+ * Order of `has`: completo, audiovisual, community. "opt" = optional extra.
+ * PENDING (confirm with 24SHOOTS): monthly report in the Full Pack (the source lists
+ * reporting under Community Management; the Full Pack is "strategy + production + management").
+ */
+export type Has = "yes" | "no" | "opt";
+export const compare: { label: L; has: [Has, Has, Has] }[] = [
+  { label: { es: "Estrategia de contenido", en: "Content strategy" }, has: ["yes", "no", "no"] },
+  { label: { es: "Plan y calendario de contenido", en: "Content plan and calendar" }, has: ["yes", "no", "yes"] },
+  { label: { es: "Grabación y edición", en: "Filming and editing" }, has: ["yes", "yes", "no"] },
+  { label: { es: "Publicación y gestión de redes", en: "Publishing and social management" }, has: ["yes", "no", "yes"] },
+  { label: { es: "Interacción y mensajes directos", en: "Community interaction and DMs" }, has: ["yes", "no", "yes"] },
+  { label: { es: "Informe mensual", en: "Monthly report" }, has: ["yes", "no", "yes"] },
+  { label: { es: "Dron", en: "Drone" }, has: ["opt", "opt", "no"] },
+];

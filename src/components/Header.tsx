@@ -96,7 +96,7 @@ export function Header({ locale }: { locale: Locale }) {
           >
             {c.languageShort}
           </Link>
-          <Link href={contactHref} className="cta-slab !min-h-10 text-[0.95rem]">
+          <Link href={contactHref} className="cta-slab cta-slab--sm text-[0.95rem]">
             <span className="!py-2.5">{c.cta}</span>
             <span aria-hidden>→</span>
           </Link>

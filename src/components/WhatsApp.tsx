@@ -76,7 +76,7 @@ export function WhatsApp({ locale }: { locale: Locale }) {
   return (
     <div ref={root} className={`fixed bottom-4 right-4 z-[60] flex flex-col items-end gap-3 transition-opacity duration-300 md:bottom-6 md:right-6 ${hidden && !open ? "pointer-events-none opacity-0" : "opacity-100"}`} inert={hidden && !open ? true : undefined}>
       {open && (
-        <div id={panelId} role="dialog" aria-label={c.title} className="w-[min(20rem,calc(100vw-2rem))] border border-bone/15 bg-ink-2 p-4 text-bone shadow-[0_12px_40px_rgba(0,0,0,.5)]">
+        <div id={panelId} role="dialog" aria-label={c.title} className="w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-bone/15 bg-ink-2 p-4 text-bone shadow-[0_12px_40px_rgba(0,0,0,.5)]">
           <p className="font-medium">{c.title}</p>
           <ul className="mt-3 grid gap-2">
             {c.options.map((o) => (
@@ -85,7 +85,7 @@ export function WhatsApp({ locale }: { locale: Locale }) {
                   href={waLink(o.text)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex min-h-11 items-center justify-between gap-3 border border-bone/20 px-3 py-2 transition-colors hover:border-bone hover:bg-bone hover:text-ink"
+                  className="flex min-h-11 items-center justify-between gap-3 rounded-full border border-bone/20 px-4 py-2 transition-colors hover:border-bone hover:bg-bone hover:text-ink"
                   data-track="contact_link"
                   data-channel="whatsapp"
                   data-preset={o.id}

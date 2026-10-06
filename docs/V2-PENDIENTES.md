@@ -88,7 +88,7 @@ Plan:
 | Por caso: qué se hizo (estrategia, rodaje, gestión de redes), fechas y, si se puede, un resultado verificable | Fichas de caso honestas |
 | ¿Podemos citar a Oceans como "estrategia + contenido mensual"? ¿Y el nombre de Alex Navarro? | Texto de los casos |
 | Foto de Javier (rodando o con un cliente) y, si se quiere, del equipo | Bloque "quién hay detrás" |
-| Packs: qué incluye cada uno y, opcionalmente, el precio "desde" | Página de packs y conversión |
+| Packs: confirmar la tabla comparativa (sobre todo si el Pack Completo incluye informe mensual) y, opcionalmente, el precio "desde" | Página de packs y conversión |
 | 1–2 testimonios reales con nombre y permiso (Oceans o Physem serían ideales) | Confianza |
 | Logo vectorial (SVG/PDF) | Sustituir el logotipo tipográfico provisional |
 | Fotos de un ejemplo de método **anonimizado o inventado** (calendario, brief, informe), o el OK para que lo diseñemos nosotros | Sección "te guiamos" sin exponer a clientes |
@@ -108,6 +108,12 @@ Plan:
 | LinkedIn de empresa y Google Business Profile (SEO local) |
 | Subtítulos (VTT) de las piezas con discursos |
 | Masters de las películas de eventos ya publicadas |
+
+## Pendiente de redefinir (decisión de 24SHOOTS)
+
+- **Trabajo:** cómo contarlo para conectar con la audiencia.
+- **Servicios por dentro:** cómo se cuenta cada bloque (los tres bloques y el botón de volver ya están).
+- **Estudio:** darle una vuelta.
 
 ## Avisos
 

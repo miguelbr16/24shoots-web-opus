@@ -290,17 +290,9 @@ export function Home({ locale }: { locale: Locale }) {
               ))}
             </ul>
             <div className="mt-12 grid gap-4 md:grid-cols-[minmax(0,26rem)_auto] md:items-center md:gap-10">
-              <Link
-                href={contact}
-                className="group inline-grid min-h-14 w-full grid-cols-[1fr_3.5rem] items-stretch bg-ink text-bone transition-colors hover:bg-bone hover:text-ink focus-visible:outline-ink"
-                data-track="cta"
-                data-cta="hablemos"
-                data-location="home-buy"
-              >
-                <span className="t-credit flex items-center px-5 text-[clamp(1.1rem,1rem+0.4vw,1.35rem)] tracking-normal">{s.buy.cta}</span>
-                <span aria-hidden className="grid place-items-center border-l border-bone/25 text-xl transition-transform group-hover:translate-x-0.5">
-                  →
-                </span>
+              <Link href={contact} className="cta-slab cta-slab--block cta-slab--ink min-h-14" data-track="cta" data-cta="hablemos" data-location="home-buy">
+                <span>{s.buy.cta}</span>
+                <span aria-hidden>→</span>
               </Link>
               <Link href={href.page(locale, "packs")} className="underline underline-offset-4" data-track="cta" data-cta="packs" data-location="home-buy">
                 {s.buy.packsLink}

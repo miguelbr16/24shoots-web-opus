@@ -14,14 +14,9 @@ export function ClosingBlock({ locale, title }: { locale: Locale; title?: string
         </h2>
         <div className="col-span-12 flex flex-col justify-end gap-6 md:col-span-4">
           <p className="max-w-[34ch] text-[1.05rem]">{c.lead}</p>
-          <Link
-            href={href.page(locale, "contact")}
-            className="group inline-grid min-h-14 w-full grid-cols-[1fr_3.5rem] items-stretch bg-ink text-bone transition-colors hover:bg-bone hover:text-ink focus-visible:outline-ink"
-          >
-            <span className="t-credit flex items-center px-5 text-[clamp(1.1rem,1rem+0.4vw,1.35rem)] tracking-normal">{t(locale).hero.primary}</span>
-            <span aria-hidden className="grid place-items-center border-l border-bone/25 text-xl transition-transform group-hover:translate-x-0.5">
-              →
-            </span>
+          <Link href={href.page(locale, "contact")} className="cta-slab cta-slab--block cta-slab--ink min-h-14">
+            <span>{t(locale).hero.primary}</span>
+            <span aria-hidden>→</span>
           </Link>
           <p className="t-mono">
             {c.or}{" "}

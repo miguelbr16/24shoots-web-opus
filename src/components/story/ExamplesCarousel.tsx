@@ -52,7 +52,7 @@ export function ExamplesCarousel({ slides, labels }: Props) {
     el.scrollTo({ left: to * el.clientWidth, behavior: smooth ? "smooth" : "auto" });
   };
 
-  const arrow = "grid size-11 place-items-center border border-bone/25 text-bone transition-colors hover:border-bone hover:bg-bone hover:text-ink disabled:pointer-events-none disabled:opacity-30";
+  const arrow = "grid size-11 place-items-center rounded-full border border-bone/25 text-bone transition-colors hover:border-bone hover:bg-bone hover:text-ink disabled:pointer-events-none disabled:opacity-30";
 
   return (
     <div role="region" aria-roledescription="carousel" aria-label={labels.region}>
