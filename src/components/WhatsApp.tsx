@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 /**
  * Floating WhatsApp: a few ready-made first messages so starting a conversation is one tap.
  * Each option opens wa.me with the text prefilled (the user can still edit it before sending).
- * The number comes from site.contact.phone (PENDING confirmation, see docs/V2-PENDIENTES.md).
+ * The number comes from site.contact.phone.
  */
 const copy = {
   es: {

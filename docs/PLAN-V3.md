@@ -169,7 +169,7 @@ Todo sigue en preview hasta que des la confirmación explícita.
 | 4 | Originales sin logo (Oceans, Physem, Aurum, Alex Navarro) · qué se hizo y fechas · OK para "estrategia + contenido mensual" en Oceans y para el nombre de Alex |
 | 5 | Foto de Javier y del equipo · contenido de cada pack y precio "desde" (opcional) · 1–2 testimonios · logo en SVG · OK para un ejemplo de método anonimizado |
 | 6 | Cuenta Profesional · app de Meta · hashtags por línea |
-| 7 | Activar R2 · cuenta de Resend · teléfono · datos legales · revisión legal · cuenta de Umami · confirmación para DNS y dominio |
+| 7 | Activar R2 · cuenta de Resend · datos legales (nombre y domicilio) · revisión legal · cuenta de Umami · confirmación para DNS y dominio |
 
 Aviso para el cliente: la V1 muestra `hola@24shootsmedia.com`, un dominio que no existe.
 

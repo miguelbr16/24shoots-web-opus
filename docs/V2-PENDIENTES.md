@@ -1,6 +1,12 @@
 # V2 — Planning y pendientes
 
-Actualizado: 06-10-2026. Sustituye a la versión anterior (orientada a Vercel); el hosting definitivo es **Cloudflare** (ver `docs/CLOUDFLARE.md`).
+Actualizado: 06-10-2026.
+
+**Confirmado por 24SHOOTS (06-10-2026):** teléfono/WhatsApp `+34 661 101 863` y NIF `26761401G`.
+
+**Diseño:** la web es una versión de trabajo, no el diseño definitivo. La Home (sobre todo la apertura) puede seguir cambiando según avancemos; cada cambio pasa por la preview antes de darse por bueno.
+
+Hosting definitivo: **Cloudflare** (ver `docs/CLOUDFLARE.md`).
 
 Nada de lo que falta está inventado en la web: donde falta un dato, la web no lo afirma o lo marca como pendiente.
 
@@ -68,11 +74,10 @@ Plan:
 |---|---|---|
 | 1 | **Activar R2** en el panel de Cloudflare (error 10042) | Películas completas (ahora dan 404) e imágenes del Diario |
 | 2 | **Cuenta de Resend** con `24shoots.es` verificado (SPF/DKIM) y la API key como secreto del Worker | Que el formulario envíe a `info@24shoots.es` |
-| 3 | **Confirmar el teléfono/WhatsApp** `+34 661 101 863` (viene de V1 y ya se muestra) | Botón de WhatsApp y contacto |
-| 4 | **Datos legales:** titular (razón social o nombre), domicilio fiscal y confirmar el NIF `26761401G` | Aviso legal y privacidad |
-| 5 | **Revisión de los textos legales** por su asesoría | Cumplimiento |
-| 6 | **Cuenta de Umami Cloud** (gratis) y el ID del sitio como variable de entorno | Medir visitas y conversiones |
-| 7 | **Confirmación para el dominio** `24shoots.es`: pasarlo a Cloudflare (DNS) y quitar el noindex | Publicar. Solo con confirmación explícita |
+| 3 | **Datos legales:** nombre completo del titular (el NIF `26761401G` ya está confirmado y es de persona física) y domicilio fiscal | Aviso legal y privacidad |
+| 4 | **Revisión de los textos legales** por su asesoría | Cumplimiento |
+| 5 | **Cuenta de Umami Cloud** (gratis) y el ID del sitio como variable de entorno | Medir visitas y conversiones |
+| 6 | **Confirmación para el dominio** `24shoots.es`: pasarlo a Cloudflare (DNS) y quitar el noindex | Publicar. Solo con confirmación explícita |
 
 ### Para la nueva Home y los casos (Fases 3–4)
 

@@ -10,14 +10,14 @@ export const site = {
   country: "ES",
   contact: {
     email: "info@24shoots.es",
-    /** Carried over from V1 config (commit 0fb259a "client contact"). PENDING: confirm. */
+    /** Confirmed by 24SHOOTS (06-10-2026). */
     phone: "+34661101863",
     phoneDisplay: "+34 661 101 863",
     instagram: "https://www.instagram.com/24shootsmedia/",
     instagramHandle: "@24shootsmedia",
   },
   legal: {
-    /** PENDING: legal holder name and fiscal address. */
+    /** taxId confirmed by 24SHOOTS (06-10-2026); it is a personal NIF, so the holder is a natural person. PENDING: holder name and fiscal address. */
     holder: null as string | null,
     taxId: "26761401G",
     address: null as string | null,
