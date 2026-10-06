@@ -12,7 +12,7 @@ Nada de lo que falta está inventado en la web: donde falta un dato, la web no l
 | 1 | Prototipos A/D/E (`/lab/*`, noindex) | ✅ Hecho, descartados como Home |
 | 2 | Home contada como historia + build y preview en Cloudflare Workers | ✅ Hecho ([preview](https://24shoots-web.miguelborrasroig.workers.dev), noindex) |
 | 2b | Correcciones de auditoría + botón de WhatsApp con mensajes predeterminados | ✅ Hecho |
-| **3** | **Reposicionamiento: de "productora de eventos" a "la marca del cliente"** | **⏳ En curso: propuesta de narrativa pendiente de aprobar** |
+| **3** | **Reposicionamiento: de "productora de eventos" a "la marca del cliente"** | **⏳ Narrativa entregada (`docs/HOME-NARRATIVA-V3.md`), pendiente de aprobar. Plan completo: `docs/PLAN-V3.md`** |
 | 4 | Nuevos casos y material (pipeline de medios) | Pendiente de material y permisos |
 | 5 | Pestaña "Diario": tablón conectado a Instagram | Planificado, a la espera del cliente |
 | 6 | Paso a producción (R2, Resend, analítica, legal, dominio, indexación) | Bloqueado por datos y accesos del cliente |
